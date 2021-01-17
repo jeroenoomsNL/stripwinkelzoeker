@@ -47,12 +47,14 @@
   }
 
   &:hover .icon,
-  &:active .icon {
+  &:active .icon,
+  &.spinner .icon,
+  &.spinner .icon {
     color: white;
   }
 
   .spinner {
-    color: white;
+    color: #d10c04;
     display: none;
     animation-name: spin;
     animation-duration: 2000ms;
@@ -74,6 +76,7 @@
     color: white;
     background-color: #d10c04;
 
+    .spinner,
     .icon {
       color: white;
     }
@@ -145,9 +148,11 @@
       display: none;
     }
 
-    .icon {
-      height: 12px;
-      width: auto;
+    @media (max-width: 500px) {
+      .icon {
+        height: 12px;
+        width: auto;
+      }
     }
 
     @media (min-width: 500px) {
