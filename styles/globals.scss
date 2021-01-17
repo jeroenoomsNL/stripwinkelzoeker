@@ -44,12 +44,22 @@ header {
 
 button {
   outline: none;
-  background: #d10c04;
-  border: none;
+  background-color: white;
+  color: #d10c04;
+  border: 1px solid #d10c04;
   border-radius: 5px;
   padding: 15px 15px;
-  color: white;
   cursor: pointer;
+
+  &:hover {
+    background-color: #d10c04;
+    color: white;
+  }
+
+  &:active {
+    background-color: darken(#d10c04, 10);
+    color: white;
+  }
 }
 
 .filterButton {

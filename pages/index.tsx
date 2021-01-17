@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRef, useEffect, useState } from "react";
 import Fuse from "fuse.js";
-import classNames from "classnames";
+import classNames from "classnames/bind";
 
 import { fetchEntries } from "../utils/contentfulPosts";
 
@@ -39,34 +39,38 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const [currentStores, setStores] = useState(stores);
   const [currentQuery, setQuery] = useState("");
   const [useCurrentLocation, setUseCurrentLocation] = useState(false);
+  const [locationLoading, setLocationLoading] = useState(false);
   const seachForm = useRef(null);
-
-  console.log(useCurrentLocation);
 
   useEffect(() => {
     if (!useCurrentLocation) return;
+
+    console.log("useCurrentLocation");
 
     if (navigator?.geolocation) {
       navigator.geolocation.getCurrentPosition(
         getLocationSuccess,
         getLocationError
       );
+      setLocationLoading(true);
     }
   }, [useCurrentLocation]);
 
   function getLocationSuccess(position: any) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+    setLocationLoading(false);
+    setUseCurrentLocation(true);
     getStoresByLocation(latitude, longitude);
   }
 
   function getLocationError() {
+    setLocationLoading(false);
+    setUseCurrentLocation(false);
     console.log("Unable to retrieve your location");
   }
 
   const getStoresByLocation = (latitude: number, longitude: number) => {
-    console.log(latitude, longitude);
-
     const newStores = stores.sort((a, b) => {
       // This is untested example logic to
       // help point you in the right direction.
@@ -88,9 +92,8 @@ export const HomePage = ({ stores }: HomePageProps) => {
       }
     });
 
-    console.log(newStores);
-
-    setStores(newStores);
+    resetFilters();
+    setStores([...newStores]);
   };
 
   const resetFilters = () => {
@@ -99,8 +102,12 @@ export const HomePage = ({ stores }: HomePageProps) => {
     seachForm.current.reset();
   };
 
-  const handleChange = (change: any) => {
-    const query = change?.target?.value;
+  const preventSubmit = (event: any) => {
+    event.preventDefault();
+  };
+
+  const handleSearch = (event: any) => {
+    const query = event?.target?.value;
 
     if (!query || query === "") {
       setStores(stores);
@@ -122,12 +129,21 @@ export const HomePage = ({ stores }: HomePageProps) => {
     const fuse = new Fuse(stores, options);
     const newStores: any = fuse.search(query);
 
+    setUseCurrentLocation(false);
     setStores(newStores.map((store: SearchItem) => store.item));
   };
 
-  var locationButtonClasses = classNames({
+  let cx = classNames.bind(styles);
+
+  const locationButtonClasses = cx({
     iconButton: true,
     "iconButton--active": useCurrentLocation,
+    "iconButton--loading": locationLoading,
+  });
+
+  const spinnerClasses = cx({
+    icon: true,
+    spinner: true,
   });
 
   return (
@@ -154,12 +170,12 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
       <main className={styles.main}>
         <div className={styles.searchContainer}>
-          <form ref={seachForm}>
+          <form ref={seachForm} onSubmit={preventSubmit}>
             <input
               type="text"
               placeholder="Zoek een winkel of webshop"
               className={styles.searchInput}
-              onChange={handleChange}
+              onChange={handleSearch}
             />
           </form>
           <button
@@ -181,8 +197,21 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 fill="currentColor"
                 d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
               ></path>
+            </svg>
+            <svg
+              className={spinnerClasses}
+              aria-hidden="true"
+              focusable="false"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="currentColor"
+                d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
+              ></path>
             </svg>{" "}
-            Winkels in de buurt
+            <span className={styles.buttonText}>Winkels in de buurt</span>
           </button>
         </div>
 
@@ -195,12 +224,14 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 width="400"
                 height="300"
               />
-              <h3 className={styles.storeTitle}>{store.name}</h3>
-              <p className={styles.storeAddress}>
-                {store.address}
-                <br />
-                {`${store.postalCode} ${store.city}`}
-              </p>
+              <div className={styles.storeContent}>
+                <h3 className={styles.storeTitle}>{store.name}</h3>
+                <p className={styles.storeAddress}>
+                  {store.address}
+                  <br />
+                  {`${store.postalCode} ${store.city}`}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -256,7 +287,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
       <footer>
         <p className={styles.wrapper}>
-          deze website is een initiatief van{" "}
+          Stripwinkelzoeker.nl is een initiatief van{" "}
           <a
             href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
             target="_blank"

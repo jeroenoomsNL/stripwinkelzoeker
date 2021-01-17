@@ -29,21 +29,59 @@
 .iconButton {
   display: flex;
   align-items: center;
-  background-color: white;
-  color: #d10c04;
-  border: 1px solid #d10c04;
+
+  .buttonText {
+    margin-left: 6px;
+  }
 
   .icon {
     color: #d10c04;
-    margin-right: 6px;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &:hover .icon,
+  &:active .icon {
+    color: white;
+  }
+
+  .spinner {
+    color: white;
+    display: none;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  &--loading {
+    .spinner {
+      display: inline !important;
+    }
+
+    .icon {
+      display: none;
+    }
   }
 
   &--active {
+    color: white;
     background-color: #d10c04;
 
     .icon {
-      color: #d10c04;
+      color: white;
     }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -104,19 +142,6 @@
   margin-bottom: 1rem;
 }
 
-.storeImage {
-  width: 100%;
-  height: auto;
-}
-
-.storeTitle {
-  margin-bottom: 0.2em;
-}
-
-.storeAddress {
-  font-size: 0.8em;
-}
-
 .storeBlocks {
   display: flex;
   flex-wrap: wrap;
@@ -130,10 +155,30 @@
   margin: 0 0 20px;
   width: 100%;
 
+  .storeImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .storeTitle {
+    margin: 0;
+  }
+
+  .storeAddress {
+    font-size: 0.8em;
+  }
+
   @media (min-width: 500px) {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
     margin: 0 20px 20px;
     width: 45%;
     width: calc(50% - 40px);
+
+    .storeContent {
+      padding: 20px;
+    }
   }
 
   @media (min-width: 800px) {
