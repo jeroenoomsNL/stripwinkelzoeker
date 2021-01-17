@@ -48,8 +48,12 @@ button {
   color: #d10c04;
   border: 1px solid #d10c04;
   border-radius: 5px;
-  padding: 15px 15px;
+  padding: 10px;
   cursor: pointer;
+
+  @media (min-width: 500px) {
+    padding: 15px;
+  }
 
   &:hover {
     background-color: #d10c04;
