@@ -29,9 +29,21 @@
 .iconButton {
   display: flex;
   align-items: center;
+  background-color: white;
+  color: #d10c04;
+  border: 1px solid #d10c04;
 
   .icon {
+    color: #d10c04;
     margin-right: 6px;
+  }
+
+  &--active {
+    background-color: #d10c04;
+
+    .icon {
+      color: #d10c04;
+    }
   }
 }
 

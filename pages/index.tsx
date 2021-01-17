@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRef, useEffect, useState } from "react";
 import Fuse from "fuse.js";
-import { classNames } from "classnames";
+import classNames from "classnames";
 
 import { fetchEntries } from "../utils/contentfulPosts";
 
@@ -40,6 +40,8 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const [currentQuery, setQuery] = useState("");
   const [useCurrentLocation, setUseCurrentLocation] = useState(false);
   const seachForm = useRef(null);
+
+  console.log(useCurrentLocation);
 
   useEffect(() => {
     if (!useCurrentLocation) return;
@@ -123,9 +125,9 @@ export const HomePage = ({ stores }: HomePageProps) => {
     setStores(newStores.map((store: SearchItem) => store.item));
   };
 
-  var liClasses = classNames({
-    "main-class": true,
-    activeClass: self.state.focused === index,
+  var locationButtonClasses = classNames({
+    iconButton: true,
+    "iconButton--active": useCurrentLocation,
   });
 
   return (
@@ -165,53 +167,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             onClick={() => {
               setUseCurrentLocation(true);
             }}
-            className={styles.iconButton}
-          >
-            <svg
-              className={styles.icon}
-              aria-hidden="true"
-              focusable="false"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 384 512"
-            >
-              <path
-                fill="currentColor"
-                d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
-              ></path>
-            </svg>{" "}
-            Winkels in de buurt
-          </button>
-
-          <button
-            type="button"
-            onClick={() => {
-              setUseCurrentLocation(true);
-            }}
-            className={styles.iconButton}
-          >
-            <svg
-              className={styles.icon}
-              aria-hidden="true"
-              focusable="false"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 384 512"
-            >
-              <path
-                fill="currentColor"
-                d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"
-              ></path>
-            </svg>{" "}
-            Winkels in de buurt
-          </button>
-
-          <button
-            type="button"
-            onClick={() => {
-              setUseCurrentLocation(true);
-            }}
-            className={styles.iconButton}
+            className={locationButtonClasses}
           >
             <svg
               className={styles.icon}
