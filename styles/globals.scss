@@ -1,0 +1,81 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+a {
+  color: #d10c04;
+  text-decoration: none;
+}
+
+.center {
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-style: italic;
+  font-size: 1.2rem;
+
+  @media (min-width: 500px) {
+    font-size: 2rem;
+  }
+}
+
+header {
+  background: #d10c04;
+  padding: 20px;
+
+  h1 {
+    margin: 0;
+    color: white;
+
+    span {
+      opacity: 0.7;
+    }
+  }
+}
+
+button {
+  outline: none;
+  background: #d10c04;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.filterButton {
+  background: white;
+  border: 1px solid #d10c04;
+}
+
+footer {
+  width: 100%;
+  border-top: 1px solid #eaeaea;
+  margin-top: 3em;
+  padding: 2rem 20px;
+
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0;
+  }
+
+  img {
+    margin: 0 10px;
+  }
+
+  small a {
+    color: black;
+    text-decoration: underline;
+  }
+}

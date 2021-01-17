@@ -1,0 +1,143 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    margin-right: 6px;
+  }
+}
+
+.info {
+  max-width: 900px;
+  line-height: 1.6;
+  margin: 6rem auto 0;
+  background-color: #ddd;
+  border-radius: 5px;
+  padding: 2rem;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 700px) {
+    flex-direction: row;
+  }
+}
+
+.infoText {
+  padding-right: 40px;
+  flex: 1 1 auto;
+}
+
+.infoImage {
+  width: 150px;
+  height: auto;
+}
+
+.notFound {
+  margin: 5em 0;
+  text-align: center;
+}
+
+.buttonContainer {
+  margin: 1em 0;
+  text-align: center;
+}
+
+.searchContainer {
+  margin: 0 0 3em 0;
+  padding: 3em 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+.searchInput {
+  width: 100%;
+  font-size: 1.6em;
+  border: 1px solid #666;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 1rem;
+}
+
+.storeImage {
+  width: 100%;
+  height: auto;
+}
+
+.storeTitle {
+  margin-bottom: 0.2em;
+}
+
+.storeAddress {
+  font-size: 0.8em;
+}
+
+.storeBlocks {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: 500px) {
+    margin: 0 -20px;
+  }
+}
+
+.storeBlock {
+  margin: 0 0 20px;
+  width: 100%;
+
+  @media (min-width: 500px) {
+    margin: 0 20px 20px;
+    width: 45%;
+    width: calc(50% - 40px);
+  }
+
+  @media (min-width: 800px) {
+    margin: 0 20px 20px;
+    width: 30%;
+    width: calc(33.3333% - 40px);
+  }
+}
+
+.logo {
+  height: 2em;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
