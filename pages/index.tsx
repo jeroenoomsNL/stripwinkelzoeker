@@ -271,7 +271,8 @@ export const HomePage = ({ stores }: HomePageProps) => {
           <div className={styles.filterButtons}>
             <button
               type="button"
-              onClick={() => {
+              onClick={(e) => {
+                e.currentTarget.blur();
                 setUseCurrentLocation(!useCurrentLocation);
               }}
               className={locationButtonClasses}
@@ -309,7 +310,8 @@ export const HomePage = ({ stores }: HomePageProps) => {
             </button>
             <button
               type="button"
-              onClick={() => {
+              onClick={(e) => {
+                e.currentTarget.blur();
                 setDelivery(!showDelivery);
               }}
               className={deliveryButtonClasses}
@@ -336,7 +338,8 @@ export const HomePage = ({ stores }: HomePageProps) => {
             </button>
             <button
               type="button"
-              onClick={() => {
+              onClick={(e) => {
+                e.currentTarget.blur();
                 setPickup(!showPickup);
               }}
               className={pickupButtonClasses}
