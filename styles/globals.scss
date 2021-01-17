@@ -55,9 +55,11 @@ button {
     padding: 15px;
   }
 
-  &:hover {
-    background-color: #d10c04;
-    color: white;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #d10c04;
+      color: white;
+    }
   }
 
   &:active {

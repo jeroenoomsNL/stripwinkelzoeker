@@ -46,10 +46,15 @@
     }
   }
 
-  &:hover .icon,
+  @media (hover: hover) {
+    &:hover .icon,
+    &:hover .spinner {
+      color: white;
+    }
+  }
+
   &:active .icon,
-  &.spinner .icon,
-  &.spinner .icon {
+  &:active .spinner {
     color: white;
   }
 
