@@ -262,7 +262,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           <form ref={seachForm} onSubmit={preventSubmit}>
             <input
               type="text"
-              placeholder="Zoek een winkel in de buurt"
+              placeholder="Zoek een winkel"
               className={styles.searchInput}
               onChange={handleSearch}
             />
@@ -301,7 +301,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
                   d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
                 ></path>
               </svg>{" "}
-              <span className={styles.buttonText}>Winkels in de buurt</span>
+              <span className={styles.buttonText}>
+                <span className={styles.desktopText}>Winkels in de buurt</span>
+                <span className={styles.mobileText}>In de buurt</span>
+              </span>
             </button>
             <button
               type="button"
@@ -324,7 +327,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 ></path>
               </svg>
               <span className={styles.buttonText}>
-                Winkels met bezorgservice
+                <span className={styles.desktopText}>
+                  Winkels met bezorgservice
+                </span>
+                <span className={styles.mobileText}>Bezorgservice</span>
               </span>
             </button>
             <button
@@ -347,7 +353,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
                   d="M496 224c-79.6 0-144 64.4-144 144s64.4 144 144 144 144-64.4 144-144-64.4-144-144-144zm64 150.3c0 5.3-4.4 9.7-9.7 9.7h-60.6c-5.3 0-9.7-4.4-9.7-9.7v-76.6c0-5.3 4.4-9.7 9.7-9.7h12.6c5.3 0 9.7 4.4 9.7 9.7V352h38.3c5.3 0 9.7 4.4 9.7 9.7v12.6zM320 368c0-27.8 6.7-54.1 18.2-77.5-8-1.5-16.2-2.5-24.6-2.5h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h347.1c-45.3-31.9-75.1-84.5-75.1-144zm-96-112c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128z"
                 ></path>
               </svg>
-              <span className={styles.buttonText}>Ophalen in de winkel</span>
+              <span className={styles.buttonText}>
+                <span className={styles.desktopText}>Ophalen in de winkel</span>
+                <span className={styles.mobileText}>Pickup</span>
+              </span>
             </button>
           </div>
         </div>

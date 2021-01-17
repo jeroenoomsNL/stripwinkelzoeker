@@ -17,7 +17,11 @@
   max-width: 1240px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;
+
+  @media (min-width: 500px) {
+    padding: 0 20px;
+  }
 }
 
 .icon {
@@ -132,9 +136,31 @@
 
 .filterButtons {
   display: flex;
+  flex-wrap: wrap;
 
   button {
-    margin-right: 20px;
+    margin: 0 10px 10px 0;
+
+    .desktopText {
+      display: none;
+    }
+
+    .icon {
+      height: 12px;
+      width: auto;
+    }
+
+    @media (min-width: 500px) {
+      margin: 0 20px 20px 0;
+
+      .mobileText {
+        display: none;
+      }
+
+      .desktopText {
+        display: inline;
+      }
+    }
   }
 }
 
@@ -196,8 +222,8 @@
   }
 
   .storeImage {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 180px;
     object-fit: cover;
     margin-right: 20px;
 
@@ -221,6 +247,18 @@
     font-size: 0.8em;
     margin-bottom: 0;
     flex-grow: 1;
+  }
+
+  .storeContent {
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
   }
 
   @media (min-width: 500px) {
@@ -249,7 +287,13 @@
 
 .storeLabelContainer {
   display: flex;
-  margin-bottom: 0;
+  flex-direction: column;
+  margin-bottom: 1em;
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
 
   .storeLabel {
     display: flex;
@@ -257,7 +301,7 @@
     color: green;
     display: inline-block;
     padding: 5px;
-    margin: 10px 10px 10px 0;
+    margin: 0 10px 0 0;
     font-size: 14px;
 
     .icon {
