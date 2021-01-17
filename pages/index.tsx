@@ -156,6 +156,11 @@ export const HomePage = ({ stores }: HomePageProps) => {
     "storeBlocks--hidden": locationLoading,
   });
 
+  const infoClasses = cx({
+    info: true,
+    "info--hidden": locationLoading,
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -287,7 +292,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           </div>
         )}
 
-        <div className={styles.info}>
+        <div className={infoClasses}>
           <h2>Waarom deze Stripwinkelzoeker?</h2>
           <div className={styles.infoGrid}>
             <p className={styles.infoText}>
