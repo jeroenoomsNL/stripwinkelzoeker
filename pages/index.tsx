@@ -112,6 +112,8 @@ export const HomePage = ({ stores }: HomePageProps) => {
       }
     });
 
+    console.log(newStores);
+
     doFuzzySearch(currentQuery, [...newStores]);
   };
 
@@ -472,7 +474,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
           </div>
         )}
 
-        {(currentQuery !== "" || (useCurrentLocation && !locationLoading)) && (
+        {(currentQuery !== "" ||
+          showDelivery ||
+          showPickup ||
+          (useCurrentLocation && !locationLoading)) && (
           <div className={styles.buttonContainer}>
             <button
               type="button"
