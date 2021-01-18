@@ -181,7 +181,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
       return (
         <a href={store.website} target="_blank">
           <img
-            src={`${store.image.fields.file.url}?w=400&h=300&fit=fill`}
+            src={`${store.image.fields.file.url}?fm=jpg&w=400&h=300&fit=fill`}
             className={styles.storeImage}
             width="400"
             height="300"
@@ -191,7 +191,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
     } else {
       return (
         <img
-          src={`${store.image.fields.file.url}?w=400&h=300&fit=fill`}
+          src={`${store.image.fields.file.url}?fm=jpg&w=400&h=300&fit=fill`}
           className={styles.storeImage}
           width="400"
           height="300"
