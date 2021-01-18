@@ -73,11 +73,12 @@ footer {
   border-top: 1px solid #eaeaea;
   margin-top: 3em;
   padding: 2rem 20px;
+  .logo {
+    height: 2em;
+  }
 
   p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     padding: 0.5rem 0;
   }
 

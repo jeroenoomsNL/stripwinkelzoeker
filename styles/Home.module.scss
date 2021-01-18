@@ -356,13 +356,10 @@
   }
 }
 
-.logo {
+.rebootLogo {
   height: 2em;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.rebootLink {
+  color: #0050ff;
 }

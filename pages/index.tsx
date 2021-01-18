@@ -312,7 +312,9 @@ export const HomePage = ({ stores }: HomePageProps) => {
               </svg>{" "}
               <span className={styles.buttonText}>
                 <span className={styles.desktopText}>Winkels in de buurt</span>
-                <span className={styles.mobileText}>In de buurt</span>
+                <span className={styles.mobileText} aria-hidden="true">
+                  In de buurt
+                </span>
               </span>
             </button>
             <button
@@ -340,7 +342,9 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 <span className={styles.desktopText}>
                   Winkels met bezorgservice
                 </span>
-                <span className={styles.mobileText}>Bezorgservice</span>
+                <span className={styles.mobileText} aria-hidden="true">
+                  Bezorgservice
+                </span>
               </span>
             </button>
             <button
@@ -366,7 +370,9 @@ export const HomePage = ({ stores }: HomePageProps) => {
               </svg>
               <span className={styles.buttonText}>
                 <span className={styles.desktopText}>Ophalen in de winkel</span>
-                <span className={styles.mobileText}>Pickup</span>
+                <span className={styles.mobileText} aria-hidden="true">
+                  Pickup
+                </span>
               </span>
             </button>
           </div>
@@ -537,7 +543,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
         <div className={infoClasses}>
           <h2>Waarom deze Stripwinkelzoeker?</h2>
-          <div className={styles.infoGrid}>
+          <div className={styles.info}>
             <p className={styles.infoText}>
               Stripwinkelzoeker is gemaakt om de stripspeciaalzaken met fysieke
               winkels zichtbaarder te maken voor de stripliefhebber. Veel
@@ -561,7 +567,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
       <footer>
         <p className={styles.wrapper}>
-          Stripwinkelzoeker.nl is een initiatief van{" "}
           <a
             href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
             target="_blank"
@@ -569,8 +574,19 @@ export const HomePage = ({ stores }: HomePageProps) => {
             <img
               src="/reboot-comics.svg"
               alt="Reboot Comics Logo"
-              className={styles.logo}
+              className={styles.rebootLogo}
+              aria-label="Reboot Comics"
             />
+          </a>
+        </p>
+        <p className={styles.wrapper}>
+          Stripwinkelzoeker.nl is een initiatief van{" "}
+          <a
+            href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
+            className={styles.rebootLink}
+            target="_blank"
+          >
+            Reboot Comics
           </a>
         </p>
         <p className={styles.wrapper}>
