@@ -270,7 +270,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           <form ref={seachForm} onSubmit={preventSubmit}>
             <input
               type="text"
-              placeholder="Zoek een winkel"
+              placeholder="Zoek een stripwinkel"
               className={styles.searchInput}
               onChange={handleSearch}
             />
@@ -496,20 +496,19 @@ export const HomePage = ({ stores }: HomePageProps) => {
           </div>
         )}
 
-        {(currentQuery !== "" ||
-          showDelivery ||
-          showPickup ||
-          (useCurrentLocation && !locationLoading)) && (
-          <div className={styles.buttonContainer}>
-            <button
-              type="button"
-              onClick={resetFilters}
-              className={styles.button}
-            >
-              Toon alle winkels
-            </button>
-          </div>
-        )}
+        {currentQuery !== "" &&
+          !locationLoading &&
+          (useCurrentLocation || showDelivery || showPickup) && (
+            <div className={styles.buttonContainer}>
+              <button
+                type="button"
+                onClick={resetFilters}
+                className={styles.button}
+              >
+                Toon alle winkels
+              </button>
+            </div>
+          )}
 
         <div className={infoClasses}>
           <h2>Waarom deze Stripwinkelzoeker?</h2>
