@@ -543,7 +543,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
         <div className={infoClasses}>
           <h2>Waarom deze Stripwinkelzoeker?</h2>
-          <div className={styles.info}>
+          <div className={styles.infoGrid}>
             <p className={styles.infoText}>
               Stripwinkelzoeker is gemaakt om de stripspeciaalzaken met fysieke
               winkels zichtbaarder te maken voor de stripliefhebber. Veel
