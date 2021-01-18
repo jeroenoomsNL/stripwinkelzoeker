@@ -26,6 +26,7 @@ interface Store {
       file: {
         url: string;
       };
+      title: string;
     };
   };
   location: { lon: number; lat: number };
@@ -87,7 +88,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
   function getLocationError() {
     setLocationLoading(false);
     setUseCurrentLocation(false);
-    console.log("Unable to retrieve your location");
+    console.log("Unable to retrieve location");
   }
 
   const getStoresByLocation = (latitude: number, longitude: number) => {
@@ -111,8 +112,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
         return 0; // same
       }
     });
-
-    console.log(newStores);
 
     doFuzzySearch(currentQuery, [...newStores]);
   };
@@ -179,12 +178,17 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const Image = ({ store }: ImageProps) => {
     if (store.website) {
       return (
-        <a href={store.website} target="_blank">
+        <a
+          href={store.website}
+          target="_blank"
+          title={store.image.fields.title}
+        >
           <img
             src={`${store.image.fields.file.url}?fm=jpg&w=400&h=300&fit=fill`}
             className={styles.storeImage}
             width="400"
             height="300"
+            alt={store.image.fields.title}
           />
         </a>
       );
@@ -195,6 +199,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           className={styles.storeImage}
           width="400"
           height="300"
+          alt={store.image.fields.title}
         />
       );
     }
@@ -401,14 +406,21 @@ export const HomePage = ({ stores }: HomePageProps) => {
                   {store.phoneNumber && (
                     <div>
                       telefoon:{" "}
-                      <a href={`tel:${store.phoneNumber}`}>
+                      <a
+                        href={`tel:${store.phoneNumber}`}
+                        title={`Telefoonnummer ${store.name} ${store.city}`}
+                      >
                         {store.phoneNumber}
                       </a>
                     </div>
                   )}
                   {store.website && (
                     <div>
-                      <a href={store.website} target="_blank">
+                      <a
+                        href={store.website}
+                        target="_blank"
+                        title={`Website ${store.name} ${store.city}`}
+                      >
                         {store.website}
                       </a>
                     </div>
@@ -416,7 +428,14 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 </p>
                 <p className={styles.storeLabelContainer}>
                   {store.doesDeliver && (
-                    <span className={styles.storeLabel}>
+                    <span
+                      className={styles.storeLabel}
+                      title={`${
+                        store.deliversInRegionOnly
+                          ? `${store.name} bezorgt in de regio ${store.city}`
+                          : `${store.name} verzendt jouw bestelling naar je thuis adres`
+                      }`}
+                    >
                       <svg
                         className={styles.icon}
                         aria-hidden="true"
@@ -438,7 +457,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
                     </span>
                   )}
                   {store.doesPickup && (
-                    <span className={styles.storeLabel}>
+                    <span
+                      className={styles.storeLabel}
+                      title={`Je kunt je bestelling ophalen bij ${store.name} in ${store.city}`}
+                    >
                       <svg
                         className={styles.icon}
                         aria-hidden="true"
