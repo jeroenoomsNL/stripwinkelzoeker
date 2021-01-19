@@ -236,6 +236,11 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
   let cx = classNames.bind(styles);
 
+  const headerClasses = cx({
+    wrapper: true,
+    headerContainer: true,
+  });
+
   const locationButtonClasses = cx({
     iconButton: true,
     "iconButton--active": useCurrentLocation,
@@ -302,11 +307,12 @@ export const HomePage = ({ stores }: HomePageProps) => {
         />
       </Head>
 
-      <header>
-        <div className={styles.wrapper}>
+      <header className={styles.header}>
+        <div className={headerClasses}>
           <h1>
             Stripwinkelzoeker<span>.nl</span>
           </h1>
+          <h3>Koop je strips bij een stripspeciaalzaak!</h3>
         </div>
       </header>
 
