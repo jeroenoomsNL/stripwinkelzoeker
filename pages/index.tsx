@@ -97,6 +97,14 @@ export const HomePage = ({ stores }: HomePageProps) => {
     console.log("Unable to retrieve location");
   }
 
+  const trackOutboundLink = function (url) {
+    gtag("event", "klik", {
+      event_category: "uitgaand",
+      event_label: url,
+      transport_type: "beacon",
+    });
+  };
+
   function randomStores() {
     return stores.sort(() => Math.random() - 0.5);
   }
@@ -216,6 +224,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
           href={store.website}
           target="_blank"
           title={store.image.fields.title}
+          onClick={() => {
+            trackOutboundLink(store.website);
+            return false;
+          }}
         >
           <img
             src={`${store.image.fields.file.url}?fm=jpg&w=400&h=300&fit=fill`}
@@ -561,6 +573,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
                         href={store.website}
                         target="_blank"
                         title={`Website ${store.name} ${store.city}`}
+                        onClick={() => {
+                          trackOutboundLink(store.website);
+                          return false;
+                        }}
                       >
                         {store.website}
                       </a>
@@ -688,6 +704,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
           <a
             href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
             target="_blank"
+            onClick={() => {
+              trackOutboundLink("https://rebootcomics.nl");
+              return false;
+            }}
           >
             <img
               src="/reboot-comics.svg"
@@ -703,6 +723,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
             href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
             className={styles.rebootLink}
             target="_blank"
+            onClick={() => {
+              trackOutboundLink("https://rebootcomics.nl");
+              return false;
+            }}
           >
             Reboot Comics
           </a>
