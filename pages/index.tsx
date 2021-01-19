@@ -4,6 +4,7 @@ import Fuse from "fuse.js";
 import classNames from "classnames/bind";
 
 import { fetchEntries } from "../utils/contentfulPosts";
+import { GA_TRACKING_ID } from "../utils/gtag";
 
 import styles from "../styles/Home.module.scss";
 import { GetStaticProps } from "next";
@@ -304,6 +305,22 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <meta
           property="og:image"
           content="https://stripwinkelzoeker.nl/stripwinkelzoeker-header.png"
+        />
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+          `,
+          }}
         />
       </Head>
 
@@ -643,7 +660,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 wel de mogelijkheid om te bestellen via e-mail of een webshop.
                 Door deze winkels beter vindbaar te maken hopen we dat de
                 stripliefhebbers er sneller zulllen kopen.{" "}
-                <a href="https://www.hebban.nl/steunjeboekhandel">
+                <a
+                  href="https://www.hebban.nl/steunjeboekhandel"
+                  target="_blank"
+                >
                   #steunjeboekhandel
                 </a>
               </p>
