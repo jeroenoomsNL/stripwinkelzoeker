@@ -347,7 +347,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <link rel="canonical" href="https://stripwinkelzoeker.nl" />
         <meta
           property="og:image"
-          content="https://stripwinkelzoeker.nl/stripwinkelzoeker-header.png"
+          content="https://stripwinkelzoeker.nl/stripwinkelzoeker-header-2.png"
         />
         <script
           async
