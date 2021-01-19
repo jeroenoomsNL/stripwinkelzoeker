@@ -133,7 +133,7 @@
 }
 
 .infoImage {
-  width: 150px;
+  width: 250px;
   height: auto;
 }
 
@@ -179,14 +179,31 @@
   text-align: center;
 }
 
-.searchContainer {
-  margin: 0 0 2em 0;
+.searchGrid {
+  display: flex;
+  justify-content: space-between;
   padding: 2em 0;
-  border-bottom: 1px solid lightgrey;
 
   @media (min-width: 500px) {
-    margin: 0 0 3em 0;
-    padding: 3em 0 1em;
+    padding: 2em 0;
+  }
+
+  .searchContainer {
+    flex-grow: 1;
+  }
+
+  .searchImageContainer {
+    padding-left: 6em;
+    display: none;
+
+    @media (min-width: 1000px) {
+      display: block;
+    }
+  }
+
+  .searchImage {
+    width: 150px;
+    height: auto;
   }
 }
 
@@ -254,11 +271,13 @@
   }
 
   .storeAddress {
-    font-size: 0.8em;
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   .storeExtra {
-    font-size: 0.8em;
+    font-size: 0.9rem;
+    line-height: 1.6;
     margin: 0;
     flex-grow: 1;
 
@@ -312,9 +331,13 @@
   flex-direction: column;
   margin-bottom: 1em;
 
+  @media (min-width: 500px) {
+    margin-bottom: 0;
+  }
+
   @media (min-width: 1000px) {
     flex-direction: row;
-    margin-bottom: 0;
+    justify-content: space-between;
   }
 
   .storeLabel {
@@ -322,10 +345,17 @@
     align-items: center;
     color: green;
     display: inline-block;
-    padding: 5px;
-    margin: 0 10px 0 0;
+    margin: 0 10px 10px 0;
     font-size: 14px;
     cursor: help;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 1000px) {
+      margin-bottom: 0;
+    }
 
     .icon {
       height: 12px;
