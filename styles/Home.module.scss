@@ -330,6 +330,10 @@
   .storeAddress {
     font-size: 0.9rem;
     line-height: 1.6;
+
+    span {
+      display: block;
+    }
   }
 
   .storeExtra {
@@ -337,6 +341,10 @@
     line-height: 1.6;
     margin: 0;
     flex-grow: 1;
+
+    span {
+      display: block;
+    }
 
     .icon {
       height: 12px;

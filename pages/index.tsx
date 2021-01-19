@@ -47,7 +47,7 @@ interface SearchItem {
 
 export const HomePage = ({ stores }: HomePageProps) => {
   const [showBelgium, setShowBelgium] = useState(false);
-  const [currentStores, setStores] = useState(randomStores());
+  const [currentStores, setStores] = useState(stores);
   const [currentQuery, setQuery] = useState("");
   const [useCurrentLocation, setUseCurrentLocation] = useState(false);
   const [showDelivery, setDelivery] = useState(false);
@@ -56,6 +56,20 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const [currentLocation, setCurrentLocation] = useState({});
   const [showWarning, setShowWarning] = useState(true);
   const seachForm = useRef(null);
+
+  useEffect(() => {
+    setStores(randomStores());
+    const checkedWarning = localStorage.getItem("checkedWarning");
+    if (checkedWarning) {
+      setShowWarning(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!showWarning) {
+      localStorage.setItem("checkedWarning", "true");
+    }
+  }, [showWarning]);
 
   useEffect(() => {
     const loc: any = currentLocation;
@@ -581,12 +595,12 @@ export const HomePage = ({ stores }: HomePageProps) => {
               <div className={styles.storeContent}>
                 <h3 className={styles.storeTitle}>{store.name}</h3>
                 <p className={styles.storeAddress}>
-                  <div>{store.address}</div>
-                  <div>{`${store.postalCode} ${store.city}`}</div>
+                  <span>{store.address}</span>
+                  <span>{`${store.postalCode} ${store.city}`}</span>
                 </p>
                 <p className={styles.storeExtra}>
                   {store.phoneNumber && (
-                    <div>
+                    <span>
                       <svg
                         className={styles.icon}
                         aria-hidden="true"
@@ -606,10 +620,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
                       >
                         {store.phoneNumber}
                       </a>
-                    </div>
+                    </span>
                   )}
                   {store.website && (
-                    <div>
+                    <span>
                       <svg
                         className={styles.icon}
                         aria-hidden="true"
@@ -634,7 +648,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                       >
                         {store.website}
                       </a>
-                    </div>
+                    </span>
                   )}
                 </p>
                 <p className={styles.storeLabelContainer}>
