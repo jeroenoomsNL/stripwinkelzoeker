@@ -46,6 +46,7 @@ interface SearchItem {
 }
 
 export const HomePage = ({ stores }: HomePageProps) => {
+  const [showBelgium, setShowBelgium] = useState(false);
   const [currentStores, setStores] = useState(randomStores());
   const [currentQuery, setQuery] = useState("");
   const [useCurrentLocation, setUseCurrentLocation] = useState(false);
@@ -69,19 +70,20 @@ export const HomePage = ({ stores }: HomePageProps) => {
       setLocationLoading(true);
       seachForm.current.reset();
       setQuery("");
+      setShowBelgium(false);
 
       navigator.geolocation.getCurrentPosition(
         getLocationSuccess,
         getLocationError
       );
     }
-  }, [useCurrentLocation, showDelivery, showPickup]);
+  }, [useCurrentLocation, showDelivery, showPickup, showBelgium]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     if (useCurrentLocation) return;
-    doFuzzySearch(currentQuery, stores);
-  }, [useCurrentLocation, showDelivery, showPickup]);
+    doFuzzySearch(currentQuery, randomStores());
+  }, [useCurrentLocation, showDelivery, showPickup, showBelgium]);
 
   function getLocationSuccess(position: any) {
     const latitude = position.coords.latitude;
@@ -93,7 +95,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
   function getLocationError() {
     setLocationLoading(false);
     setUseCurrentLocation(false);
-    doFuzzySearch("", stores);
+    doFuzzySearch("", randomStores());
     console.log("Unable to retrieve location");
   }
 
@@ -106,7 +108,12 @@ export const HomePage = ({ stores }: HomePageProps) => {
   };
 
   function randomStores() {
-    return stores.sort(() => Math.random() - 0.5);
+    const filteredStores = stores.filter(
+      (store) =>
+        (!showBelgium && store.country === "Nederland") ||
+        (showBelgium && store.country === "België")
+    );
+    return filteredStores.sort(() => Math.random() - 0.5);
   }
 
   const getStoresByLocation = (latitude: number, longitude: number) => {
@@ -173,7 +180,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
     }
 
     setUseCurrentLocation(false);
-    doFuzzySearch(query, stores);
+    doFuzzySearch(query, randomStores());
   };
 
   const doFuzzySearch = (
@@ -272,6 +279,11 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const deliveryButtonClasses = cx({
     iconButton: true,
     "iconButton--active": showDelivery,
+  });
+
+  const belgiumButtonClasses = cx({
+    iconButton: true,
+    "iconButton--active": showBelgium,
   });
 
   const spinnerClasses = cx({
@@ -461,6 +473,24 @@ export const HomePage = ({ stores }: HomePageProps) => {
                   </span>
                   <span className={styles.mobileText} aria-hidden="true">
                     Pickup
+                  </span>
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.currentTarget.blur();
+                  setShowBelgium(!showBelgium);
+                  setUseCurrentLocation(false);
+                }}
+                className={belgiumButtonClasses}
+              >
+                <span className={styles.buttonText}>
+                  <span className={styles.desktopText}>
+                    Toon winkels in België
+                  </span>
+                  <span className={styles.mobileText} aria-hidden="true">
+                    Winkels in België
                   </span>
                 </span>
               </button>
@@ -731,6 +761,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             Reboot Comics
           </a>
         </p>
+        <p className={styles.wrapper}>Illustratie: Johan Neefjes</p>
         <p className={styles.wrapper}>
           <small>
             gemaakt met behulp van{" "}
