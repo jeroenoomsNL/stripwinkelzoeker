@@ -46,7 +46,7 @@ interface SearchItem {
 }
 
 export const HomePage = ({ stores }: HomePageProps) => {
-  const [currentStores, setStores] = useState(stores);
+  const [currentStores, setStores] = useState(randomStores());
   const [currentQuery, setQuery] = useState("");
   const [useCurrentLocation, setUseCurrentLocation] = useState(false);
   const [showDelivery, setDelivery] = useState(false);
@@ -97,6 +97,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
     console.log("Unable to retrieve location");
   }
 
+  function randomStores() {
+    return stores.sort(() => Math.random() - 0.5);
+  }
+
   const getStoresByLocation = (latitude: number, longitude: number) => {
     const newStores = stores.map((store) => {
       return {
@@ -138,7 +142,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
   };
 
   const resetFilters = () => {
-    setStores(stores);
+    setStores(randomStores());
     setQuery("");
     setUseCurrentLocation(false);
     setDelivery(false);
@@ -154,7 +158,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
     const query = event?.target?.value;
 
     if (!query || query === "") {
-      setStores(stores);
+      setStores(randomStores());
       return;
     } else {
       setQuery(query);
