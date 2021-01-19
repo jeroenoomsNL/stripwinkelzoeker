@@ -96,28 +96,45 @@ export const HomePage = ({ stores }: HomePageProps) => {
   }
 
   const getStoresByLocation = (latitude: number, longitude: number) => {
-    const newStores = stores.sort((a, b) => {
-      // This is untested example logic to
-      // help point you in the right direction.
-      var diffA =
-        Number(a.location.lat) -
-        Number(latitude) +
-        (Number(a.location.lon) - Number(longitude));
-      var diffB =
-        Number(b.location.lat) -
-        Number(latitude) +
-        (Number(b.location.lon) - Number(longitude));
-
-      if (diffA > diffB) {
-        return 1;
-      } else if (diffA < diffB) {
-        return -1;
-      } else {
-        return 0; // same
-      }
+    const newStores = stores.map((store) => {
+      return {
+        ...store,
+        distance: calcDistance(
+          longitude,
+          latitude,
+          store.location.lon,
+          store.location.lat
+        ),
+      };
     });
 
-    doFuzzySearch(currentQuery, [...newStores], 12);
+    const sortedStores = newStores.sort((a, b) =>
+      a.distance > b.distance ? 1 : -1
+    );
+
+    console.log(sortedStores);
+
+    doFuzzySearch(currentQuery, [...sortedStores], 12);
+  };
+
+  const calcDistance = (
+    lon1: number,
+    lat1: number,
+    lon2: number,
+    lat2: number
+  ) => {
+    var R = 6371; // Radius of the earth in km
+    var dLat = ((lat2 - lat1) * Math.PI) / 180; // Javascript functions in radians
+    var dLon = ((lon2 - lon1) * Math.PI) / 180;
+    var a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) *
+        Math.cos((lat2 * Math.PI) / 180) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c; // Distance in km
+    return d;
   };
 
   const resetFilters = () => {
