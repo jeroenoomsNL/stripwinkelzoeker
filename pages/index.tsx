@@ -52,6 +52,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const [showPickup, setPickup] = useState(false);
   const [locationLoading, setLocationLoading] = useState(false);
   const [currentLocation, setCurrentLocation] = useState({});
+  const [showWarning, setShowWarning] = useState(true);
   const seachForm = useRef(null);
 
   useEffect(() => {
@@ -111,8 +112,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
     const sortedStores = newStores.sort((a, b) =>
       a.distance > b.distance ? 1 : -1
     );
-
-    console.log(sortedStores);
 
     doFuzzySearch(currentQuery, [...sortedStores], 12);
   };
@@ -415,7 +414,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 </svg>
                 <span className={styles.buttonText}>
                   <span className={styles.desktopText}>
-                    Ophalen in de winkel
+                    Afhalen op afspraak
                   </span>
                   <span className={styles.mobileText} aria-hidden="true">
                     Pickup
@@ -447,6 +446,31 @@ export const HomePage = ({ stores }: HomePageProps) => {
             ></path>
           </svg>
         </div>
+
+        {showWarning && (
+          <p className={styles.pickupWarning}>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 352 512"
+              className={styles.pickUpCloseButton}
+              onClick={() => {
+                setShowWarning(false);
+              }}
+            >
+              <path
+                fill="currentColor"
+                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+              ></path>
+            </svg>
+            <strong>Let op!</strong> Alle winkels zijn op dit moment gesloten,
+            dus afhalen in de winkel is niet mogelijk. Sommige winkels bieden
+            een alternatieve oplossing. Neem contact op met de winkel om dit te
+            bespreken.
+          </p>
+        )}
 
         {useCurrentLocation && !locationLoading && (
           <h2 className={styles.resultsTitle}>Stripwinkels in de buurt</h2>
@@ -544,7 +568,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                   {store.doesPickup && (
                     <span
                       className={styles.storeLabel}
-                      title={`Je kunt je bestelling ophalen bij ${store.name} in ${store.city}`}
+                      title={`Je kunt je bestelling bij ${store.name} ${store.city} afhalen volgens afspraak.`}
                     >
                       <svg
                         className={styles.icon}
@@ -559,7 +583,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                           d="M496 224c-79.6 0-144 64.4-144 144s64.4 144 144 144 144-64.4 144-144-64.4-144-144-144zm64 150.3c0 5.3-4.4 9.7-9.7 9.7h-60.6c-5.3 0-9.7-4.4-9.7-9.7v-76.6c0-5.3 4.4-9.7 9.7-9.7h12.6c5.3 0 9.7 4.4 9.7 9.7V352h38.3c5.3 0 9.7 4.4 9.7 9.7v12.6zM320 368c0-27.8 6.7-54.1 18.2-77.5-8-1.5-16.2-2.5-24.6-2.5h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h347.1c-45.3-31.9-75.1-84.5-75.1-144zm-96-112c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128z"
                         ></path>
                       </svg>
-                      <span>Ophalen mogelijk</span>
+                      <span>Afhalen mogelijk</span>
                     </span>
                   )}
                 </p>

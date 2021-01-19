@@ -19,7 +19,7 @@
   margin: 0 auto;
   padding: 0 10px;
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     padding: 0 20px;
   }
 }
@@ -109,7 +109,7 @@
     display: none;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     margin: 6rem auto 0;
   }
 
@@ -153,14 +153,14 @@
       display: none;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       .icon {
         height: 12px;
         width: auto;
       }
     }
 
-    @media (min-width: 500px) {
+    @media (min-width: 600px) {
       margin: 0 20px 20px 0;
 
       .mobileText {
@@ -179,12 +179,30 @@
   text-align: center;
 }
 
+.pickupWarning {
+  margin: 0 0 3em;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #d10c04;
+  border-radius: 5px;
+  position: relative;
+
+  .pickUpCloseButton {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #d10c04;
+  }
+}
+
 .searchGrid {
   display: flex;
   justify-content: space-between;
   padding: 2em 0;
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     padding: 2em 0;
   }
 
@@ -215,7 +233,7 @@
   padding: 10px 20px;
   margin-bottom: 1rem;
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     font-size: 1.6em;
   }
 }
@@ -232,7 +250,7 @@
     display: none;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     margin: 0 -10px;
   }
 
@@ -258,7 +276,7 @@
     object-fit: cover;
     margin-right: 20px;
 
-    @media (min-width: 500px) {
+    @media (min-width: 600px) {
       width: 100%;
       height: auto;
       object-fit: initial;
@@ -302,7 +320,7 @@
     word-break: break-word;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     flex-direction: column;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -331,7 +349,7 @@
   flex-direction: column;
   margin-bottom: 1em;
 
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     margin-bottom: 0;
   }
 
