@@ -427,6 +427,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             <img
               src="/stripwinkelzoeker-illustratie.png"
               className={styles.searchImage}
+              alt="Stripwinkelzoeker"
             />
           </div>
         </div>
@@ -641,6 +642,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
               <img
                 src="/stripwinkelzoeker-illustratie.png"
                 className={styles.infoImage}
+                alt="Stripwinkelzoeker"
               />
             </div>
           </div>
@@ -673,8 +675,22 @@ export const HomePage = ({ stores }: HomePageProps) => {
         </p>
         <p className={styles.wrapper}>
           <small>
-            gemaakt met behulp van Next.js, Netlify, Contentful en{" "}
-            <a href="https://fontawesome.com">FontAwesome</a>
+            gemaakt met behulp van{" "}
+            <a href="https://nextjs.org" target="_blank">
+              Next.js
+            </a>
+            ,{" "}
+            <a href="https://www.netlify.com" target="_blank">
+              Netlify
+            </a>
+            ,{" "}
+            <a href="https://www.contentful.com" target="_blank">
+              Contentful
+            </a>{" "}
+            en{" "}
+            <a href="https://fontawesome.com/license" target="_blank">
+              FontAwesome
+            </a>
           </small>
         </p>
       </footer>
