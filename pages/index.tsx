@@ -343,7 +343,8 @@ export const HomePage = ({ stores }: HomePageProps) => {
           content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.stripwinkelzoeker.nl" />
+        <meta property="og:url" content="https://stripwinkelzoeker.nl" />
+        <link rel="canonical" href="https://stripwinkelzoeker.nl" />
         <meta
           property="og:image"
           content="https://stripwinkelzoeker.nl/stripwinkelzoeker-header.png"
