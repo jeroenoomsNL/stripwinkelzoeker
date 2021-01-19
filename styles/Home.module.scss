@@ -182,7 +182,7 @@
 .pickupWarning {
   margin: 0 0 3em;
   max-width: 600px;
-  padding: 20px;
+  padding: 20px 35px 20px 20px;
   border: 1px solid #d10c04;
   border-radius: 5px;
   position: relative;
@@ -191,8 +191,8 @@
     width: 15px;
     height: 15px;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 20px;
+    top: 20px;
     color: #d10c04;
   }
 }
