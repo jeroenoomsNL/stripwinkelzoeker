@@ -251,7 +251,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           }}
         >
           <img
-            src={`${store.image.fields.file.url}?fm=jpg&w=400&h=300&fit=fill`}
+            src={`${store.image.fields?.file?.url}?fm=jpg&w=400&h=300&fit=fill`}
             className={styles.storeImage}
             width="400"
             height="300"
@@ -334,13 +334,13 @@ export const HomePage = ({ stores }: HomePageProps) => {
         />
         <meta
           name="description"
-          content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
+          content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content="Stripwinkelzoeker.nl" />
         <meta
           property="og:description"
-          content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
+          content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.stripwinkelzoeker.nl" />
