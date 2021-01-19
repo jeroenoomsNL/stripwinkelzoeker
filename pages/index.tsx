@@ -230,7 +230,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <a
           href={store.website}
           target="_blank"
-          title={store.image.fields.title}
+          title={store.image.fields?.title}
           onClick={() => {
             trackOutboundLink(store.website);
             return false;
@@ -241,7 +241,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             className={styles.storeImage}
             width="400"
             height="300"
-            alt={store.image.fields.title}
+            alt={store.image.fields?.title}
           />
         </a>
       );
@@ -252,7 +252,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           className={styles.storeImage}
           width="400"
           height="300"
-          alt={store.image.fields.title}
+          alt={store.image.fields?.title}
         />
       );
     }
