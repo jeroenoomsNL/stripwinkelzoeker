@@ -353,6 +353,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://stripwinkelzoeker.nl" />
         <link rel="canonical" href="https://stripwinkelzoeker.nl" />
+        <link rel="manifest" href="manifest.json" />
         <meta
           property="og:image"
           content="https://stripwinkelzoeker.nl/stripwinkelzoeker-header-2.png"

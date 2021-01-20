@@ -1,7 +1,7 @@
 {
   "theme_color": "#d10c04",
   "background_color": "#d10c04",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "/",
   "start_url": "https://stripwinkelzoeker.nl/",
   "app_name": "Stripwinkelzoeker",
