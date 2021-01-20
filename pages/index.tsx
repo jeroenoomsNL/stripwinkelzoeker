@@ -113,10 +113,18 @@ export const HomePage = ({ stores }: HomePageProps) => {
     console.log("Unable to retrieve location");
   }
 
-  const trackOutboundLink = function (url) {
+  const trackOutboundLink = function (url: string) {
     gtag("event", "klik", {
       event_category: "uitgaand",
       event_label: url,
+      transport_type: "beacon",
+    });
+  };
+
+  const trackFilter = function (filter: string) {
+    gtag("event", "klik", {
+      event_category: "filters",
+      event_label: filter,
       transport_type: "beacon",
     });
   };
@@ -393,6 +401,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 onClick={(e) => {
                   e.currentTarget.blur();
                   setUseCurrentLocation(!useCurrentLocation);
+                  trackFilter("Winkels in de buurt");
                 }}
                 className={locationButtonClasses}
               >
@@ -436,6 +445,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 onClick={(e) => {
                   e.currentTarget.blur();
                   setDelivery(!showDelivery);
+                  trackFilter("Winkels met bezorgservice");
                 }}
                 className={deliveryButtonClasses}
               >
@@ -466,6 +476,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 onClick={(e) => {
                   e.currentTarget.blur();
                   setPickup(!showPickup);
+                  trackFilter("Afhalen op afspraak");
                 }}
                 className={pickupButtonClasses}
               >
@@ -497,6 +508,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                   e.currentTarget.blur();
                   setShowBelgium(!showBelgium);
                   setUseCurrentLocation(false);
+                  trackFilter("Winkels in België");
                 }}
                 className={belgiumButtonClasses}
               >
