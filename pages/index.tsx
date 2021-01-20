@@ -546,7 +546,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                     Toon winkels in België
                   </span>
                   <span className={styles.mobileText} aria-hidden="true">
-                    Winkels in België
+                    België
                   </span>
                 </span>
               </button>
