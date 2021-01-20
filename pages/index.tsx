@@ -354,6 +354,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <meta property="og:url" content="https://stripwinkelzoeker.nl" />
         <link rel="canonical" href="https://stripwinkelzoeker.nl" />
         <link rel="manifest" href="manifest.json" />
+        <link rel="apple-touch-icon" sizes="512x512" href="icon-512x512.png" />
         <meta
           property="og:image"
           content="https://stripwinkelzoeker.nl/stripwinkelzoeker-header-2.png"
