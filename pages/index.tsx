@@ -356,7 +356,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <link rel="manifest" href="manifest.json" />
         <link rel="apple-touch-icon" sizes="512x512" href="icon-512x512.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#d10c04" />
         <meta name="apple-mobile-web-app-title" content="Stripwinkels" />
         <meta
           property="og:image"
