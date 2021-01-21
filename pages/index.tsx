@@ -221,6 +221,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             weight: 2,
           },
           "city",
+          "image.fields.title"
         ],
       };
       const fuse = new Fuse(storesArray, options);
