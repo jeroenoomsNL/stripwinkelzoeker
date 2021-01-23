@@ -55,6 +55,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const [locationLoading, setLocationLoading] = useState(false);
   const [currentLocation, setCurrentLocation] = useState({});
   const [showWarning, setShowWarning] = useState(true);
+  const useLocationStateRef = useRef(useCurrentLocation);
   const seachForm = useRef(null);
 
   useEffect(() => {
@@ -95,11 +96,21 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    if (!useCurrentLocation) {
+      setLocationLoading(false);
+    }
+
     if (useCurrentLocation) return;
     doFuzzySearch(currentQuery, randomStores());
   }, [useCurrentLocation, showDelivery, showPickup, showBelgium]);
 
   function getLocationSuccess(position: any) {
+    if (!useLocationStateRef) {
+      setLocationLoading(false);
+      return;
+    }
+
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     setCurrentLocation({ latitude, longitude });
@@ -108,6 +119,9 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
   function getLocationError() {
     setLocationLoading(false);
+
+    if (!useLocationStateRef) return;
+
     setUseCurrentLocation(false);
     doFuzzySearch("", randomStores());
     console.log("Unable to retrieve location");
@@ -221,7 +235,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             weight: 2,
           },
           "city",
-          "image.fields.title"
+          "image.fields.title",
         ],
       };
       const fuse = new Fuse(storesArray, options);
