@@ -832,7 +832,35 @@ export const HomePage = ({ stores }: HomePageProps) => {
             Reboot Comics
           </a>
         </p>
-        <p className={styles.wrapper}>Illustratie: Johan Neefjes</p>
+        <p className={styles.wrapper}>
+          Mis je een winkel of is de informatie niet juist? Neem contact met ons
+          op via{" "}
+          <a
+            href="https://facebook.com/rebootcomicsnl"
+            className={styles.rebootLink}
+            target="_blank"
+            onClick={() => {
+              trackOutboundLink("https://facebook.com/rebootcomicsnl");
+              return false;
+            }}
+          >
+            Facebook
+          </a>
+        </p>
+        <p className={styles.wrapper}>
+          Illustratie:{" "}
+          <a
+            href="https://www.roughmen.nl/johan-neefjes"
+            className={styles.rebootLink}
+            target="_blank"
+            onClick={() => {
+              trackOutboundLink("https://www.roughmen.nl/johan-neefjes");
+              return false;
+            }}
+          >
+            Johan Neefjes
+          </a>
+        </p>
         <p className={styles.wrapper}>
           <small>
             gemaakt met behulp van{" "}
