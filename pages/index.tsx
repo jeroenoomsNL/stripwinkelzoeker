@@ -54,23 +54,12 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const [showPickup, setPickup] = useState(false);
   const [locationLoading, setLocationLoading] = useState(false);
   const [currentLocation, setCurrentLocation] = useState({});
-  const [showWarning, setShowWarning] = useState(true);
   const useLocationStateRef = useRef(useCurrentLocation);
   const seachForm = useRef(null);
 
   useEffect(() => {
     setStores(randomStores());
-    const checkedWarning = localStorage.getItem("checkedWarning");
-    if (checkedWarning) {
-      setShowWarning(false);
-    }
   }, []);
-
-  useEffect(() => {
-    if (!showWarning) {
-      localStorage.setItem("checkedWarning", "true");
-    }
-  }, [showWarning]);
 
   useEffect(() => {
     const loc: any = currentLocation;
@@ -591,31 +580,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
             ></path>
           </svg>
         </div>
-
-        {showWarning && (
-          <p className={styles.pickupWarning}>
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 352 512"
-              className={styles.pickUpCloseButton}
-              onClick={() => {
-                setShowWarning(false);
-              }}
-            >
-              <path
-                fill="currentColor"
-                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-              ></path>
-            </svg>
-            <strong>Let op!</strong> Alle winkels in Nederland zijn op dit
-            moment gesloten, dus afhalen in de winkel is niet mogelijk. Sommige
-            winkels bieden een alternatieve oplossing. Neem contact op met de
-            winkel om dit te bespreken.
-          </p>
-        )}
 
         {useCurrentLocation && !locationLoading && (
           <h2 className={styles.resultsTitle}>Stripwinkels in de buurt</h2>
