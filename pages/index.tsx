@@ -744,7 +744,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 Veel winkels zijn op dit moment welliswaar gesloten maar bieden
                 wel de mogelijkheid om te bestellen via telefoon, e-mail of een
                 webshop. Door deze winkels beter vindbaar te maken hopen we dat
-                de stripliefhebbers er sneller zulllen kopen.{" "}
+                de stripliefhebbers er sneller hun nieuwe stripsboeken kopen.{" "}
                 <a
                   href="https://www.hebban.nl/steunjeboekhandel"
                   target="_blank"
