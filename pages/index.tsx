@@ -795,6 +795,18 @@ export const HomePage = ({ stores }: HomePageProps) => {
             }}
           >
             Reboot Comics
+          </a>{" "}
+          en{" "}
+          <a
+            href="https://striplezer.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
+            className={styles.rebootLink}
+            target="_blank"
+            onClick={() => {
+              trackOutboundLink("https://striplezer.nl");
+              return false;
+            }}
+          >
+            Striplezer
           </a>
         </p>
         <p className={styles.wrapper}>
