@@ -813,11 +813,11 @@ export const HomePage = ({ stores }: HomePageProps) => {
           Mis je een winkel of is de informatie niet juist? Neem contact met ons
           op via{" "}
           <a
-            href="https://facebook.com/rebootcomicsnl"
+            href="https://facebook.com/striplezer"
             className={styles.rebootLink}
             target="_blank"
             onClick={() => {
-              trackOutboundLink("https://facebook.com/rebootcomicsnl");
+              trackOutboundLink("https://facebook.com/striplezer");
               return false;
             }}
           >
