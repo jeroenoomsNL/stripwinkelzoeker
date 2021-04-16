@@ -767,27 +767,10 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
       <footer>
         <p className={styles.wrapper}>
-          <a
-            href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
-            target="_blank"
-            onClick={() => {
-              trackOutboundLink("https://rebootcomics.nl");
-              return false;
-            }}
-          >
-            <img
-              src="/reboot-comics.svg"
-              alt="Reboot Comics Logo"
-              className={styles.rebootLogo}
-              aria-label="Reboot Comics"
-            />
-          </a>
-        </p>
-        <p className={styles.wrapper}>
           Stripwinkelzoeker.nl is een initiatief van{" "}
           <a
             href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
-            className={styles.rebootLink}
+            className={styles.footerLink}
             target="_blank"
             onClick={() => {
               trackOutboundLink("https://rebootcomics.nl");
@@ -799,7 +782,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           en{" "}
           <a
             href="https://striplezer.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
-            className={styles.rebootLink}
+            className={styles.footerLink}
             target="_blank"
             onClick={() => {
               trackOutboundLink("https://striplezer.nl");
@@ -814,7 +797,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           op via{" "}
           <a
             href="https://facebook.com/striplezer"
-            className={styles.rebootLink}
+            className={styles.footerLink}
             target="_blank"
             onClick={() => {
               trackOutboundLink("https://facebook.com/striplezer");
@@ -828,7 +811,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
           Illustratie:{" "}
           <a
             href="https://www.roughmen.nl/johan-neefjes"
-            className={styles.rebootLink}
+            className={styles.footerLink}
             target="_blank"
             onClick={() => {
               trackOutboundLink("https://www.roughmen.nl/johan-neefjes");

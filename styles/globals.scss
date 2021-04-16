@@ -58,9 +58,7 @@ footer {
   border-top: 1px solid #eaeaea;
   margin-top: 3em;
   padding: 2rem 20px;
-  .logo {
-    height: 2em;
-  }
+  color: #777;
 
   p {
     text-align: center;
@@ -71,7 +69,7 @@ footer {
     margin: 0 10px;
   }
 
-  small a {
+  a {
     color: black;
     text-decoration: underline;
   }
