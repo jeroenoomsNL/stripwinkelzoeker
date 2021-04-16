@@ -741,7 +741,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
               <p className={styles.infoText}>
                 Stripwinkelzoeker.nl is gemaakt om de stripspeciaalzaken met
                 fysieke winkels zichtbaarder te maken voor de stripliefhebber.
-                Veel winkels zijn op dit moment welliswaar gesloten maar bieden
+                Veel winkels zijn op dit moment weliswaar gesloten maar bieden
                 wel de mogelijkheid om te bestellen via telefoon, e-mail of een
                 webshop. Door deze winkels beter vindbaar te maken hopen we dat
                 de stripliefhebbers sneller hun nieuwe stripboeken bij een
