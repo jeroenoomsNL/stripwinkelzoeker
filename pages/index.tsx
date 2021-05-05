@@ -37,7 +37,6 @@ interface Store {
   website: string;
   phoneNumber: string;
   doesDeliver: boolean;
-  doesPickup: boolean;
   deliversInRegionOnly: boolean;
 }
 
@@ -51,7 +50,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
   const [currentQuery, setQuery] = useState("");
   const [useCurrentLocation, setUseCurrentLocation] = useState(false);
   const [showDelivery, setDelivery] = useState(false);
-  const [showPickup, setPickup] = useState(false);
   const [locationLoading, setLocationLoading] = useState(false);
   const [currentLocation, setCurrentLocation] = useState({});
   const useLocationStateRef = useRef(useCurrentLocation);
@@ -81,7 +79,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         getLocationError
       );
     }
-  }, [useCurrentLocation, showDelivery, showPickup, showBelgium]);
+  }, [useCurrentLocation, showDelivery, showBelgium]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,7 +90,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
 
     if (useCurrentLocation) return;
     doFuzzySearch(currentQuery, randomStores());
-  }, [useCurrentLocation, showDelivery, showPickup, showBelgium]);
+  }, [useCurrentLocation, showDelivery, showBelgium]);
 
   function getLocationSuccess(position: any) {
     if (!useLocationStateRef) {
@@ -186,7 +184,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
     setQuery("");
     setUseCurrentLocation(false);
     setDelivery(false);
-    setPickup(false);
     seachForm.current.reset();
   };
 
@@ -229,17 +226,13 @@ export const HomePage = ({ stores }: HomePageProps) => {
       };
       const fuse = new Fuse(storesArray, options);
       fuse.remove((store: Store) => {
-        return (
-          (showDelivery && store.doesDeliver === false) ||
-          (showPickup && store.doesPickup === false)
-        );
+        return showDelivery && store.doesDeliver === false;
       });
       foundStores = fuse
         .search(searchQuery)
         .map((store: SearchItem) => store.item);
     } else {
       foundStores = storesArray.filter((store) => {
-        if (showPickup && !store.doesPickup) return false;
         if (showDelivery && !store.doesDeliver) return false;
         return true;
       });
@@ -295,11 +288,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
     iconButton: true,
     "iconButton--active": useCurrentLocation,
     "iconButton--loading": locationLoading,
-  });
-
-  const pickupButtonClasses = cx({
-    iconButton: true,
-    "iconButton--active": showPickup,
   });
 
   const deliveryButtonClasses = cx({
@@ -484,37 +472,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 type="button"
                 onClick={(e) => {
                   e.currentTarget.blur();
-                  setPickup(!showPickup);
-                  trackFilter("Afhalen op afspraak");
-                }}
-                className={pickupButtonClasses}
-              >
-                <svg
-                  className={styles.icon}
-                  aria-hidden="true"
-                  focusable="false"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M496 224c-79.6 0-144 64.4-144 144s64.4 144 144 144 144-64.4 144-144-64.4-144-144-144zm64 150.3c0 5.3-4.4 9.7-9.7 9.7h-60.6c-5.3 0-9.7-4.4-9.7-9.7v-76.6c0-5.3 4.4-9.7 9.7-9.7h12.6c5.3 0 9.7 4.4 9.7 9.7V352h38.3c5.3 0 9.7 4.4 9.7 9.7v12.6zM320 368c0-27.8 6.7-54.1 18.2-77.5-8-1.5-16.2-2.5-24.6-2.5h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h347.1c-45.3-31.9-75.1-84.5-75.1-144zm-96-112c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128z"
-                  ></path>
-                </svg>
-                <span className={styles.buttonText}>
-                  <span className={styles.desktopText}>
-                    Afhalen op afspraak
-                  </span>
-                  <span className={styles.mobileText} aria-hidden="true">
-                    Pickup
-                  </span>
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.currentTarget.blur();
                   setShowBelgium(!showBelgium);
                   setUseCurrentLocation(false);
                   trackFilter("Winkels in België");
@@ -678,27 +635,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
                       </span>
                     </span>
                   )}
-                  {store.doesPickup && (
-                    <span
-                      className={styles.storeLabel}
-                      title={`Je kunt je bestelling bij ${store.name} ${store.city} afhalen volgens afspraak.`}
-                    >
-                      <svg
-                        className={styles.icon}
-                        aria-hidden="true"
-                        focusable="false"
-                        role="img"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 640 512"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M496 224c-79.6 0-144 64.4-144 144s64.4 144 144 144 144-64.4 144-144-64.4-144-144-144zm64 150.3c0 5.3-4.4 9.7-9.7 9.7h-60.6c-5.3 0-9.7-4.4-9.7-9.7v-76.6c0-5.3 4.4-9.7 9.7-9.7h12.6c5.3 0 9.7 4.4 9.7 9.7V352h38.3c5.3 0 9.7 4.4 9.7 9.7v12.6zM320 368c0-27.8 6.7-54.1 18.2-77.5-8-1.5-16.2-2.5-24.6-2.5h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h347.1c-45.3-31.9-75.1-84.5-75.1-144zm-96-112c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128z"
-                        ></path>
-                      </svg>
-                      <span>Afhalen mogelijk</span>
-                    </span>
-                  )}
                 </p>
               </div>
             </div>
@@ -719,10 +655,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         )}
 
         {!locationLoading &&
-          (useCurrentLocation ||
-            showDelivery ||
-            showPickup ||
-            currentQuery !== "") && (
+          (useCurrentLocation || showDelivery || currentQuery !== "") && (
             <div className={styles.buttonContainer}>
               <button
                 type="button"
