@@ -249,6 +249,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <a
           href={store.website}
           target="_blank"
+          rel="noreferrer"
           title={store.image.fields?.title}
           onClick={() => {
             trackOutboundLink(store.website);
@@ -594,6 +595,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                       <a
                         href={store.website}
                         target="_blank"
+                        rel="noreferrer"
                         title={`Website ${store.name} ${store.city}`}
                         onClick={() => {
                           trackOutboundLink(store.website);
@@ -682,6 +684,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
                 <a
                   href="https://www.hebban.nl/steunjeboekhandel"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   #steunjeboekhandel
                 </a>
@@ -705,6 +708,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
             className={styles.footerLink}
             target="_blank"
+            rel="noreferrer"
             onClick={() => {
               trackOutboundLink("https://rebootcomics.nl");
               return false;
@@ -717,6 +721,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             href="https://striplezer.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
             className={styles.footerLink}
             target="_blank"
+            rel="noreferrer"
             onClick={() => {
               trackOutboundLink("https://striplezer.nl");
               return false;
@@ -732,6 +737,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             href="https://facebook.com/striplezer"
             className={styles.footerLink}
             target="_blank"
+            rel="noreferrer"
             onClick={() => {
               trackOutboundLink("https://facebook.com/striplezer");
               return false;
@@ -746,6 +752,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
             href="https://www.roughmen.nl/johan-neefjes"
             className={styles.footerLink}
             target="_blank"
+            rel="noreferrer"
             onClick={() => {
               trackOutboundLink("https://www.roughmen.nl/johan-neefjes");
               return false;
@@ -757,11 +764,21 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <p className={styles.wrapper}>
           <small>
             gemaakt met behulp van{" "}
-            <a href="https://nextjs.org" title="Next.js" target="_blank">
+            <a
+              href="https://nextjs.org"
+              title="Next.js"
+              target="_blank"
+              rel="noreferrer"
+            >
               Next.js
             </a>
             ,{" "}
-            <a href="https://www.netlify.com" title="Netlify" target="_blank">
+            <a
+              href="https://www.netlify.com"
+              title="Netlify"
+              target="_blank"
+              rel="noreferrer"
+            >
               Netlify
             </a>
             ,{" "}
@@ -769,6 +786,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
               href="https://www.contentful.com"
               title="Contentful"
               target="_blank"
+              rel="noreferrer"
             >
               Contentful
             </a>
@@ -777,6 +795,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
               href="https://fontawesome.com/license"
               title="FontAwesome"
               target="_blank"
+              rel="noreferrer"
             >
               FontAwesome
             </a>{" "}
@@ -785,6 +804,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
               href="https://www.flaticon.com/"
               title="Flaticon"
               target="_blank"
+              rel="noreferrer"
             >
               Flaticon.com
             </a>
