@@ -27,18 +27,13 @@ interface CityParams extends ParsedUrlQuery {
 export const CityPage = ({ city, cities, stores }: CityPageProps) => (
   <div className={styles.container}>
     <Head>
-      <title>
-        Stripwinkelzoeker.nl - Vind een stripspeciaalzaak bij jou in de buurt
-        #steunjeboekhandel
-      </title>
+      <title>Stripwinkels in {city.name} - Stripwinkelzoeker.nl</title>
     </Head>
 
     <Header />
 
     <main className={styles.main}>
-      {city?.name && (
-        <h2 className={styles.pageTitle}>Stripwinkels in {city.name}</h2>
-      )}
+      <h2 className={styles.pageTitle}>Stripwinkels in {city.name}</h2>
       {city?.description && <p>{city.description}</p>}
 
       <div className={styles.storeBlocks}>
