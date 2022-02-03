@@ -15,10 +15,6 @@ class MyDocument extends Document {
             name="description"
             content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
           />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
           <meta property="og:title" content="Stripwinkelzoeker.nl" />
           <meta
             property="og:description"

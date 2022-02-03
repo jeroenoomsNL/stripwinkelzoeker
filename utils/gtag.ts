@@ -22,3 +22,19 @@ export const event = ({ action, category, label, value }: GTagEvent) => {
     value: value,
   });
 };
+
+export const trackOutboundLink = function (url: string) {
+  gtag("event", "klik", {
+    event_category: "uitgaand",
+    event_label: url,
+    transport_type: "beacon",
+  });
+};
+
+export const trackFilter = function (filter: string) {
+  gtag("event", "klik", {
+    event_category: "filters",
+    event_label: filter,
+    transport_type: "beacon",
+  });
+};

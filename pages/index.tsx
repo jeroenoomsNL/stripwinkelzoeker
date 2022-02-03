@@ -3,46 +3,30 @@ import { useRef, useEffect, useState } from "react";
 import Fuse from "fuse.js";
 import classNames from "classnames/bind";
 
-import { fetchEntries } from "../utils/contentfulPosts";
+import { fetchStores, fetchCities } from "../utils/contentful";
 import styles from "../styles/Home.module.scss";
 import { GetStaticProps } from "next";
+import { trackFilter, trackOutboundLink } from "../utils/gtag";
+import { Header } from "../components/header";
+import { Footer } from "../components/footer";
+import { StoreImage } from "../components/store-image";
+import { Store } from "../types/store";
+import { City } from "../types/city";
 
 interface HomePageProps {
   stores: Store[];
+  cities: City[];
 }
 
 interface ImageProps {
   store: Store;
 }
 
-interface Store {
-  address: string;
-  city: string;
-  country: string;
-  id: string;
-  image: {
-    fields: {
-      file: {
-        url: string;
-      };
-      title: string;
-    };
-  };
-  location: { lon: number; lat: number };
-  name: string;
-  orders: string;
-  postalCode: string;
-  website: string;
-  phoneNumber: string;
-  doesDeliver: boolean;
-  deliversInRegionOnly: boolean;
-}
-
 interface SearchItem {
   item: Store;
 }
 
-export const HomePage = ({ stores }: HomePageProps) => {
+export const HomePage = ({ stores, cities }: HomePageProps) => {
   const [showBelgium, setShowBelgium] = useState(false);
   const [currentStores, setStores] = useState(stores);
   const [currentQuery, setQuery] = useState("");
@@ -111,22 +95,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
     doFuzzySearch("", randomStores());
     console.log("Unable to retrieve location");
   }
-
-  const trackOutboundLink = function (url: string) {
-    gtag("event", "klik", {
-      event_category: "uitgaand",
-      event_label: url,
-      transport_type: "beacon",
-    });
-  };
-
-  const trackFilter = function (filter: string) {
-    gtag("event", "klik", {
-      event_category: "filters",
-      event_label: filter,
-      transport_type: "beacon",
-    });
-  };
 
   function randomStores() {
     const filteredStores = stores.filter(
@@ -241,41 +209,6 @@ export const HomePage = ({ stores }: HomePageProps) => {
     setStores([...newStores]);
   };
 
-  const Image = ({ store }: ImageProps) => {
-    if (store.website) {
-      return (
-        <a
-          href={store.website}
-          target="_blank"
-          rel="noreferrer"
-          title={store.image.fields?.title}
-          onClick={() => {
-            trackOutboundLink(store.website);
-            return false;
-          }}
-        >
-          <img
-            src={`${store.image.fields?.file?.url}?fm=jpg&w=400&h=300&fit=fill`}
-            className={styles.storeImage}
-            width="400"
-            height="300"
-            alt={store.image.fields?.title}
-          />
-        </a>
-      );
-    } else {
-      return (
-        <img
-          src={`${store.image.fields?.file?.url}?fm=jpg&w=400&h=300&fit=fill`}
-          className={styles.storeImage}
-          width="400"
-          height="300"
-          alt={store.image.fields?.title}
-        />
-      );
-    }
-  };
-
   let cx = classNames.bind(styles);
 
   const headerClasses = cx({
@@ -328,14 +261,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         </title>
       </Head>
 
-      <header className={styles.header}>
-        <div className={headerClasses}>
-          <h1>
-            Stripwinkelzoeker<span>.nl</span>
-          </h1>
-          <h3>Koop je strips bij een stripspeciaalzaak!</h3>
-        </div>
-      </header>
+      <Header />
 
       <main className={styles.main}>
         <div className={styles.searchGrid}>
@@ -501,7 +427,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         <div className={storeBlocksClasses}>
           {currentStores.map((store) => (
             <div className={styles.storeBlock} key={store.id}>
-              <Image store={store} />
+              <StoreImage store={store} />
               <div className={styles.storeContent}>
                 <h3 className={styles.storeTitle}>{store.name}</h3>
                 <p className={styles.storeAddress}>
@@ -614,11 +540,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         {!locationLoading &&
           (useCurrentLocation || showDelivery || currentQuery !== "") && (
             <div className={styles.buttonContainer}>
-              <button
-                type="button"
-                onClick={resetFilters}
-                className={styles.button}
-              >
+              <button type="button" onClick={resetFilters}>
                 Toon alle winkels
               </button>
             </div>
@@ -656,116 +578,7 @@ export const HomePage = ({ stores }: HomePageProps) => {
         </div>
       </main>
 
-      <footer>
-        <p className={styles.wrapper}>
-          Stripwinkelzoeker.nl is een initiatief van{" "}
-          <a
-            href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
-            className={styles.footerLink}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => {
-              trackOutboundLink("https://rebootcomics.nl");
-              return false;
-            }}
-          >
-            Reboot Comics
-          </a>{" "}
-          en{" "}
-          <a
-            href="https://striplezer.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
-            className={styles.footerLink}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => {
-              trackOutboundLink("https://striplezer.nl");
-              return false;
-            }}
-          >
-            Striplezer
-          </a>
-        </p>
-        <p className={styles.wrapper}>
-          Mis je een winkel of is de informatie niet juist? Neem contact met ons
-          op via{" "}
-          <a
-            href="https://facebook.com/striplezer"
-            className={styles.footerLink}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => {
-              trackOutboundLink("https://facebook.com/striplezer");
-              return false;
-            }}
-          >
-            Facebook
-          </a>
-        </p>
-        <p className={styles.wrapper}>
-          Illustratie:{" "}
-          <a
-            href="https://www.roughmen.nl/johan-neefjes"
-            className={styles.footerLink}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => {
-              trackOutboundLink("https://www.roughmen.nl/johan-neefjes");
-              return false;
-            }}
-          >
-            Johan Neefjes
-          </a>
-        </p>
-        <p className={styles.wrapper}>
-          <small>
-            gemaakt met behulp van{" "}
-            <a
-              href="https://nextjs.org"
-              title="Next.js"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Next.js
-            </a>
-            ,{" "}
-            <a
-              href="https://www.netlify.com"
-              title="Netlify"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Netlify
-            </a>
-            ,{" "}
-            <a
-              href="https://www.contentful.com"
-              title="Contentful"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Contentful
-            </a>
-            ,{" "}
-            <a
-              href="https://fontawesome.com/license"
-              title="FontAwesome"
-              target="_blank"
-              rel="noreferrer"
-            >
-              FontAwesome
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://www.flaticon.com/"
-              title="Flaticon"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Flaticon.com
-            </a>
-          </small>
-        </p>
-      </footer>
+      <Footer cities={cities} />
     </div>
   );
 };
@@ -773,14 +586,20 @@ export const HomePage = ({ stores }: HomePageProps) => {
 export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetchEntries();
-  const stores = await res.map((p) => {
+  const storesRes = await fetchStores();
+  const stores = await storesRes.map((p) => {
+    return { ...p.fields, id: p.sys.id };
+  });
+
+  const citiesRes = await fetchCities();
+  const cities = await citiesRes.map((p) => {
     return { ...p.fields, id: p.sys.id };
   });
 
   return {
     props: {
       stores,
+      cities,
     },
   };
 };

@@ -148,7 +148,7 @@
   }
 
   @media (min-width: 600px) {
-    margin: 6rem auto 0;
+    margin: 2rem auto 0;
   }
 
   h2 {
@@ -213,7 +213,7 @@
 }
 
 .buttonContainer {
-  margin: 1em 0;
+  margin: 1em 0 2em;
   text-align: center;
 }
 
@@ -279,6 +279,39 @@
 
 .resultsTitle {
   margin: 0 0 2rem;
+}
+
+.pageTitle {
+  margin: 2rem 0 1rem;
+}
+
+.footerLinksContainer {
+  @extend .main;
+
+  margin-top: 2rem;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.footerLink {
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: 50%;
+  }
+
+  @media (min-width: 1000px) {
+    width: 33%;
+  }
 }
 
 .storeBlocks {
@@ -450,4 +483,3 @@
     animation-timing-function: linear;
   }
 }
-
