@@ -22,7 +22,6 @@ class MyDocument extends Document {
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://stripwinkelzoeker.nl" />
-          <link rel="canonical" href="https://stripwinkelzoeker.nl" />
           <link rel="manifest" href="manifest.json" />
           <link
             rel="apple-touch-icon"

@@ -1,5 +1,4 @@
 import styles from "../../styles/Home.module.scss";
-import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import { GetStaticProps } from "next";
 import Link from "next/link";
@@ -8,9 +7,8 @@ import {
   fetchCityBySlug,
   fetchStoresByCity,
 } from "../../utils/contentful";
-import { Header } from "../../components/header";
-import { Footer } from "../../components/footer";
 import { StoreBlock } from "../../components/store-block";
+import { Layout } from "../../components/layout";
 import { Store } from "../../types/store";
 import { City } from "../../types/city";
 
@@ -24,19 +22,12 @@ interface CityParams extends ParsedUrlQuery {
   city: string;
 }
 
-export const CityPage = ({ city, cities, stores }: CityPageProps) => (
-  <div className={styles.container}>
-    <Head>
-      <title>Stripwinkels in {city.name} - Stripwinkelzoeker.nl</title>
-      <link
-        rel="canonical"
-        href={`https://stripwinkelzoeker.nl/plaats/${city.slug}`}
-      />
-    </Head>
+export const CityPage = ({ city, cities, stores }: CityPageProps) => {
+  const canonical = "/plaats/" + city.slug;
+  const pageTitle = `Stripwinkels in ${city.name}`;
 
-    <Header />
-
-    <main className={styles.main}>
+  return (
+    <Layout title={pageTitle} cities={cities} canonical={canonical}>
       <h2 className={styles.pageTitle}>Stripwinkels in {city.name}</h2>
       {city?.description && <p>{city.description}</p>}
 
@@ -51,10 +42,9 @@ export const CityPage = ({ city, cities, stores }: CityPageProps) => (
           <a className="button">Toon alle winkels</a>
         </Link>
       </div>
-    </main>
-    <Footer cities={cities} />
-  </div>
-);
+    </Layout>
+  );
+};
 
 export default CityPage;
 
