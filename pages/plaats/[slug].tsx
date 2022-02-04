@@ -28,6 +28,10 @@ export const CityPage = ({ city, cities, stores }: CityPageProps) => (
   <div className={styles.container}>
     <Head>
       <title>Stripwinkels in {city.name} - Stripwinkelzoeker.nl</title>
+      <link
+        rel="canonical"
+        href={`https://stripwinkelzoeker.nl/plaats/${city.slug}`}
+      />
     </Head>
 
     <Header />
