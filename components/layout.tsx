@@ -2,10 +2,10 @@ import styles from "../styles/Home.module.scss";
 import Head from "next/head";
 import { Header } from "./header";
 import { Footer } from "./footer";
-import { City } from "../types/city";
+import { ICityFields } from "../types/generated/contentful";
 
 interface LayoutProps {
-  cities: City[];
+  cities: ICityFields[];
   canonical?: string;
   title?: string;
   children: React.ReactNode;
@@ -13,7 +13,7 @@ interface LayoutProps {
 
 export const Layout = ({ title, canonical, cities, children }: LayoutProps) => {
   const pageTitle = title
-    ? `${title} - Stripwinkelzoeker.nl `
+    ? `${title} - Stripwinkelzoeker.nl`
     : "Stripwinkelzoeker.nl - Vind een stripspeciaalzaak bij jou in de buurt #steunjeboekhandel";
 
   return (

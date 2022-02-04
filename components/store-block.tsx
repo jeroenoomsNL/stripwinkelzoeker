@@ -1,14 +1,14 @@
 import styles from "../styles/Home.module.scss";
 import { StoreImage } from "./store-image";
-import { Store } from "../types/store";
+import { IStoreFields } from "../types/generated/contentful";
 import { trackOutboundLink } from "../utils/gtag";
 
 interface StoreBlockProps {
-  store: Store;
+  store: IStoreFields;
 }
 
 export const StoreBlock = ({ store }: StoreBlockProps) => (
-  <div className={styles.storeBlock} key={store.id}>
+  <div className={styles.storeBlock} key={store.slug}>
     <StoreImage store={store} />
     <div className={styles.storeContent}>
       <h3 className={styles.storeTitle}>{store.name}</h3>

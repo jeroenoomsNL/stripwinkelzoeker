@@ -1,9 +1,9 @@
 import styles from "../styles/Home.module.scss";
 import { trackOutboundLink } from "../utils/gtag";
-import { Store } from "../types/store";
+import { IStoreFields } from "../types/generated/contentful";
 
 interface StoreImageProps {
-  store: Store;
+  store: IStoreFields;
 }
 
 export const StoreImage = ({ store }: StoreImageProps) => {

@@ -1,10 +1,10 @@
 import styles from "../styles/Home.module.scss";
 import { trackOutboundLink } from "../utils/gtag";
-import { City } from "../types/city";
+import { ICityFields } from "../types/generated/contentful";
 import Link from "next/link";
 
 interface FooterProps {
-  cities: City[];
+  cities: ICityFields[];
 }
 
 export const Footer = ({ cities }: FooterProps) => (

@@ -7,15 +7,14 @@ import {
   fetchCityBySlug,
   fetchStoresByCity,
 } from "../../utils/contentful";
+import { ICityFields, IStoreFields } from "../../types/generated/contentful";
 import { StoreBlock } from "../../components/store-block";
 import { Layout } from "../../components/layout";
-import { Store } from "../../types/store";
-import { City } from "../../types/city";
 
 interface CityPageProps {
-  stores: Store[];
-  city: City;
-  cities: City[];
+  stores: IStoreFields[];
+  city: ICityFields;
+  cities: ICityFields[];
 }
 
 interface CityParams extends ParsedUrlQuery {
@@ -28,12 +27,12 @@ export const CityPage = ({ city, cities, stores }: CityPageProps) => {
 
   return (
     <Layout title={pageTitle} cities={cities} canonical={canonical}>
-      <h2 className={styles.pageTitle}>Stripwinkels in {city.name}</h2>
+      <h1 className={styles.pageTitle}>Stripwinkels in {city.name}</h1>
       {city?.description && <p>{city.description}</p>}
 
       <div className={styles.storeBlocks}>
         {stores?.map((store) => (
-          <StoreBlock store={store} key={store.id} />
+          <StoreBlock store={store} key={store.slug} />
         ))}
       </div>
 

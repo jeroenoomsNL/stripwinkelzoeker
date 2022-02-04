@@ -14,9 +14,9 @@ export const Header = () => (
     <div className={headerClasses}>
       <Link href="/">
         <a>
-          <h1>
+          <h2>
             Stripwinkelzoeker<span>.nl</span>
-          </h1>
+          </h2>
         </a>
       </Link>
 

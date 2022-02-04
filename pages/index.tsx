@@ -8,20 +8,15 @@ import { GetStaticProps } from "next";
 import { trackFilter, trackOutboundLink } from "../utils/gtag";
 import { Layout } from "../components/layout";
 import { StoreImage } from "../components/store-image";
-import { Store } from "../types/store";
-import { City } from "../types/city";
+import { ICityFields, IStoreFields } from "../types/generated/contentful";
 
 interface HomePageProps {
-  stores: Store[];
-  cities: City[];
-}
-
-interface ImageProps {
-  store: Store;
+  stores: IStoreFields[];
+  cities: ICityFields[];
 }
 
 interface SearchItem {
-  item: Store;
+  item: IStoreFields;
 }
 
 export const HomePage = ({ stores, cities }: HomePageProps) => {
@@ -171,13 +166,13 @@ export const HomePage = ({ stores, cities }: HomePageProps) => {
 
   const doFuzzySearch = (
     searchQuery: string,
-    storesArray: Store[],
+    storesArray: IStoreFields[],
     limit?: number
   ) => {
     let foundStores: any;
 
     if (searchQuery && searchQuery !== "") {
-      let options: Fuse.IFuseOptions<Store> = {
+      let options: Fuse.IFuseOptions<IStoreFields> = {
         threshold: 0.3,
         keys: [
           {
@@ -189,7 +184,7 @@ export const HomePage = ({ stores, cities }: HomePageProps) => {
         ],
       };
       const fuse = new Fuse(storesArray, options);
-      fuse.remove((store: Store) => {
+      fuse.remove((store: IStoreFields) => {
         return showDelivery && store.doesDeliver === false;
       });
       foundStores = fuse
@@ -412,7 +407,7 @@ export const HomePage = ({ stores, cities }: HomePageProps) => {
 
       <div className={storeBlocksClasses}>
         {currentStores.map((store) => (
-          <div className={styles.storeBlock} key={store.id}>
+          <div className={styles.storeBlock} key={store.slug}>
             <StoreImage store={store} />
             <div className={styles.storeContent}>
               <h3 className={styles.storeTitle}>{store.name}</h3>

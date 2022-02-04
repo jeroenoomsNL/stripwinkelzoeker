@@ -12,6 +12,16 @@ export async function fetchStores() {
   console.log(`Error getting Shop entries.`);
 }
 
+export async function fetchStoreBySlug(slug: string | string[]) {
+  console.log(slug);
+  const entries = await client.getEntries({
+    content_type: "store",
+    "fields.slug": slug,
+  });
+  if (entries.items) return entries.items;
+  console.log(`Error getting store.`);
+}
+
 export async function fetchStoresByCity(city: string) {
   console.log(city);
   const entries = await client.getEntries({
