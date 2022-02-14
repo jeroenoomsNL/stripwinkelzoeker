@@ -1,0 +1,69 @@
+ <svg viewBox="0 0 5000 5000" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur
+          in="SourceGraphic"
+          stdDeviation="0"
+          result="blur"
+        ></feGaussianBlur>
+        <feColorMatrix
+          in="blur"
+          type="matrix"
+          values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9"
+          result="good"
+        ></feColorMatrix>
+        <feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite>
+      </filter>
+      <path d="M420,317L348,405L70,216L172,84L420,317z" id="P0"></path>
+      <path d="M308,397L192,397L149,128L343,122L308,397z" id="P1"></path>
+      <path d="M329,184L353,256L175,321L147,250L329,184z" id="P2"></path>
+      <path d="M154,219L181,176L348,275L299,339L154,219z" id="P3"></path>
+      <path d="M127,299L160,154L378,283L314,366L127,299z" id="P4"></path>
+      <path d="M378,356L229,415L96,189L219,87L378,356z" id="P5"></path>
+    </defs>
+    <rect id="RECT" width="5000" height="5000" fill="#171162"></rect>
+    <g id="group" fill="#E3CD11" filter="">
+      <use x="654" y="300" href="#P2"></use>
+      <use x="141" y="1113" href="#P5"></use>
+      <use x="119" y="2016" href="#P1"></use>
+      <use x="405" y="3273" href="#P1"></use>
+      <use x="498" y="3799" href="#P0"></use>
+      <use x="-68" y="4732" href="#P1"></use>
+      <use x="-103" y="5463" href="#P2"></use>
+      <use x="1090" y="265" href="#P4"></use>
+      <use x="1017" y="1355" href="#P5"></use>
+      <use x="925" y="2305" href="#P5"></use>
+      <use x="1242" y="2713" href="#P3"></use>
+      <use x="1263" y="3810" href="#P2"></use>
+      <use x="1348" y="4641" href="#P1"></use>
+      <use x="818" y="5298" href="#P3"></use>
+      <use x="2443" y="77" href="#P4"></use>
+      <use x="1709" y="687" href="#P2"></use>
+      <use x="1970" y="1808" href="#P0"></use>
+      <use x="2140" y="2759" href="#P5"></use>
+      <use x="1737" y="4000" href="#P2"></use>
+      <use x="2028" y="4672" href="#P3"></use>
+      <use x="2367" y="5342" href="#P5"></use>
+      <use x="3137" y="62" href="#P1"></use>
+      <use x="2937" y="1105" href="#P2"></use>
+      <use x="3220" y="1755" href="#P2"></use>
+      <use x="2942" y="2913" href="#P2"></use>
+      <use x="2862" y="3406" href="#P4"></use>
+      <use x="2604" y="4560" href="#P0"></use>
+      <use x="3406" y="5173" href="#P4"></use>
+      <use x="3483" y="552" href="#P0"></use>
+      <use x="4250" y="868" href="#P1"></use>
+      <use x="4226" y="1937" href="#P3"></use>
+      <use x="4147" y="2543" href="#P4"></use>
+      <use x="3678" y="4100" href="#P5"></use>
+      <use x="4191" y="4474" href="#P4"></use>
+      <use x="3630" y="5904" href="#P3"></use>
+      <use x="4959" y="101" href="#P5"></use>
+      <use x="4495" y="1086" href="#P1"></use>
+      <use x="4869" y="1725" href="#P1"></use>
+      <use x="4758" y="2979" href="#P4"></use>
+      <use x="4340" y="3841" href="#P3"></use>
+      <use x="4464" y="4672" href="#P2"></use>
+      <use x="4951" y="5390" href="#P2"></use>
+    </g>
+  </svg>

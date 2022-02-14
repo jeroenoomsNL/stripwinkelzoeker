@@ -1,42 +1,44 @@
-import styles from "../styles/Home.module.scss";
-import { trackOutboundLink } from "../utils/gtag";
+import styled from "styled-components";
 import { IStoreFields } from "../types/generated/contentful";
+import Link from "next/link";
 
 interface StoreImageProps {
   store: IStoreFields;
+  clickable?: boolean;
+  width?: number;
+  height?: number;
 }
 
-export const StoreImage = ({ store }: StoreImageProps) => {
-  if (store.website) {
+const ResponsiveImage = styled.img`
+  width: 100%;
+  height: auto;
+`;
+
+const ImageElement = ({ store, width = 400, height = 250 }) => (
+  <ResponsiveImage
+    src={`https:${store.image.fields?.file?.url}?fm=jpg&w=${width}&h=${height}&fit=fill&q=80`}
+    width={width}
+    height={height}
+    alt={store.image.fields?.title}
+    loading="lazy"
+  />
+);
+
+export const StoreImage = ({
+  store,
+  clickable,
+  width,
+  height,
+}: StoreImageProps) => {
+  if (clickable) {
     return (
-      <a
-        href={store.website}
-        target="_blank"
-        rel="noreferrer"
-        title={store.image.fields?.title}
-        onClick={() => {
-          trackOutboundLink(store.website);
-          return false;
-        }}
-      >
-        <img
-          src={`${store.image.fields?.file?.url}?fm=jpg&w=400&h=300&fit=fill`}
-          className={styles.storeImage}
-          width="400"
-          height="300"
-          alt={store.image.fields?.title}
-        />
-      </a>
+      <Link href={`/winkel/${store.slug}`}>
+        <a title={store.image.fields?.title}>
+          <ImageElement store={store} width={width} height={height} />
+        </a>
+      </Link>
     );
   } else {
-    return (
-      <img
-        src={`${store.image.fields?.file?.url}?fm=jpg&w=400&h=300&fit=fill`}
-        className={styles.storeImage}
-        width="400"
-        height="300"
-        alt={store.image.fields?.title}
-      />
-    );
+    return <ImageElement store={store} width={width} height={height} />;
   }
 };

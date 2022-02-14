@@ -34,6 +34,34 @@ export interface ICity extends Entry<ICityFields> {
   };
 }
 
+export interface ICountryFields {
+  /** Name */
+  name?: string | undefined;
+
+  /** Slug */
+  slug: string;
+
+  /** Description */
+  description?: string | undefined;
+}
+
+export interface ICountry extends Entry<ICountryFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "country";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IStoreFields {
   /** Name */
   name: string;
@@ -92,7 +120,7 @@ export interface IStore extends Entry<IStoreFields> {
   };
 }
 
-export type CONTENT_TYPE = "city" | "store";
+export type CONTENT_TYPE = "city" | "country" | "store";
 
 export type LOCALE_CODE = "nl";
 

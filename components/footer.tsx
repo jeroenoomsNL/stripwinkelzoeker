@@ -1,7 +1,38 @@
-import styles from "../styles/Home.module.scss";
+import styled from "styled-components";
+import Link from "next/link";
 import { trackOutboundLink } from "../utils/gtag";
 import { ICityFields } from "../types/generated/contentful";
-import Link from "next/link";
+import { Container, Logo } from "../components";
+
+const FooterWrapper = styled.footer`
+  background-color: var(--color-primary-dark);
+  width: 100%;
+  border-top: 1px solid #eaeaea;
+  padding: 2rem 20px;
+  color: var(--color-white);
+  margin-top: auto;
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const FooterLink = styled.a`
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: underline;
+`;
+
+const LinkList = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
 
 interface FooterProps {
   cities: ICityFields[];
@@ -9,127 +40,102 @@ interface FooterProps {
 
 export const Footer = ({ cities }: FooterProps) => (
   <>
-    <p className={styles.footerLinksContainer}>
-      <h3>Vind Stripwinkels bij jou in de buurt</h3>
-      <div className={styles.footerLinks}>
-        {cities.map((city) => (
-          <div className={styles.footerLink} key={city.slug}>
-            <Link href={`/plaats/${city.slug}`}>
-              <a>Stripwinkels in {city.name}</a>
-            </Link>
+    <FooterWrapper>
+      <Container>
+        <FlexContainer>
+          <div>
+            <Logo />
+            <p>
+              Stripwinkelzoeker.nl is een initiatief van{" "}
+              <FooterLink
+                href="https://striplezer.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => {
+                  trackOutboundLink("https://striplezer.nl");
+                  return false;
+                }}
+              >
+                Striplezer
+              </FooterLink>{" "}
+              en{" "}
+              <FooterLink
+                href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => {
+                  trackOutboundLink("https://rebootcomics.nl");
+                  return false;
+                }}
+              >
+                Reboot Comics
+              </FooterLink>
+              .
+            </p>
+            <p>
+              <small>
+                gemaakt met behulp van{" "}
+                <FooterLink
+                  href="https://nextjs.org"
+                  title="Next.js"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Next.js
+                </FooterLink>
+                ,{" "}
+                <FooterLink
+                  href="https://www.netlify.com"
+                  title="Netlify"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Netlify
+                </FooterLink>
+                ,{" "}
+                <FooterLink
+                  href="https://www.contentful.com"
+                  title="Contentful"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Contentful
+                </FooterLink>
+                ,{" "}
+                <FooterLink
+                  href="https://fontawesome.com/license"
+                  title="FontAwesome"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  FontAwesome
+                </FooterLink>{" "}
+                and{" "}
+                <FooterLink
+                  href="https://www.flaticon.com/"
+                  title="Flaticon"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Flaticon.com
+                </FooterLink>
+              </small>
+            </p>
           </div>
-        ))}
-      </div>
-    </p>
-    <footer>
-      <p className={styles.wrapper}>
-        Stripwinkelzoeker.nl is een initiatief van{" "}
-        <a
-          href="https://rebootcomics.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
-          className={styles.footerLink}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => {
-            trackOutboundLink("https://rebootcomics.nl");
-            return false;
-          }}
-        >
-          Reboot Comics
-        </a>{" "}
-        en{" "}
-        <a
-          href="https://striplezer.nl?utm_source=stripwinkelzoeker&utm_medium=footer&utm_campaign=stripwinkelzoeker"
-          className={styles.footerLink}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => {
-            trackOutboundLink("https://striplezer.nl");
-            return false;
-          }}
-        >
-          Striplezer
-        </a>
-      </p>
-      <p className={styles.wrapper}>
-        Mis je een winkel of is de informatie niet juist? Neem contact met ons
-        op via{" "}
-        <a
-          href="https://facebook.com/striplezer"
-          className={styles.footerLink}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => {
-            trackOutboundLink("https://facebook.com/striplezer");
-            return false;
-          }}
-        >
-          Facebook
-        </a>
-      </p>
-      <p className={styles.wrapper}>
-        Illustratie:{" "}
-        <a
-          href="https://www.roughmen.nl/johan-neefjes"
-          className={styles.footerLink}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => {
-            trackOutboundLink("https://www.roughmen.nl/johan-neefjes");
-            return false;
-          }}
-        >
-          Johan Neefjes
-        </a>
-      </p>
-      <p className={styles.wrapper}>
-        <small>
-          gemaakt met behulp van{" "}
-          <a
-            href="https://nextjs.org"
-            title="Next.js"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Next.js
-          </a>
-          ,{" "}
-          <a
-            href="https://www.netlify.com"
-            title="Netlify"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Netlify
-          </a>
-          ,{" "}
-          <a
-            href="https://www.contentful.com"
-            title="Contentful"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contentful
-          </a>
-          ,{" "}
-          <a
-            href="https://fontawesome.com/license"
-            title="FontAwesome"
-            target="_blank"
-            rel="noreferrer"
-          >
-            FontAwesome
-          </a>{" "}
-          and{" "}
-          <a
-            href="https://www.flaticon.com/"
-            title="Flaticon"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Flaticon.com
-          </a>
-        </small>
-      </p>
-    </footer>
+          <div>
+            <h3>Vind Stripwinkels bij jou in de buurt</h3>
+            <LinkList>
+              {cities.map((city) => (
+                <li key={city.slug}>
+                  <Link href={`/plaats/${city.slug}`} passHref>
+                    <FooterLink>Stripwinkels in {city.name}</FooterLink>
+                  </Link>
+                </li>
+              ))}
+            </LinkList>
+          </div>
+        </FlexContainer>
+      </Container>
+    </FooterWrapper>
   </>
 );

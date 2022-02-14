@@ -8,8 +8,13 @@ import {
   fetchStoresByCity,
 } from "../../utils/contentful";
 import { ICityFields, IStoreFields } from "../../types/generated/contentful";
-import { StoreBlock } from "../../components/store-block";
-import { Layout } from "../../components/layout";
+import {
+  StoreBlockGrid,
+  CenterContent,
+  StoreBlock,
+  Layout,
+  PageTitle,
+} from "../../components";
 
 interface CityPageProps {
   stores: IStoreFields[];
@@ -27,20 +32,20 @@ export const CityPage = ({ city, cities, stores }: CityPageProps) => {
 
   return (
     <Layout title={pageTitle} cities={cities} canonical={canonical}>
-      <h1 className={styles.pageTitle}>Stripwinkels in {city.name}</h1>
+      <PageTitle>Stripwinkels in {city.name}</PageTitle>
       {city?.description && <p>{city.description}</p>}
 
-      <div className={styles.storeBlocks}>
+      <StoreBlockGrid>
         {stores?.map((store) => (
           <StoreBlock store={store} key={store.slug} />
         ))}
-      </div>
+      </StoreBlockGrid>
 
-      <div className={styles.buttonContainer}>
+      <CenterContent>
         <Link href="/">
           <a className="button">Toon alle winkels</a>
         </Link>
-      </div>
+      </CenterContent>
     </Layout>
   );
 };

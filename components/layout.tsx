@@ -1,23 +1,37 @@
-import styles from "../styles/Home.module.scss";
+import styled from "styled-components";
 import Head from "next/head";
-import { Header } from "./header";
-import { Footer } from "./footer";
 import { ICityFields } from "../types/generated/contentful";
+import { Container, Footer, Navigation } from "../components";
 
 interface LayoutProps {
   cities: ICityFields[];
+  header?: JSX.Element;
   canonical?: string;
   title?: string;
   children: React.ReactNode;
 }
 
-export const Layout = ({ title, canonical, cities, children }: LayoutProps) => {
+const LayoutContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Main = styled(Container)``;
+
+export const Layout = ({
+  title,
+  header,
+  canonical,
+  cities,
+  children,
+}: LayoutProps) => {
   const pageTitle = title
     ? `${title} - Stripwinkelzoeker.nl`
     : "Stripwinkelzoeker.nl - Vind een stripspeciaalzaak bij jou in de buurt #steunjeboekhandel";
 
   return (
-    <div className={styles.container}>
+    <LayoutContainer>
       <Head>
         <title>{pageTitle}</title>
         <link
@@ -26,11 +40,13 @@ export const Layout = ({ title, canonical, cities, children }: LayoutProps) => {
         />
       </Head>
 
-      <Header />
+      <Navigation />
 
-      <main className={styles.main}>{children}</main>
+      {header}
+
+      <Main as="main">{children}</Main>
 
       <Footer cities={cities} />
-    </div>
+    </LayoutContainer>
   );
 };

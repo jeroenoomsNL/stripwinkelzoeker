@@ -1,4 +1,4 @@
-import styles from "../../styles/Home.module.scss";
+import styled from "styled-components";
 import { ParsedUrlQuery } from "querystring";
 import { GetStaticProps } from "next";
 import {
@@ -7,8 +7,7 @@ import {
   fetchStoreBySlug,
 } from "../../utils/contentful";
 import { ICityFields, IStoreFields } from "../../types/generated/contentful";
-import { StoreBlock } from "../../components/store-block";
-import { Layout } from "../../components/layout";
+import { StoreMap, StoreImage, Layout } from "../../components";
 
 interface StorePageProps {
   store: IStoreFields;
@@ -19,18 +18,72 @@ interface StoreParams extends ParsedUrlQuery {
   store: string;
 }
 
+const StoreContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+`;
+
+const StoreImageContainer = styled.div`
+  flex: 0 0 auto;
+  margin-bottom: 1rem;
+
+  img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    width: calc(50% - 0.5rem);
+  }
+`;
+
+const StoreDataContainer = styled.div`
+  flex: 0 0 auto;
+  order: 2;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    width: calc(50% - 0.5rem);
+    order: 3;
+  }
+`;
+
+const StoreMapContainer = styled.div`
+  flex: 0 0 auto;
+  order: 3;
+  height: 400px;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    width: calc(50% - 0.5rem);
+    order: 2;
+  }
+`;
+
 export const StorePage = ({ store, cities }: StorePageProps) => {
   const canonical = "/winkel/" + store.slug;
   const pageTitle = store.name;
 
   return (
     <Layout title={pageTitle} cities={cities} canonical={canonical}>
-      <h1 className={styles.pageTitle}>{store.name}</h1>
-      {store?.description && <p>{store.description}</p>}
+      <h1>{store.name}</h1>
 
-      <div className={styles.storeBlocks}>
-        <StoreBlock store={store} />
-      </div>
+      <StoreContainer>
+        <StoreImageContainer>
+          <StoreImage store={store} width={800} height={500} />
+        </StoreImageContainer>
+        <StoreDataContainer>Joe</StoreDataContainer>
+        <StoreMapContainer>
+          <StoreMap locations={[store]} />
+        </StoreMapContainer>
+      </StoreContainer>
     </Layout>
   );
 };
