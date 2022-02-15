@@ -14,7 +14,7 @@ interface HeroProps {
 
 const HeroContainer = styled.div<HeroContainerProps>`
   background-color: #ddd;
-  min-height: ${(props) => (props.variant === "default" ? "300px" : "150px")};
+  min-height: ${(props) => (props.variant === "default" ? "350px" : "150px")};
   position: relative;
 
   @media (min-width: 375px) {
