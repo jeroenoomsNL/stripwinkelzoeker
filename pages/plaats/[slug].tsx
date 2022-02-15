@@ -1,39 +1,49 @@
-import styles from "../../styles/Home.module.scss";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { ParsedUrlQuery } from "querystring";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import {
   fetchCities,
   fetchCityBySlug,
+  fetchCountryByName,
   fetchStoresByCity,
 } from "../../utils/contentful";
-import { ICityFields, IStoreFields } from "../../types/generated/contentful";
+import {
+  ICityFields,
+  ICountryFields,
+  IStoreFields,
+} from "../../types/generated/contentful";
 import {
   StoreBlockGrid,
   CenterContent,
   StoreBlock,
   Layout,
   PageTitle,
+  LinkButton,
+  DescriptionText,
 } from "../../components";
 
 interface CityPageProps {
   stores: IStoreFields[];
   city: ICityFields;
   cities: ICityFields[];
+  country: ICountryFields;
 }
 
 interface CityParams extends ParsedUrlQuery {
   city: string;
 }
 
-export const CityPage = ({ city, cities, stores }: CityPageProps) => {
+export const CityPage = ({ city, cities, country, stores }: CityPageProps) => {
   const canonical = "/plaats/" + city.slug;
   const pageTitle = `Stripwinkels in ${city.name}`;
 
   return (
     <Layout title={pageTitle} cities={cities} canonical={canonical}>
-      <PageTitle>Stripwinkels in {city.name}</PageTitle>
-      {city?.description && <p>{city.description}</p>}
+      <PageTitle>{pageTitle}</PageTitle>
+      <DescriptionText>
+        {city?.description && documentToReactComponents(city?.description)}
+      </DescriptionText>
 
       <StoreBlockGrid>
         {stores?.map((store) => (
@@ -42,8 +52,8 @@ export const CityPage = ({ city, cities, stores }: CityPageProps) => {
       </StoreBlockGrid>
 
       <CenterContent>
-        <Link href="/">
-          <a className="button">Toon alle winkels</a>
+        <Link href={`/land/${country.slug}`} passHref>
+          <LinkButton>Alle stripwinkels in {country.name}</LinkButton>
         </Link>
       </CenterContent>
     </Layout>
@@ -78,6 +88,11 @@ export const getStaticProps: GetStaticProps<
     return { ...p.fields, id: p.sys.id };
   })[0];
 
+  const countryRes = await fetchCountryByName(city.country);
+  const country = await countryRes.map((p) => {
+    return { ...p.fields, id: p.sys.id };
+  })[0];
+
   const storesRes = await fetchStoresByCity(city.name);
   const stores = await storesRes.map((p) => {
     return { ...p.fields, id: p.sys.id };
@@ -93,6 +108,7 @@ export const getStaticProps: GetStaticProps<
       stores,
       city,
       cities,
+      country,
     },
   };
 };

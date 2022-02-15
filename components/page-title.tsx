@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PageTitle = styled.h1`
   color: var(--color-primary);
-  font-size: 1.6em;
+  font-size: 2em;
   margin: 2rem 0 1rem;
 
   @media (min-width: 768px) {

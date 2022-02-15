@@ -17,7 +17,9 @@ const LayoutContainer = styled.div`
   flex-direction: column;
 `;
 
-const Main = styled(Container)``;
+const Main = styled(Container)`
+  margin-bottom: 4rem;
+`;
 
 export const Layout = ({
   title,

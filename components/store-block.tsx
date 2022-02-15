@@ -29,6 +29,10 @@ const Container = styled.div`
       color: var(--color-white);
     }
 
+    a {
+      text-decoration: none;
+    }
+
     img {
       transform: scale(1);
     }

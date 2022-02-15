@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { trackOutboundLink } from "../utils/gtag";
 import { ICityFields } from "../types/generated/contentful";
-import { Container, Logo } from "../components";
+import { Icon, Container, Logo } from "../components";
 
 const FooterWrapper = styled.footer`
   background-color: var(--color-primary-dark);
@@ -32,6 +32,7 @@ const FooterLink = styled.a`
 const LinkList = styled.ul`
   list-style: none;
   padding: 0;
+  line-height: 1.7;
 `;
 
 interface FooterProps {
@@ -123,8 +124,13 @@ export const Footer = ({ cities }: FooterProps) => (
             </p>
           </div>
           <div>
-            <h3>Vind Stripwinkels bij jou in de buurt</h3>
+            <h3>Vind een stripspeciaalzaak</h3>
             <LinkList>
+              <li>
+                <Link href={`/stripwinkels-in-de-buurt`} passHref>
+                  <FooterLink>Stripwinkels bij jou in de buurt</FooterLink>
+                </Link>
+              </li>
               {cities.map((city) => (
                 <li key={city.slug}>
                   <Link href={`/plaats/${city.slug}`} passHref>

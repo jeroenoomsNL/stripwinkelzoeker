@@ -14,7 +14,7 @@ export interface ICityFields {
   slug?: string | undefined;
 
   /** Description */
-  description?: string | undefined;
+  description?: Document | undefined;
 }
 
 export interface ICity extends Entry<ICityFields> {

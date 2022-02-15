@@ -3,6 +3,7 @@ import { Location } from "./icons/location";
 import { MapMarker } from "./icons/map-marker";
 import { Search } from "./icons/search";
 import { SearchLocation } from "./icons/search-location";
+import { Shop } from "./icons/shop";
 
 export const icons = {
   crosshairs: Crosshairs,
@@ -10,6 +11,7 @@ export const icons = {
   "map-marker": MapMarker,
   search: Search,
   "search-location": SearchLocation,
+  shop: Shop,
 };
 
 export type IconType = keyof typeof icons;

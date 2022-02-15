@@ -1,14 +1,7 @@
 import { GetStaticProps } from "next";
 import { fetchStores, fetchCities } from "../utils/contentful";
 import { ICityFields, IStoreFields } from "../types/generated/contentful";
-import {
-  Hero,
-  IntroText,
-  StoreBlockGrid,
-  Layout,
-  PageTitle,
-  StoreBlock,
-} from "../components";
+import { Hero, IntroText, Layout, PageTitle } from "../components";
 
 interface StorePageProps {
   stores: IStoreFields[];
@@ -18,12 +11,7 @@ interface StorePageProps {
 export const StorePage = ({ stores, cities }: StorePageProps) => {
   return (
     <Layout cities={cities} header={<Hero stores={stores} />}>
-      <PageTitle>Stripwinkels in Nederland</PageTitle>
-      <StoreBlockGrid>
-        {stores?.map((store) => (
-          <StoreBlock store={store} key={store.slug} />
-        ))}
-      </StoreBlockGrid>
+      <PageTitle>Koop je strips bij een stripspeciaalzaak</PageTitle>
       <IntroText>
         <p>
           Stripwinkelzoeker.nl is gemaakt om de stripspeciaalzaken met fysieke

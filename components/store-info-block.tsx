@@ -1,27 +1,36 @@
-import styles from "../styles/Home.module.scss";
 import Link from "next/link";
-import { StoreImage } from "./store-image";
 import { IStoreFields } from "../types/generated/contentful";
+import { LinkButton } from "../components";
 
 interface StoreInfoBlockProps {
   store: IStoreFields;
+  showLink?: boolean;
 }
 
 import styled from "styled-components";
 
 export const StoreBlockContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  display: block;
+
+  h2 {
+    margin: 0.5rem 0 0;
+    line-height: 1;
+  }
+
+  p {
+    margin: 0.5rem 0 1rem;
+  }
+
+  a {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
 `;
 
-export const StoreBlockContent = styled.div`
-  padding: 2em;
-`;
+export const StoreBlockContent = styled.div``;
 
-export const StoreInfoBlock = ({ store }: StoreInfoBlockProps) => (
+export const StoreInfoBlock = ({ store, showLink }: StoreInfoBlockProps) => (
   <StoreBlockContainer>
-    <StoreImage store={store} clickable={false} height={200} />
     <StoreBlockContent>
       <h2>{store.name}</h2>
       <p>
@@ -29,11 +38,13 @@ export const StoreInfoBlock = ({ store }: StoreInfoBlockProps) => (
         <br />
         <span>{`${store.postalCode} ${store.city}`}</span>
       </p>
-      <p>
-        <Link href={`/winkel/${store.slug}`}>
-          <a className="button">Meer informatie</a>
-        </Link>
-      </p>
+      {showLink && (
+        <p>
+          <Link href={`/winkel/${store.slug}`} passHref>
+            <LinkButton>Meer informatie</LinkButton>
+          </Link>
+        </p>
+      )}
     </StoreBlockContent>
   </StoreBlockContainer>
 );

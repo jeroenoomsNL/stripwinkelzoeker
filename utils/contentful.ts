@@ -68,6 +68,15 @@ export async function fetchCountries() {
   console.log(`Error getting countries.`);
 }
 
+export async function fetchCountryByName(country: string) {
+  const entries = await client.getEntries({
+    content_type: "country",
+    "fields.name": country,
+  });
+  if (entries.items) return entries.items;
+  console.log(`Error getting country by slug.`);
+}
+
 export async function fetchCountryBySlug(slug: string | string[]) {
   const entries = await client.getEntries({
     content_type: "country",

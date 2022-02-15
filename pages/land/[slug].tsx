@@ -1,10 +1,11 @@
-import styled from "styled-components";
 import { ParsedUrlQuery } from "querystring";
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import {
   fetchCountries,
   fetchCountryBySlug,
   fetchCities,
+  fetchStores,
   fetchStoresByCountry,
 } from "../../utils/contentful";
 import {
@@ -13,17 +14,20 @@ import {
   ICountryFields,
 } from "../../types/generated/contentful";
 import {
-  IntroText,
+  Hero,
+  StoreBlockGrid,
+  CenterContent,
+  StoreBlock,
   Layout,
   PageTitle,
-  StoreBlockGrid,
-  StoreBlock,
-  StoreMap,
+  LinkButton,
+  DescriptionText,
 } from "../../components";
 
 interface CountryPageProps {
   country: ICountryFields;
   stores: IStoreFields[];
+  allStores: IStoreFields[];
   cities: ICityFields[];
 }
 
@@ -31,19 +35,27 @@ interface CountryParams extends ParsedUrlQuery {
   country: string;
 }
 
-const StoreMapContainer = styled.div`
-  height: 400px;
-`;
-
-export const StorePage = ({ country, stores, cities }: CountryPageProps) => {
+export const StorePage = ({
+  country,
+  stores,
+  allStores,
+  cities,
+}: CountryPageProps) => {
   const canonical = "/land/" + country.slug;
   const pageTitle = `Stripwinkels in ${country.name}`;
 
   return (
-    <Layout title={pageTitle} cities={cities} canonical={canonical}>
+    <Layout
+      title={pageTitle}
+      header={<Hero stores={allStores} variant="compact" />}
+      cities={cities}
+      canonical={canonical}
+    >
       <PageTitle>{pageTitle}</PageTitle>
 
-      {country?.description && <IntroText>{country.description}</IntroText>}
+      {country?.description && (
+        <DescriptionText>{country.description}</DescriptionText>
+      )}
 
       <StoreBlockGrid>
         {stores?.map((store) => (
@@ -51,9 +63,11 @@ export const StorePage = ({ country, stores, cities }: CountryPageProps) => {
         ))}
       </StoreBlockGrid>
 
-      <StoreMapContainer>
-        <StoreMap locations={stores} />
-      </StoreMapContainer>
+      <CenterContent>
+        <Link href="/" passHref>
+          <LinkButton>Naar de homepage</LinkButton>
+        </Link>
+      </CenterContent>
     </Layout>
   );
 };
@@ -91,12 +105,17 @@ export const getStaticProps: GetStaticProps<
     return { ...p.fields, id: p.sys.id };
   });
 
+  const allStoresRes = await fetchStores();
+  const allStores = await allStoresRes.map((p) => {
+    return { ...p.fields, id: p.sys.id };
+  });
+
   const citiesRes = await fetchCities();
   const cities = await citiesRes.map((p) => {
     return { ...p.fields, id: p.sys.id };
   });
 
   return {
-    props: { country, stores, cities },
+    props: { country, stores, allStores, cities },
   };
 };
