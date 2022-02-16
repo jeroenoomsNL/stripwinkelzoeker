@@ -14,12 +14,8 @@ interface HeroProps {
 
 const HeroContainer = styled.div<HeroContainerProps>`
   background-color: #ddd;
-  min-height: ${(props) => (props.variant === "default" ? "350px" : "150px")};
+  min-height: 150px;
   position: relative;
-
-  @media (min-width: 375px) {
-    min-height: ${(props) => (props.variant === "default" ? "250px" : "150px")};
-  }
 
   @media (min-width: 768px) {
     min-height: ${(props) => (props.variant === "default" ? "500px" : "150px")};
@@ -53,11 +49,15 @@ const HeroImage = styled.img`
 `;
 
 const Suggestions = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 2rem 0 0;
-  gap: 1em;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0 0;
+    gap: 1em;
+  }
 `;
 
 const Suggestion = styled.a`
