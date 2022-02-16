@@ -42,7 +42,7 @@ export interface ICountryFields {
   slug: string;
 
   /** Description */
-  description?: string | undefined;
+  description?: Document | undefined;
 }
 
 export interface ICountry extends Entry<ICountryFields> {
@@ -70,7 +70,7 @@ export interface IStoreFields {
   slug: string;
 
   /** Description */
-  description?: string | undefined;
+  description?: Document | undefined;
 
   /** Address */
   address: string;

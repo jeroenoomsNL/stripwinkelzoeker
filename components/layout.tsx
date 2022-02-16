@@ -38,7 +38,7 @@ export const Layout = ({
         <title>{pageTitle}</title>
         <link
           rel="canonical"
-          href={`https://stripwinkelzoeker.nl${canonical}`}
+          href={`${process.env.NEXT_PUBLIC_BASE_URL}${canonical}`}
         />
       </Head>
 

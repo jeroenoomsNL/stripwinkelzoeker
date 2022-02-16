@@ -22,7 +22,7 @@ class MyDocument extends Document {
             content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
           />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://stripwinkelzoeker.nl" />
+          <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
           <link rel="manifest" href="manifest.json" />
           <link
             rel="apple-touch-icon"
@@ -37,7 +37,7 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content="Stripwinkels" />
           <meta
             property="og:image"
-            content="https://stripwinkelzoeker.nl/stripwinkelzoeker-header-2.png"
+            content={`${process.env.NEXT_PUBLIC_BASE_URL}/stripwinkelzoeker-header-2.png`}
           />
           <script
             async
