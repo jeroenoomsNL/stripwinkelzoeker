@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const IntroText = styled.section`
+export const IntroText = styled.div`
   max-width: 900px;
 
   @media (min-width: 768px) {

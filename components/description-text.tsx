@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DescriptionText = styled.section`
+export const DescriptionText = styled.div`
   max-width: 1000px;
   text-align: justify;
 
