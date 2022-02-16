@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import { fetchCities, fetchStores } from "../utils/contentful";
 import { ICityFields, IStoreFields } from "../types/generated/contentful";
-import { Layout, DescriptionText, PageTitle, StoreMap } from "../components";
+import {
+  Hero,
+  Layout,
+  DescriptionText,
+  PageTitle,
+  StoreMap,
+} from "../components";
 
 interface StoresAroundLocationPageProps {
   stores: IStoreFields[];
@@ -54,7 +60,12 @@ export const StoresAroundLocationPage = ({
   }
 
   return (
-    <Layout title={pageTitle} cities={cities} canonical={canonical}>
+    <Layout
+      title={pageTitle}
+      header={<Hero stores={stores} variant="compact" />}
+      cities={cities}
+      canonical={canonical}
+    >
       <PageTitle>{pageTitle}</PageTitle>
 
       <DescriptionText>

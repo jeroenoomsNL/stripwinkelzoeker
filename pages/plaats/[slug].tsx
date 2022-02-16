@@ -6,6 +6,7 @@ import {
   fetchCities,
   fetchCityBySlug,
   fetchCountryByName,
+  fetchStores,
   fetchStoresByCity,
 } from "../../utils/contentful";
 import {
@@ -21,10 +22,12 @@ import {
   PageTitle,
   LinkButton,
   DescriptionText,
+  Hero,
 } from "../../components";
 
 interface CityPageProps {
   stores: IStoreFields[];
+  allStores: IStoreFields[];
   city: ICityFields;
   cities: ICityFields[];
   country: ICountryFields;
@@ -34,12 +37,23 @@ interface CityParams extends ParsedUrlQuery {
   city: string;
 }
 
-export const CityPage = ({ city, cities, country, stores }: CityPageProps) => {
+export const CityPage = ({
+  city,
+  cities,
+  country,
+  allStores,
+  stores,
+}: CityPageProps) => {
   const canonical = "/plaats/" + city.slug;
   const pageTitle = `Stripwinkels in ${city.name}`;
 
   return (
-    <Layout title={pageTitle} cities={cities} canonical={canonical}>
+    <Layout
+      title={pageTitle}
+      header={<Hero stores={allStores} variant="compact" />}
+      cities={cities}
+      canonical={canonical}
+    >
       <PageTitle>{pageTitle}</PageTitle>
       <DescriptionText>
         {city?.description && documentToReactComponents(city?.description)}
@@ -98,6 +112,11 @@ export const getStaticProps: GetStaticProps<
     return { ...p.fields, id: p.sys.id };
   });
 
+  const allStoresRes = await fetchStores();
+  const allStores = await allStoresRes.map((p) => {
+    return { ...p.fields, id: p.sys.id };
+  });
+
   const citiesRes = await fetchCities();
   const cities = await citiesRes.map((p) => {
     return { ...p.fields, id: p.sys.id };
@@ -106,6 +125,7 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       stores,
+      allStores,
       city,
       cities,
       country,
