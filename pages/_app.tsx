@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
+    const handleRouteChange = (url: URL) => {
       pageview(url);
     };
     //When the component is mounted, subscribe to router changes

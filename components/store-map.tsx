@@ -29,7 +29,6 @@ export const StoreMap = ({ locations, center, zoom }: StoreMapProps) => {
         lng: center.lng,
       });
       currentMap.setZoom(12);
-      console.log("update center", center);
       return;
     }
   }, [center, currentMap]);

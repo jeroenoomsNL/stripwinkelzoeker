@@ -38,7 +38,6 @@ export const StoresAroundLocationPage = ({
 
   useEffect(() => {
     if (navigator?.geolocation) {
-      console.log("getLocation");
       setLoading(true);
       navigator.geolocation.getCurrentPosition(
         getLocationSuccess,
@@ -55,7 +54,6 @@ export const StoresAroundLocationPage = ({
   }
 
   function getLocationError() {
-    console.log("Error");
     setLoading(false);
   }
 
