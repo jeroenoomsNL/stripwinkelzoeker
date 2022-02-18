@@ -72,7 +72,7 @@ const StoreMapContainer = styled.div`
 
 export const StorePage = ({ store, cities }: StorePageProps) => {
   const canonical = "/winkel/" + store.slug;
-  const pageTitle = store.name;
+  const pageTitle = `${store.name} - Stripspeciaalzaak in ${store.city}`;
   const city = cities.find((city) => city.name === store.city);
 
   return (
