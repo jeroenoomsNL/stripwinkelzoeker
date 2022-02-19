@@ -7,20 +7,27 @@ interface CityHeaderProps {
 }
 
 const HeroImage = styled.img`
+  display: block;
+  margin: 0 auto;
+  max-width: 1200px;
   width: 100%;
-  height: 600px;
+  height: 200px;
   object-fit: cover;
+
+  @media (min-width: 768px) {
+    height: 300px;
+  }
+
+  @media (min-width: 1400px) {
+    height: 400px;
+  }
 `;
 
 const Licence = styled.div`
   text-align: right;
   font-family: var(--font-title);
   font-size: 0.7rem;
-  line-height: 1.6;
-  border-radius: 5px;
-  padding: 0.5rem;
-  right: 0;
-  bottom: 0;
+  margin: 0.5rem 0;
 
   a {
     white-space: nowrap;
