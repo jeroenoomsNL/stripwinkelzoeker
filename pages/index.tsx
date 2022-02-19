@@ -18,15 +18,6 @@ interface StorePageProps {
 export const HomePage = ({ stores, cities }: StorePageProps) => {
   const displayCities = cities.filter((city) => city.image);
 
-  const countCities = stores
-    .map((store) => ({
-      city: store.city,
-      count: stores.filter((ct) => ct.city === store.city).length,
-    }))
-    .filter((ct) => ct.count > 2);
-
-  console.log(countCities);
-
   return (
     <Layout cities={cities} header={<Hero stores={stores} />}>
       <PageTitle>Koop je strips bij een stripspeciaalzaak</PageTitle>

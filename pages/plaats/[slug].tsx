@@ -17,12 +17,12 @@ import {
 import {
   BlockGrid,
   CenterContent,
+  CityHeader,
+  DescriptionText,
   StoreBlock,
   Layout,
   PageTitle,
   LinkButton,
-  DescriptionText,
-  Hero,
 } from "../../components";
 
 interface CityPageProps {
@@ -50,7 +50,7 @@ export const CityPage = ({
   return (
     <Layout
       title={pageTitle}
-      header={<Hero stores={allStores} variant="compact" />}
+      header={city.image && <CityHeader city={city} />}
       cities={cities}
       canonical={canonical}
     >

@@ -1,5 +1,6 @@
 export * from "./center-content";
 export * from "./city-block";
+export * from "./city-header";
 export * from "./container";
 export * from "./description-text";
 export * from "./footer";
