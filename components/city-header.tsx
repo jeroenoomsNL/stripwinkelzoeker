@@ -19,7 +19,7 @@ const HeroImage = styled.img`
   }
 
   @media (min-width: 1400px) {
-    height: 400px;
+    height: 500px;
   }
 `;
 
