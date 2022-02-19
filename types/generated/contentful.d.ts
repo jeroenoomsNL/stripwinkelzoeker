@@ -15,6 +15,12 @@ export interface ICityFields {
 
   /** Description */
   description?: Document | undefined;
+
+  /** Image */
+  image: Asset;
+
+  /** Image Licence */
+  imageLicence: IImageLicence;
 }
 
 export interface ICity extends Entry<ICityFields> {
@@ -55,6 +61,43 @@ export interface ICountry extends Entry<ICountryFields> {
     contentType: {
       sys: {
         id: "country";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface IImageLicenceFields {
+  /** Name */
+  name: string;
+
+  /** Image URL */
+  imageUrl: string;
+
+  /** Author */
+  author: string;
+
+  /** Author URL */
+  authorUrl: string;
+
+  /** Licence */
+  licence: string;
+
+  /** Licence URL */
+  licenceUrl: string;
+}
+
+export interface IImageLicence extends Entry<IImageLicenceFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "imageLicence";
         linkType: "ContentType";
         type: "Link";
       };
@@ -120,7 +163,7 @@ export interface IStore extends Entry<IStoreFields> {
   };
 }
 
-export type CONTENT_TYPE = "city" | "country" | "store";
+export type CONTENT_TYPE = "city" | "country" | "imageLicence" | "store";
 
 export type LOCALE_CODE = "nl";
 

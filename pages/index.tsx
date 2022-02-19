@@ -1,14 +1,32 @@
 import { GetStaticProps } from "next";
 import { fetchStores, fetchCities } from "../utils/contentful";
 import { ICityFields, IStoreFields } from "../types/generated/contentful";
-import { Hero, IntroText, Layout, PageTitle } from "../components";
+import {
+  BlockGrid,
+  CityBlock,
+  Hero,
+  IntroText,
+  Layout,
+  PageTitle,
+} from "../components";
 
 interface StorePageProps {
   stores: IStoreFields[];
   cities: ICityFields[];
 }
 
-export const StorePage = ({ stores, cities }: StorePageProps) => {
+export const HomePage = ({ stores, cities }: StorePageProps) => {
+  const displayCities = cities.filter((city) => city.image);
+
+  const countCities = stores
+    .map((store) => ({
+      city: store.city,
+      count: stores.filter((ct) => ct.city === store.city).length,
+    }))
+    .filter((ct) => ct.count > 2);
+
+  console.log(countCities);
+
   return (
     <Layout cities={cities} header={<Hero stores={stores} />}>
       <PageTitle>Koop je strips bij een stripspeciaalzaak</PageTitle>
@@ -27,11 +45,17 @@ export const StorePage = ({ stores, cities }: StorePageProps) => {
           </a>
         </p>
       </IntroText>
+
+      <BlockGrid>
+        {displayCities.map((city) => (
+          <CityBlock key={city.slug} city={city} />
+        ))}
+      </BlockGrid>
     </Layout>
   );
 };
 
-export default StorePage;
+export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchStores();

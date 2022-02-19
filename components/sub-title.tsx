@@ -11,6 +11,6 @@ export const SubTitle = styled.h2`
 
   @media (min-width: 768px) {
     font-size: 1.4em;
-    margin: -1rem 0 1rem;
+    margin: -0.5rem 0 1rem;
   }
 `;

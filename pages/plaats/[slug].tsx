@@ -15,7 +15,7 @@ import {
   IStoreFields,
 } from "../../types/generated/contentful";
 import {
-  StoreBlockGrid,
+  BlockGrid,
   CenterContent,
   StoreBlock,
   Layout,
@@ -59,11 +59,11 @@ export const CityPage = ({
         {city?.description && documentToReactComponents(city?.description)}
       </DescriptionText>
 
-      <StoreBlockGrid>
+      <BlockGrid>
         {stores?.map((store) => (
           <StoreBlock store={store} key={store.slug} />
         ))}
-      </StoreBlockGrid>
+      </BlockGrid>
 
       <CenterContent>
         <Link href={`/land/${country.slug}`} passHref>

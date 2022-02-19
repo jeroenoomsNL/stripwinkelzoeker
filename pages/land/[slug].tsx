@@ -15,7 +15,7 @@ import {
 } from "../../types/generated/contentful";
 import {
   Hero,
-  StoreBlockGrid,
+  BlockGrid,
   CenterContent,
   StoreBlock,
   Layout,
@@ -35,7 +35,7 @@ interface CountryParams extends ParsedUrlQuery {
   country: string;
 }
 
-export const StorePage = ({
+export const CountryPage = ({
   country,
   stores,
   allStores,
@@ -57,11 +57,11 @@ export const StorePage = ({
         <DescriptionText>{country.description}</DescriptionText>
       )}
 
-      <StoreBlockGrid>
+      <BlockGrid>
         {stores?.map((store) => (
           <StoreBlock store={store} key={store.slug} />
         ))}
-      </StoreBlockGrid>
+      </BlockGrid>
 
       <CenterContent>
         <Link href="/" passHref>
@@ -72,7 +72,7 @@ export const StorePage = ({
   );
 };
 
-export default StorePage;
+export default CountryPage;
 
 export async function getStaticPaths() {
   const res = await fetchCountries();

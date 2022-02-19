@@ -1,4 +1,5 @@
 import { Crosshairs } from "./icons/crosshairs";
+import { Info } from "./icons/info";
 import { Location } from "./icons/location";
 import { MapMarker } from "./icons/map-marker";
 import { Search } from "./icons/search";
@@ -7,6 +8,7 @@ import { Shop } from "./icons/shop";
 
 export const icons = {
   crosshairs: Crosshairs,
+  info: Info,
   location: Location,
   "map-marker": MapMarker,
   search: Search,

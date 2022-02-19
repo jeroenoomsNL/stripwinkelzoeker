@@ -1,4 +1,5 @@
 export * from "./center-content";
+export * from "./city-block";
 export * from "./container";
 export * from "./description-text";
 export * from "./footer";
@@ -12,7 +13,7 @@ export * from "./navigation";
 export * from "./page-title";
 export * from "./search-bar";
 export * from "./store-block";
-export * from "./store-block-grid";
+export * from "./block-grid";
 export * from "./store-image";
 export * from "./store-info-block";
 export * from "./store-map";
