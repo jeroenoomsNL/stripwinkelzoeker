@@ -1,3 +1,4 @@
+import { CircleXmark } from "./icons/circle-xmark";
 import { Crosshairs } from "./icons/crosshairs";
 import { Info } from "./icons/info";
 import { Location } from "./icons/location";
@@ -7,6 +8,7 @@ import { SearchLocation } from "./icons/search-location";
 import { Shop } from "./icons/shop";
 
 export const icons = {
+  "circle-xmark": CircleXmark,
   crosshairs: Crosshairs,
   info: Info,
   location: Location,

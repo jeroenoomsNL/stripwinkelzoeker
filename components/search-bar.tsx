@@ -17,50 +17,78 @@ interface SearchResult {
 
 const SearchInputContainer = styled.form`
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 500px;
-
-  @media (min-width: 768px) {
-    width: 100%;
-  }
 `;
 
-const SearchInput = styled.input`
+interface SearchInputProps {
+  resultboxVisible: boolean;
+}
+
+const SearchInput = styled.input<SearchInputProps>`
   border: 1px solid rgba(0, 0, 0, 0.4);
   background: var(--color-white);
-  border-radius: 9999px;
-  font-size: 0.75em;
-  padding: 1rem 0.5rem 1rem 2.5rem;
+  font-size: 0.75rem;
+  padding: 1rem 2.5rem 1rem 2.5rem;
   width: 100%;
   font-weight: 500;
+  outline: none;
+  border-radius: ${(props) =>
+    props.resultboxVisible ? "1.5rem  1.5rem 0 0" : "9999px"};
 
   @media (min-width: 375px) {
-    padding: 1rem 0.5rem 1rem 3rem;
-    font-size: 0.9em;
+    font-size: 1.1rem;
+    padding: 0.75rem 2.4rem;
   }
 
   @media (min-width: 768px) {
-    font-size: 1.3em;
-    padding: 1.3rem 1.3rem 1.3rem 5rem;
+    font-size: 1.2rem;
+    padding: 1.5rem 3.5rem;
   }
 `;
 
 const SearchIcon = styled.div`
+  color: var(--color-grey);
   position: absolute;
-  left: 1rem;
+  left: 0.75rem;
   top: 1rem;
 
   svg {
     height: 1rem;
   }
 
+  @media (min-width: 768px) {
+    left: 1.2rem;
+    top: 1.8rem;
+
+    svg {
+      height: 1.4rem;
+    }
+  }
+`;
+
+const ClearIcon = styled.div`
+  color: var(--color-grey);
+  position: absolute;
+  right: 0.75rem;
+  top: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-black);
+  }
+
+  svg {
+    height: 1rem;
+  }
+
   @media (min-width: 375px) {
-    left: 1.1rem;
+    right: 1.1rem;
     top: 1.1rem;
   }
 
   @media (min-width: 768px) {
-    left: 1.75rem;
+    right: 1.2rem;
     top: 1.6rem;
 
     svg {
@@ -69,48 +97,58 @@ const SearchIcon = styled.div`
   }
 `;
 
+const Line = styled.div`
+  border: none;
+  border-top: 1px solid var(--color-light-grey);
+  overflow: visible;
+  margin: 0.75rem;
+
+  @media (min-width: 768px) {
+    margin: 0.5rem 0.75rem;
+  }
+`;
+
 const SearchResults = styled.div`
   position: absolute;
   display: flex;
-  top: 62px;
+  top: 44px;
   flex-direction: column;
   background: white;
-  border-radius: 1em;
   width: 100%;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  border-radius: 0 0 1.5rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-top: none;
+  font-size: 0.75rem;
+
+  @media (min-width: 375px) {
+    font-size: 1rem;
+  }
 
   @media (min-width: 768px) {
-    top: 80px;
+    top: 70px;
   }
 `;
 
 const SearchResult = styled.a`
   color: var(--color-black);
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.75rem;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 
   @media (min-width: 768px) {
-    padding: 1rem 2rem;
+    padding: 1rem 1.25rem;
+    gap: 1.25rem;
   }
 
-  &:hover {
-    background-color: lightgrey;
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-light-grey);
     text-decoration: none;
-  }
-`;
-
-const NoResult = styled.div`
-  padding: 0.75em 1em;
-  font-family: "Poppins", sans-serif;
-  font-style: italic;
-
-  @media (min-width: 768px) {
-    padding: 1em 2em;
+    outline: none;
   }
 `;
 
@@ -147,11 +185,18 @@ function MakeRelevantTextBold({
 
 export const SearchBar = ({ stores }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [resultboxVisible, setResultboxVisible] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
   const router = useRouter();
 
   useEffect(() => {
-    if (searchTerm.length < 3) return setResults([]);
+    if (searchTerm.length < 3) {
+      setResultboxVisible(false);
+      setResults([]);
+      return;
+    }
+
+    setResultboxVisible(true);
 
     const options = {
       threshold: 0.2,
@@ -177,33 +222,45 @@ export const SearchBar = ({ stores }: SearchBarProps) => {
         <Icon name="search" />
       </SearchIcon>
       <SearchInput
-        type="search"
+        resultboxVisible={searchTerm.length > 2}
+        type="text"
+        autoComplete="off"
+        role="combobox"
+        value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Zoek op winkel of plaatsnaam"
       />
+      {searchTerm.length > 2 && (
+        <ClearIcon
+          onClick={() => {
+            setResultboxVisible(false);
+            setSearchTerm("");
+          }}
+        >
+          <Icon name="circle-xmark" />
+        </ClearIcon>
+      )}
 
-      <SearchResults>
-        {searchTerm.length > 2 && results.length === 0 && (
-          <NoResult>Er zijn geen stripwinkels gevonden.</NoResult>
-        )}
-        {results?.map((result) => (
-          <Link
-            href={`/winkel/${result.item.slug}`}
-            passHref
-            key={result.item.slug}
-          >
-            <SearchResult>
-              <ResultIcon>
-                <Icon name="map-marker" height={20} />
-              </ResultIcon>
-              <MakeRelevantTextBold
-                result={`${result.item.name}, ${result.item.city}`}
-                searchTerm={searchTerm}
-              />
-            </SearchResult>
-          </Link>
-        ))}
-        {searchTerm.length > 2 && (
+      {resultboxVisible && (
+        <SearchResults>
+          <Line />
+          {results?.map((result) => (
+            <Link
+              href={`/winkel/${result.item.slug}`}
+              passHref
+              key={result.item.slug}
+            >
+              <SearchResult>
+                <ResultIcon>
+                  <Icon name="map-marker" height={20} />
+                </ResultIcon>
+                <MakeRelevantTextBold
+                  result={`${result.item.name}, ${result.item.city}`}
+                  searchTerm={searchTerm}
+                />
+              </SearchResult>
+            </Link>
+          ))}
           <Link href="/stripwinkels-in-de-buurt" passHref>
             <SearchResult>
               <ResultIcon>
@@ -212,8 +269,8 @@ export const SearchBar = ({ stores }: SearchBarProps) => {
               Stripwinkels in de buurt
             </SearchResult>
           </Link>
-        )}
-      </SearchResults>
+        </SearchResults>
+      )}
     </SearchInputContainer>
   );
 };
