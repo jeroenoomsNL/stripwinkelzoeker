@@ -43,7 +43,7 @@ const SearchInput = styled.input<SearchInputProps>`
 
   @media (min-width: 768px) {
     font-size: 1.2rem;
-    padding: 1.5rem 3.5rem;
+    padding: 0.75rem 3.5rem;
   }
 `;
 
@@ -59,7 +59,7 @@ const SearchIcon = styled.div`
 
   @media (min-width: 768px) {
     left: 1.2rem;
-    top: 1.8rem;
+    top: 1.1rem;
 
     svg {
       height: 1.4rem;
@@ -126,7 +126,7 @@ const SearchResults = styled.div`
   }
 
   @media (min-width: 768px) {
-    top: 70px;
+    top: 54px;
   }
 `;
 
