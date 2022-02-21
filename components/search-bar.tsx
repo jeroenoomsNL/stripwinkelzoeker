@@ -126,7 +126,7 @@ const SearchResults = styled.div`
   }
 
   @media (min-width: 768px) {
-    top: 54px;
+    top: 52px;
   }
 `;
 
