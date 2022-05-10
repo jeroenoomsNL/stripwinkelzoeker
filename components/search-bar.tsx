@@ -27,7 +27,7 @@ interface SearchInputProps {
 
 const SearchInput = styled.input<SearchInputProps>`
   border: 1px solid rgba(0, 0, 0, 0.4);
-  background: var(--color-white);
+  background-color: var(--color-white);
   font-size: 0.75rem;
   padding: 1rem 2.5rem 1rem 2.5rem;
   width: 100%;
@@ -113,7 +113,7 @@ const SearchResults = styled.div`
   display: flex;
   top: 44px;
   flex-direction: column;
-  background: white;
+  background-color: var(--color-white);
   width: 100%;
   overflow: hidden;
   border-radius: 0 0 1.5rem 1.5rem;

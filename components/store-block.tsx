@@ -8,7 +8,7 @@ interface StoreBlockProps {
 }
 
 const Container = styled.div`
-  background: white;
+  background-color: var(--color-white);
   border: 1px solid #dcdcdc;
   border-radius: 1rem;
   display: flex;

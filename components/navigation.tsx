@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Container, Logo } from "../components";
 
 const NavContainer = styled.nav`
-  background: var(--color-primary);
+  background-color: var(--color-primary);
   border-bottom: 1px solid #fff;
   padding: 0.5rem 0;
 
