@@ -13,6 +13,9 @@ export interface ICityFields {
   /** Slug */
   slug?: string | undefined;
 
+  /** Country */
+  country: "nederland" | "belgie";
+
   /** Description */
   description?: Document | undefined;
 

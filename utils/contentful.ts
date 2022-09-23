@@ -71,7 +71,7 @@ export async function fetchCountries() {
 export async function fetchCountryByName(country: string) {
   const entries = await client.getEntries({
     content_type: "country",
-    "fields.name": country,
+    "fields.slug": country,
   });
   if (entries.items) return entries.items;
   console.log(`Error getting country by slug.`);
