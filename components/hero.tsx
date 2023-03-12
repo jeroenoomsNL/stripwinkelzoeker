@@ -85,7 +85,7 @@ const Suggestion = styled.a`
 
 export const Hero = ({ stores, variant = "default" }: HeroProps) => {
   const heroImages = [
-    "http://images.ctfassets.net/tat9577n8aak/54nBV6xD0BypT8VdiBRcx/bbc760584e73e02634ed434836cdfe0f/stripwinkel-blunder-utrecht.jpg?fm=jpg&q=70&w=1500",
+    "https://images.ctfassets.net/tat9577n8aak/54nBV6xD0BypT8VdiBRcx/bbc760584e73e02634ed434836cdfe0f/stripwinkel-blunder-utrecht.jpg?fm=jpg&q=70&w=1500",
     "https://images.ctfassets.net/tat9577n8aak/3n9SMhPyHlBZDZifUWgwiY/e34d2eb64cc41925ac6eb00766898182/jopo-de-pojo.jpg?fm=jpg&q=70&w=1500",
     "https://images.ctfassets.net/tat9577n8aak/30r8XhpHlDMBED389IKPZI/484384c2b66d0c8dd3dc432fc0b77516/yendor.jpg?fm=jpg&q=70&w=1500",
     "https://images.ctfassets.net/tat9577n8aak/2CdAWgTPgMUHR8LkDLJRGq/9882ccf2bd414b4949dcf214c394e3f3/utopia-books.jpg?fm=jpg&w=1500&h=700&fit=fill&q=70",
