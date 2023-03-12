@@ -1,3 +1,4 @@
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import styled from "styled-components";
 import { ParsedUrlQuery } from "querystring";
 import { GetStaticProps } from "next";
@@ -70,6 +71,11 @@ const StoreMapContainer = styled.div`
   height: 400px;
 `;
 
+const PermanentlyClosed = styled.span`
+  color: #d51010;
+  font-weight: bold;
+`;
+
 export const StorePage = ({ store, cities }: StorePageProps) => {
   const canonical = "/winkel/" + store.slug;
   const pageTitle = `${store.name} - Stripspeciaalzaak in ${store.city}`;
@@ -92,6 +98,7 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
           ) : (
             <SubTitle>Stripspeciaalzaak in {store.city}</SubTitle>
           )}
+
           <StoreAddress>
             {store.address}
             <br />
@@ -100,22 +107,45 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
             {store.country}
             <br />
             <br />
-            {store.website && (
+            {!store.permanentlyClosed && (
               <>
-                <span>website:</span>{" "}
-                <a href={store.website} target="_blank" rel="noreferrer">
-                  {store.website.replace(/^https?:\/\//, "")}
-                </a>
+                {store.website && (
+                  <>
+                    <span>website:</span>{" "}
+                    <a href={store.website} target="_blank" rel="noreferrer">
+                      {store.website.replace(/^https?:\/\//, "")}
+                    </a>
+                  </>
+                )}
+                <br />
+                {store.phoneNumber && (
+                  <>
+                    <span>telefoonnummer:</span>{" "}
+                    <a href={`tel:${store.phoneNumber}`}>{store.phoneNumber}</a>
+                  </>
+                )}
               </>
             )}
-            <br />
-            {store.phoneNumber && (
+            {store.permanentlyClosed && (
               <>
-                <span>telefoonnummer:</span>{" "}
-                <a href={`tel:${store.phoneNumber}`}>{store.phoneNumber}</a>
+                <PermanentlyClosed>Permanent gesloten</PermanentlyClosed>
+                {city?.slug && (
+                  <p>
+                    Vind andere Stripwinkels is{" "}
+                    <Link href={`/plaats/${city.slug}`}>
+                      <a>
+                        <strong>{store.city}</strong>
+                      </a>
+                    </Link>
+                  </p>
+                )}
               </>
             )}
           </StoreAddress>
+
+          {store.description && (
+            <div>{documentToReactComponents(store.description)}</div>
+          )}
         </div>
         <div>
           <StoreImageContainer>

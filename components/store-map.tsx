@@ -69,28 +69,30 @@ export const StoreMap = ({ locations, center, zoom }: StoreMapProps) => {
         onLoad={handleOnLoad}
       >
         <MarkerClusterer options={options}>
-          {(clusterer) =>
-            locations.map((store) => (
-              <Marker
-                position={{
-                  lat: store.location.lat,
-                  lng: store.location.lon,
-                }}
-                clusterer={clusterer}
-                key={store.slug}
-                onClick={() => setActiveMarker(store.slug)}
-              >
-                {activeMarker === store.slug ? (
-                  <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                    <StoreInfoBlock
-                      store={store}
-                      showLink={locations.length > 1}
-                    />
-                  </InfoWindow>
-                ) : null}
-              </Marker>
-            ))
-          }
+          {(clusterer) => (
+            <>
+              {locations.map((store) => (
+                <Marker
+                  position={{
+                    lat: store.location.lat,
+                    lng: store.location.lon,
+                  }}
+                  clusterer={clusterer}
+                  key={store.slug}
+                  onClick={() => setActiveMarker(store.slug)}
+                >
+                  {activeMarker === store.slug ? (
+                    <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                      <StoreInfoBlock
+                        store={store}
+                        showLink={locations.length > 1}
+                      />
+                    </InfoWindow>
+                  ) : null}
+                </Marker>
+              ))}
+            </>
+          )}
         </MarkerClusterer>
       </GoogleMap>
     </LoadScript>

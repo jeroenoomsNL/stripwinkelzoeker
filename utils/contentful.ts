@@ -25,6 +25,7 @@ export async function fetchStoresByCity(city: string) {
   const entries = await client.getEntries({
     content_type: "store",
     "fields.city": city,
+    "fields.permanentlyClosed": false,
   });
 
   if (entries.items) return entries.items;
@@ -35,6 +36,7 @@ export async function fetchStoresByCountry(country: string) {
   const entries = await client.getEntries({
     content_type: "store",
     "fields.country": country,
+    "fields.permanentlyClosed": false,
   });
 
   if (entries.items) return entries.items;

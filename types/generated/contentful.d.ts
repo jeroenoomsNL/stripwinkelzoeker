@@ -147,6 +147,9 @@ export interface IStoreFields {
 
   /** Image */
   image: Asset;
+
+  /** Permanently closed */
+  permanentlyClosed?: boolean | undefined;
 }
 
 export interface IStore extends Entry<IStoreFields> {
@@ -167,6 +170,8 @@ export interface IStore extends Entry<IStoreFields> {
 }
 
 export type CONTENT_TYPE = "city" | "country" | "imageLicence" | "store";
+
+export type IEntry = ICity | ICountry | IImageLicence | IStore;
 
 export type LOCALE_CODE = "nl";
 
