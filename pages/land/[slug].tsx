@@ -22,6 +22,7 @@ import {
   PageTitle,
   LinkButton,
   DescriptionText,
+  CallToActionText,
 } from "../../components";
 
 interface CountryPageProps {
@@ -62,6 +63,13 @@ export const CountryPage = ({
           <StoreBlock store={store} key={store.slug} />
         ))}
       </BlockGrid>
+
+      <CallToActionText>
+        Dit zijn de <strong>stripboekenwinkels in {country.name}</strong> die
+        wij voor je hebben gevonden. Ga naar de <strong>homepage</strong> voor
+        meer zoekopties, wellicht vind je daar de{" "}
+        <strong>stripspeciaalzaak</strong> waar je naar op zoek bent.
+      </CallToActionText>
 
       <CenterContent>
         <Link href="/" passHref>

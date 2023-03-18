@@ -5,29 +5,29 @@
 [[redirects]]
 from = "/winkel/stripwinkel-jopo-de-pojo"
 to = "/winkel/stripwinkel-jopo-de-pojo-haarlem"
-status = 302
+status = 301
 force = false
 
 [[redirects]]
 from = "/winkel/stripwinkel-de-strip-aap"
 to = "/winkel/stripwinkel-de-strip-aap-enschede"
-status = 302
+status = 301
 force = false
 
 [[redirects]]
 from = "/winkel/stripwinkel-aelix-strips-en-comics"
 to = "/winkel/stripwinkel-aelix-strips-en-comics-den-haag"
-status = 302
+status = 301
 force = false
 
 [[redirects]]
 from = "/winkel/stripwinkel-dick-bos"
 to = "/winkel/stripwinkel-dick-bos-rotterdam"
-status = 302
+status = 301
 force = false
 
 [[redirects]]
 from = "/winkel/stripwinkel-bul-super"
 to = "/winkel/stripwinkel-bul-super-delft"
-status = 302
+status = 301
 force = false

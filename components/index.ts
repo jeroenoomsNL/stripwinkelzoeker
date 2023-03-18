@@ -1,3 +1,4 @@
+export * from "./call-to-action-text";
 export * from "./center-content";
 export * from "./city-block";
 export * from "./city-header";

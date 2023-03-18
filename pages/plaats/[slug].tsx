@@ -23,11 +23,11 @@ import {
   Layout,
   PageTitle,
   LinkButton,
+  CallToActionText,
 } from "../../components";
 
 interface CityPageProps {
   stores: IStoreFields[];
-  allStores: IStoreFields[];
   city: ICityFields;
   cities: ICityFields[];
   country: ICountryFields;
@@ -37,13 +37,7 @@ interface CityParams extends ParsedUrlQuery {
   city: string;
 }
 
-export const CityPage = ({
-  city,
-  cities,
-  country,
-  allStores,
-  stores,
-}: CityPageProps) => {
+export const CityPage = ({ city, cities, country, stores }: CityPageProps) => {
   const canonical = "/plaats/" + city.slug;
   const pageTitle = `Stripwinkels in ${city.name}`;
 
@@ -64,6 +58,12 @@ export const CityPage = ({
           <StoreBlock store={store} key={store.slug} />
         ))}
       </BlockGrid>
+
+      <CallToActionText>
+        Dit zijn de <strong>stripboekenwinkels in {city.name}</strong> die wij
+        voor je hebben gevonden. Maar er zijn natuurlijk nog veel meer{" "}
+        <strong>stripspeciaalzaken in {country.name}</strong>.
+      </CallToActionText>
 
       <CenterContent>
         <Link href={`/land/${country.slug}`} passHref>
@@ -112,11 +112,6 @@ export const getStaticProps: GetStaticProps<
     return { ...p.fields, id: p.sys.id };
   });
 
-  const allStoresRes = await fetchStores();
-  const allStores = await allStoresRes.map((p) => {
-    return { ...p.fields, id: p.sys.id };
-  });
-
   const citiesRes = await fetchCities();
   const cities = await citiesRes.map((p) => {
     return { ...p.fields, id: p.sys.id };
@@ -125,7 +120,6 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       stores,
-      allStores,
       city,
       cities,
       country,

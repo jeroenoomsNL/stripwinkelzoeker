@@ -15,12 +15,12 @@ class MyDocument extends Document {
           />
           <meta
             name="description"
-            content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
+            content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart. Vind een stripboekenwinkel bij jou in de buurt!"
           />
           <meta property="og:title" content="Stripwinkelzoeker.nl" />
           <meta
             property="og:description"
-            content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart en laat zien of de winkel bij jouw in de buurt ook thuisbezorgt."
+            content="Stripwinkelzoeker.nl brengt alle stripspeciaalzaken van Nederland en België in kaart. Vind een stripboekenwinkel bij jou in de buurt!"
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
