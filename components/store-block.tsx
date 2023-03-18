@@ -9,7 +9,7 @@ interface StoreBlockProps {
 
 const Container = styled.div`
   background-color: var(--color-white);
-  border: 1px solid #dcdcdc;
+  border: 1px solid #ccc;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
