@@ -131,12 +131,14 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
                 <PermanentlyClosed>Permanent gesloten</PermanentlyClosed>
                 {city?.slug && (
                   <p>
-                    Vind andere Stripwinkels is{" "}
-                    <Link href={`/plaats/${city.slug}`}>
-                      <a>
-                        <strong>{store.city}</strong>
-                      </a>
-                    </Link>
+                    <em>
+                      Vind andere Stripwinkels in{" "}
+                      <Link href={`/plaats/${city.slug}`}>
+                        <a>
+                          <strong>{store.city}</strong>
+                        </a>
+                      </Link>
+                    </em>
                   </p>
                 )}
               </>
