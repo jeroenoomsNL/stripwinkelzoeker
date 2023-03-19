@@ -24,6 +24,7 @@ import {
   DescriptionText,
   CallToActionText,
 } from "../../components";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 interface CountryPageProps {
   country: ICountryFields;
@@ -55,7 +56,10 @@ export const CountryPage = ({
       <PageTitle>{pageTitle}</PageTitle>
 
       {country?.description && (
-        <DescriptionText>{country.description}</DescriptionText>
+        <DescriptionText>
+          {country?.description &&
+            documentToReactComponents(country?.description)}
+        </DescriptionText>
       )}
 
       <BlockGrid>

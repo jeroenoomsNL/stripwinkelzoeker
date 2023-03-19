@@ -68,6 +68,16 @@ export const StoresAroundLocationPage = ({
 
       <DescriptionText>
         <p>
+          Ben je op zoek naar een stripwinkel bij jou in de buurt? We hebben
+          alle stripwinkels in Nederland en België voor je in kaart gebracht. Zo
+          kun je gemakkelijk zien welke winkels er bij jou in de buurt zijn en
+          waar je de nieuwste stripboeken en klassiekers kunt vinden. Of je nu
+          op zoek bent naar een stripspeciaalzaak met een uitgebreid assortiment
+          of een winkel waar je juist terecht kunt voor een specifieke strip, op
+          onze kaart vind je het allemaal.
+        </p>
+
+        <p>
           We hebben in Nederland en België maar liefst{" "}
           <strong>{stores.length} stripwinkels</strong> gevonden. Dan moet er
           toch wel een stripspeciaalzaak bij jou in de buurt te vinden zijn?

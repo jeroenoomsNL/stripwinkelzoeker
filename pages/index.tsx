@@ -26,7 +26,8 @@ export const HomePage = ({ stores, cities }: StorePageProps) => {
           Stripwinkelzoeker.nl is gemaakt om de stripspeciaalzaken met fysieke
           winkels zichtbaarder te maken voor de stripliefhebber. Door deze
           winkels beter vindbaar te maken hopen we dat de stripliefhebbers
-          sneller hun nieuwe stripboeken bij een stripspeciaalzaak zullen kopen.{" "}
+          sneller nieuwe stripboeken en graphic novels bij een stripspeciaalzaak
+          zullen kopen.{" "}
           <a
             href="https://www.hebban.nl/steunjeboekhandel"
             target="_blank"
