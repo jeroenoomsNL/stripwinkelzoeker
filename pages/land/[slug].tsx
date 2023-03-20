@@ -5,7 +5,7 @@ import {
   fetchCountries,
   fetchCountryBySlug,
   fetchCities,
-  fetchStores,
+  fetchAllStores,
   fetchStoresByCountry,
 } from "../../utils/contentful";
 import {
@@ -117,7 +117,7 @@ export const getStaticProps: GetStaticProps<
     return { ...p.fields, id: p.sys.id };
   });
 
-  const allStoresRes = await fetchStores();
+  const allStoresRes = await fetchAllStores();
   const allStores = await allStoresRes.map((p) => {
     return { ...p.fields, id: p.sys.id };
   });

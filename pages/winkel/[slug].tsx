@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from "querystring";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import {
-  fetchStores,
+  fetchAllStores,
   fetchCities,
   fetchStoreBySlug,
 } from "../../utils/contentful";
@@ -170,7 +170,7 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
 export default StorePage;
 
 export async function getStaticPaths() {
-  const res = await fetchStores();
+  const res = await fetchAllStores();
 
   const stores = await res.map((p) => {
     return {

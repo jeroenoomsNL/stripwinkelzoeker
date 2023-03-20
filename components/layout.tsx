@@ -30,7 +30,7 @@ export const Layout = ({
 }: LayoutProps) => {
   const pageTitle = title
     ? `${title} - Stripwinkelzoeker.nl`
-    : "Stripwinkelzoeker.nl - Vind een stripspeciaalzaak bij jou in de buurt #steunjeboekhandel";
+    : "Stripwinkelzoeker.nl - Vind een stripspeciaalzaak bij jou in de buurt";
 
   return (
     <LayoutContainer>

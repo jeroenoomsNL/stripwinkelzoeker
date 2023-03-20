@@ -6,8 +6,17 @@ const client = require("contentful").createClient({
   accessToken: accessToken,
 });
 
-export async function fetchStores() {
+export async function fetchAllStores() {
   const entries = await client.getEntries({ content_type: "store" });
+  if (entries.items) return entries.items;
+  console.log(`Error getting stores.`);
+}
+
+export async function fetchActiveStores() {
+  const entries = await client.getEntries({
+    content_type: "store",
+    "fields.permanentlyClosed": false,
+  });
   if (entries.items) return entries.items;
   console.log(`Error getting stores.`);
 }

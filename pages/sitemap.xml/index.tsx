@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import {
   fetchCities,
   fetchCountries,
-  fetchStores,
+  fetchAllStores,
 } from "../../utils/contentful";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   });
 
-  const resStores = await fetchStores();
+  const resStores = await fetchAllStores();
   const stores = await resStores.map((store) => {
     return {
       loc: `${BASE_URL}/winkel/${store.fields.slug}`,

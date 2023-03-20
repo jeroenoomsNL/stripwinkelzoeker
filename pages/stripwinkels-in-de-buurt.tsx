@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
-import { fetchCities, fetchStores } from "../utils/contentful";
+import {
+  fetchCities,
+  fetchAllStores,
+  fetchActiveStores,
+} from "../utils/contentful";
 import { ICityFields, IStoreFields } from "../types/generated/contentful";
 import {
   Hero,
@@ -12,7 +16,8 @@ import {
 } from "../components";
 
 interface StoresAroundLocationPageProps {
-  stores: IStoreFields[];
+  allStores: IStoreFields[];
+  activeStores: IStoreFields[];
   cities: ICityFields[];
 }
 
@@ -28,7 +33,8 @@ const StoreMapContainer = styled.div`
 
 export const StoresAroundLocationPage = ({
   cities,
-  stores,
+  allStores,
+  activeStores,
 }: StoresAroundLocationPageProps) => {
   const canonical = "/stripwinkels-in-de-buurt";
   const pageTitle = `Stripwinkels in de buurt`;
@@ -60,7 +66,7 @@ export const StoresAroundLocationPage = ({
   return (
     <Layout
       title={pageTitle}
-      header={<Hero stores={stores} variant="compact" />}
+      header={<Hero stores={allStores} variant="compact" />}
       cities={cities}
       canonical={canonical}
     >
@@ -79,8 +85,8 @@ export const StoresAroundLocationPage = ({
 
         <p>
           We hebben in Nederland en België maar liefst{" "}
-          <strong>{stores.length} stripwinkels</strong> gevonden. Dan moet er
-          toch wel een stripspeciaalzaak bij jou in de buurt te vinden zijn?
+          <strong>{activeStores.length} stripwinkels</strong> gevonden. Dan moet
+          er toch wel een stripspeciaalzaak bij jou in de buurt te vinden zijn?
         </p>
 
         {loading && (
@@ -101,7 +107,7 @@ export const StoresAroundLocationPage = ({
 
       <StoreMapContainer>
         <StoreMap
-          locations={stores}
+          locations={activeStores}
           center={currentLocation}
           zoom={12}
           loading={loading}
@@ -114,8 +120,13 @@ export const StoresAroundLocationPage = ({
 export default StoresAroundLocationPage;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const storesRes = await fetchStores();
-  const stores = await storesRes.map((p) => {
+  const allStoresRes = await fetchAllStores();
+  const allStores = await allStoresRes.map((p) => {
+    return { ...p.fields, id: p.sys.id };
+  });
+
+  const activeStoresRes = await fetchActiveStores();
+  const activeStores = await activeStoresRes.map((p) => {
     return { ...p.fields, id: p.sys.id };
   });
 
@@ -126,7 +137,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      stores,
+      allStores,
+      activeStores,
       cities,
     },
   };

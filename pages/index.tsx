@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { fetchStores, fetchCities } from "../utils/contentful";
+import { fetchAllStores, fetchCities } from "../utils/contentful";
 import { ICityFields, IStoreFields } from "../types/generated/contentful";
 import {
   BlockGrid,
@@ -45,7 +45,7 @@ export const HomePage = ({ stores, cities }: StorePageProps) => {
 export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetchStores();
+  const res = await fetchAllStores();
   const stores = await res.map((p) => {
     return { ...p.fields, id: p.sys.id };
   });
