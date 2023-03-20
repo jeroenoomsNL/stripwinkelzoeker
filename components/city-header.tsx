@@ -35,7 +35,7 @@ const Licence = styled.div`
 `;
 
 export const CityHeader = ({ city }: CityHeaderProps) => {
-  const licence = city.imageLicence.fields;
+  const licence = city.imageLicence?.fields;
 
   return (
     <div>

@@ -21,6 +21,10 @@ const FlexContainer = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+
+    & > div:nth-child(1) {
+      width: 60%;
+    }
   }
 `;
 
@@ -46,6 +50,12 @@ export const Footer = ({ cities }: FooterProps) => (
         <FlexContainer>
           <div>
             <Logo />
+            <p>
+              Vind jouw favoriete stripwinkel of stripspeciaalzaak met
+              Stripwinkelzoeker - dé website voor het vinden van klassieke
+              strips en de nieuwste releases bij jou in de buurt. Veel
+              leesplezier!
+            </p>
             <p>
               Stripwinkelzoeker.nl is een initiatief van{" "}
               <FooterLink

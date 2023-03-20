@@ -90,7 +90,7 @@ const Licence = styled.div`
 `;
 
 export const CityBlock = ({ city }: StoreBlockProps) => {
-  const licence = city.imageLicence.fields;
+  const licence = city.imageLicence?.fields;
 
   return (
     <Container
@@ -102,16 +102,18 @@ export const CityBlock = ({ city }: StoreBlockProps) => {
           <span>{city.name}</span>
         </CityName>
       </Link>
-      <LicenceContainer>
-        <LicenceIcon>
-          <Icon name="info" />
-        </LicenceIcon>
-        <Licence>
-          &quot;<a href={licence.imageUrl}>{licence.name}</a>&quot; by{" "}
-          <a href={licence.authorUrl}>{licence.author}</a> is licensed under{" "}
-          <a href={licence.licenceUrl}>{licence.licence}</a>.
-        </Licence>
-      </LicenceContainer>
+      {licence && (
+        <LicenceContainer>
+          <LicenceIcon>
+            <Icon name="info" />
+          </LicenceIcon>
+          <Licence>
+            &quot;<a href={licence.imageUrl}>{licence.name}</a>&quot; by{" "}
+            <a href={licence.authorUrl}>{licence.author}</a> is licensed under{" "}
+            <a href={licence.licenceUrl}>{licence.licence}</a>.
+          </Licence>
+        </LicenceContainer>
+      )}
     </Container>
   );
 };
