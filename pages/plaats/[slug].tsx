@@ -6,7 +6,6 @@ import {
   fetchCities,
   fetchCityBySlug,
   fetchCountryByName,
-  fetchStores,
   fetchStoresByCity,
 } from "../../utils/contentful";
 import {
