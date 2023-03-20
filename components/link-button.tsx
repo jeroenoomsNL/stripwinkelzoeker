@@ -10,6 +10,7 @@ export const LinkButton = styled.a`
   font-family: var(--font-title);
   font-weight: 500;
   font-size: 1.2rem;
+  text-align: center;
 
   &:hover {
     background-color: var(--color-accent-dark);

@@ -20,10 +20,10 @@ export interface ICityFields {
   description?: Document | undefined;
 
   /** Image */
-  image: Asset;
+  image?: Asset | undefined;
 
   /** Image Licence */
-  imageLicence: IImageLicence;
+  imageLicence?: IImageLicence | undefined;
 }
 
 export interface ICity extends Entry<ICityFields> {

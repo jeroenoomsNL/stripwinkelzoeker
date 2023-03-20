@@ -46,10 +46,14 @@ const StoreContainer = styled.section`
 `;
 
 const StoreAddress = styled.address`
-  font-size: 1.4rem;
+  font-size: 1rem;
   line-height: 1.6;
   font-style: normal;
   margin: 2rem 0;
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const StoreImageContainer = styled.div`

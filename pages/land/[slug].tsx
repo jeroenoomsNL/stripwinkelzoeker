@@ -70,9 +70,9 @@ export const CountryPage = ({
 
       <CallToActionText>
         Dit zijn de <strong>stripboekenwinkels in {country.name}</strong> die
-        wij voor je hebben gevonden. Ga naar de <strong>homepage</strong> voor
-        meer zoekopties, wellicht vind je daar de{" "}
-        <strong>stripspeciaalzaak</strong> waar je naar op zoek bent.
+        wij voor je hebben gevonden. Ga naar de homepage voor meer zoekopties,
+        wellicht vind je daar de <strong>stripspeciaalzaak</strong> waar je naar
+        op zoek bent.
       </CallToActionText>
 
       <CenterContent>

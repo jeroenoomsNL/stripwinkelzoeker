@@ -73,55 +73,6 @@ export const Footer = ({ cities }: FooterProps) => (
               </FooterLink>
               .
             </p>
-            <p>
-              <small>
-                gemaakt met behulp van{" "}
-                <FooterLink
-                  href="https://nextjs.org"
-                  title="Next.js"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Next.js
-                </FooterLink>
-                ,{" "}
-                <FooterLink
-                  href="https://www.netlify.com"
-                  title="Netlify"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Netlify
-                </FooterLink>
-                ,{" "}
-                <FooterLink
-                  href="https://www.contentful.com"
-                  title="Contentful"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Contentful
-                </FooterLink>
-                ,{" "}
-                <FooterLink
-                  href="https://fontawesome.com/license"
-                  title="FontAwesome"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  FontAwesome
-                </FooterLink>{" "}
-                and{" "}
-                <FooterLink
-                  href="https://www.flaticon.com/"
-                  title="Flaticon"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Flaticon.com
-                </FooterLink>
-              </small>
-            </p>
           </div>
           <div>
             <h3>Vind een stripspeciaalzaak</h3>

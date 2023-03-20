@@ -41,11 +41,13 @@ export const CityHeader = ({ city }: CityHeaderProps) => {
     <div>
       <HeroImage src={`${city.image.fields.file.url}?q=70&w=1500`} />
       <Container>
-        <Licence>
-          &quot;<a href={licence.imageUrl}>{licence.name}</a>&quot; by{" "}
-          <a href={licence.authorUrl}>{licence.author}</a> is licensed under{" "}
-          <a href={licence.licenceUrl}>{licence.licence}</a>.
-        </Licence>
+        {licence && (
+          <Licence>
+            &quot;<a href={licence.imageUrl}>{licence.name}</a>&quot; by{" "}
+            <a href={licence.authorUrl}>{licence.author}</a> is licensed under{" "}
+            <a href={licence.licenceUrl}>{licence.licence}</a>.
+          </Licence>
+        )}
       </Container>
     </div>
   );
