@@ -23,18 +23,13 @@ export const HomePage = ({ stores, cities }: StorePageProps) => {
       <PageTitle>Koop je strips bij een stripspeciaalzaak</PageTitle>
       <IntroText>
         <p>
-          Stripwinkelzoeker.nl is gemaakt om de stripspeciaalzaken met fysieke
-          winkels zichtbaarder te maken voor de stripliefhebber. Door deze
-          winkels beter vindbaar te maken hopen we dat de stripliefhebbers
-          sneller nieuwe stripboeken en graphic novels bij een stripspeciaalzaak
-          zullen kopen.{" "}
-          <a
-            href="https://www.hebban.nl/steunjeboekhandel"
-            target="_blank"
-            rel="noreferrer"
-          >
-            #steunjeboekhandel
-          </a>
+          Ben jij een echte stripfanaat en op zoek naar dat ene stripboek dat
+          nog steeds in je collectie ontbeekt? Of ben je gewoon op zoek naar de
+          nieuwste strips? Stripwinkelzoeker helpt je om de dichtstbijzijnde
+          stripwinkel of stripspeciaalzaak te vinden. Met meer dan 65 winkels in
+          Nederland en België hoef jij niet lang meer te zoeken. Van Batman tot
+          Lucky Luke, bij Stripwinkelzoeker vind je het allemaal. Dus waar wacht
+          je nog op? Ga op zoek naar jouw volgende stripavontuur!
         </p>
       </IntroText>
 
