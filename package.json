@@ -16,10 +16,8 @@
     "dotenv": "^16.0.0",
     "fuse.js": "^6.5.3",
     "next": "^12.0.10",
-    "prettier": "^2.8.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "sass": "^1.59.3",
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
@@ -32,6 +30,8 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "next-sitemap": "^2.4.2",
+    "prettier": "^2.8.6",
+    "sass": "^1.59.3",
     "typescript": "4.4.2"
   },
   "resolutions": {

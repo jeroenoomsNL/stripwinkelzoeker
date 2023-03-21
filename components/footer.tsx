@@ -51,7 +51,7 @@ export const Footer = ({ cities }: FooterProps) => (
           <div>
             <Logo />
             <p>
-              Vind jouw favoriete stripwinkel of stripspeciaalzaak met
+              Vind jouw favoriete stripboekhandel of stripspeciaalzaak met
               Stripwinkelzoeker - dé website voor het vinden van klassieke
               strips en de nieuwste releases bij jou in de buurt. Veel
               leesplezier!

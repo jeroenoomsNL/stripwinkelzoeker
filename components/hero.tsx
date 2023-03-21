@@ -102,17 +102,18 @@ export const Hero = ({ stores, variant = "default" }: HeroProps) => {
           <Suggestions>
             <Link href="/stripwinkels-in-de-buurt" passHref>
               <Suggestion>
-                <Icon name="crosshairs" /> Stripwinkels in de buurt
+                <Icon name="crosshairs" aria-hidden="true" /> Stripwinkels in de
+                buurt
               </Suggestion>
             </Link>
             <Link href="/land/nederland" passHref>
               <Suggestion>
-                <span>🇳🇱</span> Stripwinkels in Nederland
+                <span aria-hidden="true">🇳🇱</span> Stripwinkels in Nederland
               </Suggestion>
             </Link>
             <Link href="/land/belgie" passHref>
               <Suggestion>
-                <span>🇧🇪</span> Stripwinkels in België
+                <span aria-hidden="true">🇧🇪</span> Stripwinkels in België
               </Suggestion>
             </Link>
           </Suggestions>

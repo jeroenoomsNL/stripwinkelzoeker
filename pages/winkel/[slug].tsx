@@ -37,7 +37,7 @@ const StoreContainer = styled.section`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    gap: 1rem;
+    gap: 2rem;
 
     & > div {
       flex: 1 0 50%;
@@ -53,6 +53,17 @@ const StoreAddress = styled.address`
 
   @media (min-width: 768px) {
     font-size: 1.2rem;
+  }
+`;
+
+const StoreContent = styled.section`
+  font-size: 1rem;
+  line-height: 1.6;
+  font-style: normal;
+  margin: 2rem 0;
+
+  @media (min-width: 768px) {
+    font-size: 1.1rem;
   }
 `;
 
@@ -88,13 +99,13 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
   return (
     <Layout title={pageTitle} cities={cities} canonical={canonical}>
       <StoreContainer>
-        <div>
+        <article>
           <StoreTitle>{store.name}</StoreTitle>
           {city?.slug ? (
             <SubTitle>
               Stripspeciaalzaak in{" "}
               <Link href={`/plaats/${city.slug}`}>
-                <a>
+                <a title={`Stripwinkels in ${store.city}`}>
                   <strong>{store.city}</strong>
                 </a>
               </Link>
@@ -116,7 +127,12 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
                 {store.website && (
                   <>
                     <span>website:</span>{" "}
-                    <a href={store.website} target="_blank" rel="noreferrer">
+                    <a
+                      href={store.website}
+                      target="_blank"
+                      rel="noreferrer"
+                      title={`De website van ${store.name}`}
+                    >
                       {store.website.replace(/^https?:\/\//, "")}
                     </a>
                   </>
@@ -125,7 +141,12 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
                 {store.phoneNumber && (
                   <>
                     <span>telefoonnummer:</span>{" "}
-                    <a href={`tel:${store.phoneNumber}`}>{store.phoneNumber}</a>
+                    <a
+                      href={`tel:${store.phoneNumber}`}
+                      title={`Het telefoonnummer van ${store.name}`}
+                    >
+                      {store.phoneNumber}
+                    </a>
                   </>
                 )}
               </>
@@ -138,7 +159,7 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
                     <em>
                       Vind andere Stripwinkels in{" "}
                       <Link href={`/plaats/${city.slug}`}>
-                        <a>
+                        <a title={`Stripwinkels in ${store.city}`}>
                           <strong>{store.city}</strong>
                         </a>
                       </Link>
@@ -150,9 +171,14 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
           </StoreAddress>
 
           {store.description && (
-            <div>{documentToReactComponents(store.description)}</div>
+            <>
+              <StoreContent>
+                <h2>Over {store.name}</h2>
+                {documentToReactComponents(store.description)}
+              </StoreContent>
+            </>
           )}
-        </div>
+        </article>
         <div>
           <StoreImageContainer>
             <StoreImage store={store} width={800} height={500} />

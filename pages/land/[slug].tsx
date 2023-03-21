@@ -76,8 +76,12 @@ export const CountryPage = ({
       </CallToActionText>
 
       <CenterContent>
-        <Link href="/" passHref>
-          <LinkButton>Naar de homepage</LinkButton>
+        <Link
+          href="/"
+          passHref
+          title="Vind alle stripspeciaalzaken in Nederland en België"
+        >
+          <LinkButton>Naar de homepage voor meer stripspeciaalzaken</LinkButton>
         </Link>
       </CenterContent>
     </Layout>
