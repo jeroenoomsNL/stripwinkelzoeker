@@ -40,7 +40,7 @@ const StoreContainer = styled.section`
     gap: 2rem;
 
     & > div {
-      flex: 1 0 50%;
+      flex: 0 0 50%;
     }
   }
 `;
