@@ -33,6 +33,10 @@ const FooterLink = styled.a`
   text-decoration: underline;
 `;
 
+const LinkListTitle = styled.h3`
+  color: var(--color-white);
+`;
+
 const LinkList = styled.ul`
   list-style: none;
   padding: 0;
@@ -85,7 +89,7 @@ export const Footer = ({ cities }: FooterProps) => (
             </p>
           </div>
           <div>
-            <h3>Vind een stripspeciaalzaak</h3>
+            <LinkListTitle>Vind een stripspeciaalzaak</LinkListTitle>
             <LinkList>
               <li>
                 <Link href={`/stripwinkels-in-de-buurt`} passHref>

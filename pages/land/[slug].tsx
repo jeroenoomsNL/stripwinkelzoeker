@@ -81,7 +81,7 @@ export const CountryPage = ({
           passHref
           title="Vind alle stripspeciaalzaken in Nederland en België"
         >
-          <LinkButton>Naar de homepage voor meer stripspeciaalzaken</LinkButton>
+          <LinkButton>Vind meer stripspeciaalzaken</LinkButton>
         </Link>
       </CenterContent>
     </Layout>
