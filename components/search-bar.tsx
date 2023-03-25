@@ -28,7 +28,7 @@ interface SearchInputProps {
 const SearchInput = styled.input<SearchInputProps>`
   border: 1px solid rgba(0, 0, 0, 0.4);
   background-color: var(--color-white);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   padding: 1rem 2.5rem 1rem 2.5rem;
   width: 100%;
   font-weight: 500;
@@ -37,7 +37,7 @@ const SearchInput = styled.input<SearchInputProps>`
     props.resultboxVisible ? "1.5rem  1.5rem 0 0" : "9999px"};
 
   @media (min-width: 375px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0.75rem 2.4rem;
   }
 
@@ -70,7 +70,7 @@ const SearchIcon = styled.div`
 const ClearIcon = styled.div`
   color: var(--color-grey);
   position: absolute;
-  right: 0.75rem;
+  right: 1rem;
   top: 1rem;
   cursor: pointer;
 
@@ -82,15 +82,7 @@ const ClearIcon = styled.div`
     height: 1rem;
   }
 
-  @media (min-width: 375px) {
-    right: 1.1rem;
-    top: 1.1rem;
-  }
-
   @media (min-width: 768px) {
-    right: 1.2rem;
-    top: 1.6rem;
-
     svg {
       height: 1.5rem;
     }
