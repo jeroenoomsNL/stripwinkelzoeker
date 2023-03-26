@@ -39,7 +39,7 @@ export const CityHeader = ({ city }: CityHeaderProps) => {
 
   return (
     <div>
-      <HeroImage src={`${city.image.fields.file.url}?q=70&w=1500`} />
+      <HeroImage src={`${city.image.fields.file.url}?q=80&w=1500`} />
       <Container>
         {licence && (
           <Licence>

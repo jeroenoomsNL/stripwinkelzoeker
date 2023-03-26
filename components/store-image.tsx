@@ -16,7 +16,7 @@ const ResponsiveImage = styled.img`
 
 const ImageElement = ({ store, width = 400, height = 250 }) => (
   <ResponsiveImage
-    src={`https:${store.image.fields?.file?.url}?fm=jpg&w=${width}&h=${height}&fit=fill&q=80`}
+    src={`https:${store.image.fields?.file?.url}?fm=jpg&w=${width}&h=${height}&fit=fill&q=90`}
     width={width}
     height={height}
     alt={store.image.fields?.title}
