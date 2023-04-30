@@ -31,3 +31,22 @@ from = "/winkel/stripwinkel-bul-super"
 to = "/winkel/stripwinkel-bul-super-delft"
 status = 301
 force = false
+
+
+[[redirects]]
+from = "/winkel/the-splendid-utrecht"
+to = "/winkel/stripwinkel-the-splendid-utrecht"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plaats/stripwinkels-in-den-haag"
+to = "/plaats/den-haag"
+status = 301
+force = false
+
+[[redirects]]
+from = "/winkel/henk-comics-amsterdam"
+to = "/winkel/stripwinkel-henk-comics-amsterdam"
+status = 301
+force = false
