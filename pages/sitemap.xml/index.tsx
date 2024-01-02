@@ -4,7 +4,7 @@ import {
   fetchCities,
   fetchCountries,
   fetchAllStores,
-} from "../utils/contentful";
+} from "../../utils/contentful";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
