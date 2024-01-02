@@ -32,7 +32,6 @@ to = "/winkel/stripwinkel-bul-super-delft"
 status = 301
 force = false
 
-
 [[redirects]]
 from = "/winkel/the-splendid-utrecht"
 to = "/winkel/stripwinkel-the-splendid-utrecht"

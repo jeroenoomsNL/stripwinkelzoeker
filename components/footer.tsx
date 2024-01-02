@@ -28,7 +28,7 @@ const FlexContainer = styled.div`
   }
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled(Link)`
   color: rgba(255, 255, 255, 0.6);
   text-decoration: underline;
 `;
@@ -92,15 +92,15 @@ export const Footer = ({ cities }: FooterProps) => (
             <LinkListTitle>Vind een stripspeciaalzaak</LinkListTitle>
             <LinkList>
               <li>
-                <Link href={`/stripwinkels-in-de-buurt`} passHref>
-                  <FooterLink>Stripwinkels bij jou in de buurt</FooterLink>
-                </Link>
+                <FooterLink href={`/stripwinkels-in-de-buurt`}>
+                  Stripwinkels bij jou in de buurt
+                </FooterLink>
               </li>
               {cities.map((city) => (
                 <li key={city.slug}>
-                  <Link href={`/plaats/${city.slug}`} passHref>
-                    <FooterLink>Stripwinkels in {city.name}</FooterLink>
-                  </Link>
+                  <FooterLink href={`/plaats/${city.slug}`}>
+                    Stripwinkels in {city.name}
+                  </FooterLink>
                 </li>
               ))}
             </LinkList>

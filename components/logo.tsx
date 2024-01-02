@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-const SiteTitle = styled.a`
+const SiteTitle = styled(Link)`
   font-family: var(--font-title);
   color: white;
   font-style: italic;
@@ -22,9 +22,9 @@ const SiteTitle = styled.a`
 `;
 
 export const Logo = () => (
-  <Link href="/" passHref>
-    <SiteTitle>
+  <SiteTitle href="/">
+    <span>
       <strong>Strip</strong>winkelzoeker
-    </SiteTitle>
-  </Link>
+    </span>
+  </SiteTitle>
 );

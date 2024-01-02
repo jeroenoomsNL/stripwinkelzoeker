@@ -8,11 +8,11 @@ interface StoreBlockProps {
 }
 
 interface ContainerProps {
-  image: string;
+  readonly $image: string;
 }
 
 const Container = styled.div<ContainerProps>`
-  background-image: url(${(props) => props.image});
+  background-image: url(${(props) => props.$image});
   background-size: cover;
   border-radius: 1rem;
   position: relative;
@@ -90,14 +90,19 @@ const Licence = styled.div`
 `;
 
 export const CityBlock = ({ city }: StoreBlockProps) => {
-  const licence = city.imageLicence?.fields;
+  const licence: any = city.imageLicence?.fields;
 
   return (
     <Container
-      image={`${city.image.fields?.file?.url}?fm=jpg&w=800&h=450&fit=fill&q=90`}
+      $image={`${city.image.fields?.file?.url}?fm=jpg&w=800&h=450&fit=fill&q=90`}
     >
-      <Link href="/plaats/[slug]" as={`/plaats/${city.slug}`} passHref>
-        <CityName title={`Stripwinkels in ${city.name}`}>
+      <Link
+        href="/plaats/[slug]"
+        as={`/plaats/${city.slug}`}
+        legacyBehavior
+        passHref
+      >
+        <CityName>
           <CitySubTitle>Stripwinkels in </CitySubTitle>
           <span>{city.name}</span>
         </CityName>

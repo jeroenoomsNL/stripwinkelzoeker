@@ -78,13 +78,11 @@ const FixedImage = styled(StoreImage)`
 export const StoreBlock = ({ store }: StoreBlockProps) => (
   <Container>
     <Link href="/winkel/[slug]" as={`/winkel/${store.slug}`}>
-      <a>
-        <FixedImage store={store} width={400} height={200} />
-        <Content>
-          <StoreName>{store.name}</StoreName>
-          <CityName>{store.city}</CityName>
-        </Content>
-      </a>
+      <FixedImage store={store} width={400} height={200} />
+      <Content>
+        <StoreName>{store.name}</StoreName>
+        <CityName>{store.city}</CityName>
+      </Content>
     </Link>
   </Container>
 );

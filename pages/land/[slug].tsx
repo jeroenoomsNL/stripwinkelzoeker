@@ -63,9 +63,7 @@ export const CountryPage = ({
       )}
 
       <BlockGrid>
-        {stores?.map((store) => (
-          <StoreBlock store={store} key={store.slug} />
-        ))}
+        {stores?.map((store) => <StoreBlock store={store} key={store.slug} />)}
       </BlockGrid>
 
       <CallToActionText>
@@ -76,13 +74,13 @@ export const CountryPage = ({
       </CallToActionText>
 
       <CenterContent>
-        <Link
+        <LinkButton
           href="/"
           passHref
           title="Vind alle stripspeciaalzaken in Nederland en België"
         >
-          <LinkButton>Vind meer stripspeciaalzaken</LinkButton>
-        </Link>
+          Vind meer stripspeciaalzaken
+        </LinkButton>
       </CenterContent>
     </Layout>
   );

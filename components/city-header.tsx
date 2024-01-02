@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { ICityFields } from "../types/generated/contentful";
+import {
+  ICityFields,
+  IImageLicenceFields,
+} from "../types/generated/contentful";
 import { Container } from ".";
 
 interface CityHeaderProps {
@@ -35,13 +38,13 @@ const Licence = styled.div`
 `;
 
 export const CityHeader = ({ city }: CityHeaderProps) => {
-  const licence = city.imageLicence?.fields;
+  const licence = city.imageLicence?.fields as IImageLicenceFields;
 
   return (
     <div>
       <HeroImage src={`${city.image.fields.file.url}?q=80&w=1500`} />
       <Container>
-        {licence && (
+        {!!licence && (
           <Licence>
             &quot;<a href={licence.imageUrl}>{licence.name}</a>&quot; by{" "}
             <a href={licence.authorUrl}>{licence.author}</a> is licensed under{" "}

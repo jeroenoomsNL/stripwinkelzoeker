@@ -32,10 +32,11 @@ export const StoreImage = ({
 }: StoreImageProps) => {
   if (clickable) {
     return (
-      <Link href={`/winkel/${store.slug}`}>
-        <a title={store.image.fields?.title}>
-          <ImageElement store={store} width={width} height={height} />
-        </a>
+      <Link
+        href={`/winkel/${store.slug}`}
+        title={store.image.fields?.title as string}
+      >
+        <ImageElement store={store} width={width} height={height} />
       </Link>
     );
   } else {

@@ -22,7 +22,7 @@ const SearchInputContainer = styled.form`
 `;
 
 interface SearchInputProps {
-  resultboxVisible: boolean;
+  readonly $resultboxVisible: boolean;
 }
 
 const SearchInput = styled.input<SearchInputProps>`
@@ -34,7 +34,7 @@ const SearchInput = styled.input<SearchInputProps>`
   font-weight: 500;
   outline: none;
   border-radius: ${(props) =>
-    props.resultboxVisible ? "1.5rem  1.5rem 0 0" : "9999px"};
+    props.$resultboxVisible ? "1.5rem  1.5rem 0 0" : "9999px"};
 
   @media (min-width: 375px) {
     font-size: 1rem;
@@ -122,7 +122,7 @@ const SearchResults = styled.div`
   }
 `;
 
-const SearchResult = styled.a`
+const SearchResultItem = styled(Link)`
   color: var(--color-black);
   padding: 0.75rem 0.75rem;
   font-family: "Poppins", sans-serif;
@@ -214,7 +214,7 @@ export const SearchBar = ({ stores }: SearchBarProps) => {
         <Icon name="search" />
       </SearchIcon>
       <SearchInput
-        resultboxVisible={searchTerm.length > 2}
+        $resultboxVisible={searchTerm.length > 2}
         type="text"
         autoComplete="off"
         role="combobox"
@@ -237,30 +237,25 @@ export const SearchBar = ({ stores }: SearchBarProps) => {
         <SearchResults>
           <Line />
           {results?.map((result) => (
-            <Link
+            <SearchResultItem
               href={`/winkel/${result.item.slug}`}
-              passHref
               key={result.item.slug}
             >
-              <SearchResult>
-                <ResultIcon>
-                  <Icon name="map-marker" height={20} />
-                </ResultIcon>
-                <MakeRelevantTextBold
-                  result={`${result.item.name}, ${result.item.city}`}
-                  searchTerm={searchTerm}
-                />
-              </SearchResult>
-            </Link>
-          ))}
-          <Link href="/stripwinkels-in-de-buurt" passHref>
-            <SearchResult>
               <ResultIcon>
-                <Icon name="crosshairs" height={20} />
-              </ResultIcon>{" "}
-              Stripwinkels in de buurt
-            </SearchResult>
-          </Link>
+                <Icon name="map-marker" height={20} />
+              </ResultIcon>
+              <MakeRelevantTextBold
+                result={`${result.item.name}, ${result.item.city}`}
+                searchTerm={searchTerm}
+              />
+            </SearchResultItem>
+          ))}
+          <SearchResultItem href="/stripwinkels-in-de-buurt">
+            <ResultIcon>
+              <Icon name="crosshairs" height={20} />
+            </ResultIcon>
+            Stripwinkels in de buurt
+          </SearchResultItem>
         </SearchResults>
       )}
     </SearchInputContainer>

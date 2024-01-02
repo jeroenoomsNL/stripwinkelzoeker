@@ -1,6 +1,7 @@
+import Link from "next/link";
 import styled from "styled-components";
 
-export const LinkButton = styled.a`
+export const LinkButton = styled(Link)`
   display: inline-block;
   background-color: var(--color-accent);
   color: var(--color-white);

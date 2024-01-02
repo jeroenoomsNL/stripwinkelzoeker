@@ -53,9 +53,7 @@ export const CityPage = ({ city, cities, country, stores }: CityPageProps) => {
       </DescriptionText>
 
       <BlockGrid>
-        {stores?.map((store) => (
-          <StoreBlock store={store} key={store.slug} />
-        ))}
+        {stores?.map((store) => <StoreBlock store={store} key={store.slug} />)}
       </BlockGrid>
 
       <CallToActionText>
@@ -65,9 +63,9 @@ export const CityPage = ({ city, cities, country, stores }: CityPageProps) => {
       </CallToActionText>
 
       <CenterContent>
-        <Link href={`/land/${country.slug}`} passHref>
-          <LinkButton>Alle stripwinkels in {country.name}</LinkButton>
-        </Link>
+        <LinkButton href={`/land/${country.slug}`}>
+          Alle stripwinkels in {country.name}
+        </LinkButton>
       </CenterContent>
     </Layout>
   );

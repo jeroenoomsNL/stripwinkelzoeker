@@ -4,7 +4,7 @@ import { IStoreFields } from "../types/generated/contentful";
 import { Container, Icon, SearchBar } from "../components";
 
 interface HeroContainerProps {
-  variant?: "default" | "compact";
+  readonly $variant?: "default" | "compact";
 }
 
 interface HeroProps {
@@ -18,7 +18,8 @@ const HeroContainer = styled.div<HeroContainerProps>`
   position: relative;
 
   @media (min-width: 768px) {
-    min-height: ${(props) => (props.variant === "default" ? "500px" : "150px")};
+    min-height: ${(props) =>
+      props.$variant === "default" ? "500px" : "150px"};
   }
 `;
 
@@ -60,7 +61,7 @@ const Suggestions = styled.div`
   }
 `;
 
-const Suggestion = styled.a`
+const Suggestion = styled(Link)`
   display: flex;
   align-items: center;
   background-color: var(--color-primary);
@@ -95,27 +96,21 @@ export const Hero = ({ stores, variant = "default" }: HeroProps) => {
   const heroImageIndex = Math.floor(Math.random() * heroImages.length);
 
   return (
-    <HeroContainer variant={variant}>
+    <HeroContainer $variant={variant}>
       <ContentContainer>
         <SearchBar stores={stores} />
         {variant === "default" && (
           <Suggestions>
-            <Link href="/stripwinkels-in-de-buurt" passHref>
-              <Suggestion>
-                <Icon name="crosshairs" aria-hidden="true" /> Stripwinkels in de
-                buurt
-              </Suggestion>
-            </Link>
-            <Link href="/land/nederland" passHref>
-              <Suggestion>
-                <span aria-hidden="true">🇳🇱</span> Stripwinkels in Nederland
-              </Suggestion>
-            </Link>
-            <Link href="/land/belgie" passHref>
-              <Suggestion>
-                <span aria-hidden="true">🇧🇪</span> Stripwinkels in België
-              </Suggestion>
-            </Link>
+            <Suggestion href="/stripwinkels-in-de-buurt">
+              <Icon name="crosshairs" aria-hidden="true" /> Stripwinkels in de
+              buurt
+            </Suggestion>
+            <Suggestion href="/land/nederland">
+              <span aria-hidden="true">🇳🇱</span> Stripwinkels in Nederland
+            </Suggestion>
+            <Suggestion href="/land/belgie">
+              <span aria-hidden="true">🇧🇪</span> Stripwinkels in België
+            </Suggestion>
           </Suggestions>
         )}
       </ContentContainer>

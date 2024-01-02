@@ -104,10 +104,12 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
           {city?.slug ? (
             <SubTitle>
               Stripspeciaalzaak in{" "}
-              <Link href={`/plaats/${city.slug}`}>
-                <a title={`Stripwinkels in ${store.city}`}>
-                  <strong>{store.city}</strong>
-                </a>
+              <Link
+                href={`/plaats/${city.slug}`}
+                title={`Stripwinkels in ${store.city}`}
+                rel="tag"
+              >
+                <strong>{store.city}</strong>
               </Link>
             </SubTitle>
           ) : (
@@ -158,10 +160,8 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
                   <p>
                     <em>
                       Vind andere Stripwinkels in{" "}
-                      <Link href={`/plaats/${city.slug}`}>
-                        <a title={`Stripwinkels in ${store.city}`}>
-                          <strong>{store.city}</strong>
-                        </a>
+                      <Link href={`/plaats/${city.slug}`} rel="tag">
+                        <strong>{store.city}</strong>
                       </Link>
                     </em>
                   </p>

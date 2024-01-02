@@ -3,6 +3,37 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
+export interface IArticleFields {
+  /** Name */
+  name: string;
+
+  /** Slug */
+  slug: string;
+
+  /** Title */
+  title: string;
+
+  /** Content */
+  content?: Document | undefined;
+}
+
+export interface IArticle extends Entry<IArticleFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "article";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface ICityFields {
   /** Name */
   name: string;
@@ -139,12 +170,6 @@ export interface IStoreFields {
   /** Website */
   website?: string | undefined;
 
-  /** Does deliver? */
-  doesDeliver: boolean;
-
-  /** Delivers in own region only? */
-  deliversInRegionOnly: boolean;
-
   /** Image */
   image: Asset;
 
@@ -169,9 +194,14 @@ export interface IStore extends Entry<IStoreFields> {
   };
 }
 
-export type CONTENT_TYPE = "city" | "country" | "imageLicence" | "store";
+export type CONTENT_TYPE =
+  | "article"
+  | "city"
+  | "country"
+  | "imageLicence"
+  | "store";
 
-export type IEntry = ICity | ICountry | IImageLicence | IStore;
+export type IEntry = IArticle | ICity | ICountry | IImageLicence | IStore;
 
 export type LOCALE_CODE = "nl";
 

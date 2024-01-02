@@ -40,13 +40,12 @@ export const StoreInfoBlock = ({ store, showLink }: StoreInfoBlockProps) => (
       </p>
       {showLink && (
         <p>
-          <Link
+          <LinkButton
             href={`/winkel/${store.slug}`}
-            passHref
             title={`Meer informatie over ${store.name} in ${store.city}`}
           >
-            <LinkButton>Meer informatie</LinkButton>
-          </Link>
+            Meer informatie
+          </LinkButton>
         </p>
       )}
     </StoreBlockContent>
