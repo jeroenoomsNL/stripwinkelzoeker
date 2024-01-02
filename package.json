@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run contentful-types && next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "contentful-types": "contentful-typescript-codegen --output types/generated/contentful.d.ts"
   },
