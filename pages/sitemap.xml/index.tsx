@@ -1,4 +1,4 @@
-import { getServerSideSitemapIndexLegacy } from "next-sitemap";
+import { getServerSideSitemapLegacy } from "next-sitemap";
 import { GetServerSideProps } from "next";
 import {
   fetchCities,
@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   });
 
-  return getServerSideSitemapIndexLegacy(ctx, [
+  return getServerSideSitemapLegacy(ctx, [
     ...staticPages,
     ...countries,
     ...cities,
