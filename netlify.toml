@@ -54,4 +54,4 @@ force = false
 from = "/sitemap"
 to = "/sitemap.xml
 status = 301
-force = true
+force = false
