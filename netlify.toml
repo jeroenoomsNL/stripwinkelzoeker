@@ -2,6 +2,12 @@
   command = "next build"
   publish = ".next"
 
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
 [[redirects]]
 from = "/winkel/stripwinkel-jopo-de-pojo"
 to = "/winkel/stripwinkel-jopo-de-pojo-haarlem"
