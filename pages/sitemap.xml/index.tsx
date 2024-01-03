@@ -1,12 +1,32 @@
-import { getServerSideSitemapLegacy } from "next-sitemap";
-import { GetServerSideProps } from "next";
 import {
   fetchCities,
   fetchCountries,
   fetchAllStores,
 } from "../../utils/contentful";
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+function generateSiteMap(posts) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+     ${posts
+       .map(({ loc, lastmod, priority }) => {
+         return `
+       <url>
+           <loc>${loc}</loc>
+           <loc>${lastmod}</loc>
+           <loc>${priority}</loc>
+       </url>
+     `;
+       })
+       .join("")}
+   </urlset>
+ `;
+}
+
+function SiteMap() {
+  // getServerSideProps will do the heavy lifting
+}
+
+export async function getServerSideProps({ res }) {
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
   const staticPages = [
@@ -45,12 +65,22 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   });
 
-  return getServerSideSitemapLegacy(ctx, [
+  // We generate the XML sitemap with the posts data
+  const sitemap = generateSiteMap([
     ...staticPages,
     ...countries,
     ...cities,
     ...stores,
   ]);
-};
 
-export default function Sitemap() {}
+  res.setHeader("Content-Type", "text/xml");
+  // we send the XML to the browser
+  res.write(sitemap);
+  res.end();
+
+  return {
+    props: {},
+  };
+}
+
+export default SiteMap;
