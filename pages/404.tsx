@@ -17,8 +17,6 @@ interface StorePageProps {
 }
 
 export const NotFoundPage = ({ stores, cities }: StorePageProps) => {
-  const displayCities = cities.filter((city) => city.image);
-
   return (
     <Layout cities={cities} header={<Hero stores={stores} />}>
       <PageTitle>Pagina niet gevonden</PageTitle>
@@ -28,12 +26,6 @@ export const NotFoundPage = ({ stores, cities }: StorePageProps) => {
           <Link href="/">homepage</Link>.
         </p>
       </IntroText>
-
-      <BlockGrid>
-        {displayCities.map((city) => (
-          <CityBlock key={city.slug} city={city} />
-        ))}
-      </BlockGrid>
     </Layout>
   );
 };
