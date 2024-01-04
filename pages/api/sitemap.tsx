@@ -2,7 +2,8 @@ import {
   fetchCities,
   fetchCountries,
   fetchAllStores,
-} from "../utils/contentful";
+} from "../../utils/contentful";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 function generateSiteMap(posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -22,11 +23,7 @@ function generateSiteMap(posts) {
  `;
 }
 
-function SiteMap() {
-  // getServerSideProps will do the heavy lifting
-}
-
-export async function getServerSideProps({ res }) {
+const Sitemap = async (req: NextApiRequest, res: NextApiResponse<string>) => {
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
   const staticPages = [
@@ -75,10 +72,6 @@ export async function getServerSideProps({ res }) {
   res.setHeader("Content-Type", "text/xml");
   res.write(sitemap);
   res.end();
+};
 
-  return {
-    props: {},
-  };
-}
-
-export default SiteMap;
+export default Sitemap;
