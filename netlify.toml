@@ -55,3 +55,9 @@ from = "/winkel/henk-comics-amsterdam"
 to = "/winkel/stripwinkel-henk-comics-amsterdam"
 status = 301
 force = false
+
+[[redirects]]
+from = "/sitemap.xml"
+to = "/api/sitemap"
+status = 301
+force = false
