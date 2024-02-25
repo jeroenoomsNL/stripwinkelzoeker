@@ -5,7 +5,7 @@ import { GA_TRACKING_ID } from "../utils/gtag";
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="nl">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
