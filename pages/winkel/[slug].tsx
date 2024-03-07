@@ -119,7 +119,7 @@ export const StorePage = ({ store, cities }: StorePageProps) => {
           <StoreAddress>
             {store.address}
             <br />
-            {store.postalCode}, {store.city}
+            {store.postalCode} {store.city}
             <br />
             {store.country}
             <br />
