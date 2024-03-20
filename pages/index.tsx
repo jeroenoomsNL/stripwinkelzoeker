@@ -23,13 +23,14 @@ export const HomePage = ({ stores, cities }: StorePageProps) => {
       <PageTitle>Koop je strips bij een stripspeciaalzaak</PageTitle>
       <IntroText>
         <p>
-          Ben jij een echte stripfanaat en op zoek naar dat ene stripboek dat
-          nog steeds in je collectie ontbeekt? Of ben je gewoon op zoek naar de
-          nieuwste strips? Stripwinkelzoeker helpt je om de dichtstbijzijnde
-          stripwinkel of stripspeciaalzaak te vinden. Met meer dan 65 winkels in
-          Nederland en België hoef jij niet lang meer te zoeken. Van Batman tot
-          Lucky Luke, bij Stripwinkelzoeker vind je het allemaal. Dus waar wacht
-          je nog op? Ga op zoek naar jouw volgende stripavontuur!
+          Ben jij een echte stripfanaat en op zoek naar dat ene zeldzame
+          stripboek dat nog steeds in je collectie ontbeekt? Of ben je gewoon op
+          zoek naar de nieuwste strips? Stripwinkelzoeker helpt je om de
+          dichtstbijzijnde stripwinkel of stripspeciaalzaak te vinden. Met ruim
+          70 winkels in Nederland en België hoef jij niet lang meer te zoeken.
+          Van Batman tot Lucky Luke, bij Stripwinkelzoeker vind je zeker een
+          leuke stripspeciaalzaak bij jou in de buurt. Dus waar wacht je nog op?
+          Ga op zoek naar jouw volgende stripavontuur!
         </p>
       </IntroText>
 
