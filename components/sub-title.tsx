@@ -4,6 +4,7 @@ export const SubTitle = styled.h2`
   color: var(--color-primary-light);
   font-size: 1.2em;
   margin: -0.5rem 0 1rem;
+  text-wrap: balance;
 
   a:hover {
     text-decoration: underline;
