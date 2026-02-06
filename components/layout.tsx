@@ -2,10 +2,11 @@ import styled from "styled-components";
 import Head from "next/head";
 import { ICityFields } from "../types/generated/contentful";
 import { Container, Footer, Navigation } from "../components";
+import React from "react";
 
 interface LayoutProps {
   cities: ICityFields[];
-  header?: JSX.Element;
+  header?: React.JSX.Element;
   canonical?: string;
   title?: string;
   children: React.ReactNode;
