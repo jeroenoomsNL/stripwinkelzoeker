@@ -22,13 +22,13 @@
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.20",
-    "@types/node": "^22.19.11",
+    "@types/node": "^22.19.13",
     "@types/react": "19.2.13",
     "@types/styled-components": "^5.1.36",
-    "contentful-management": "^11.72.1",
+    "contentful-management": "^11.73.0",
     "contentful-typescript-codegen": "^3.4.0",
     "eslint": "^9.39.3",
-    "eslint-config-next": "^16",
+    "eslint-config-next": "^16.1.6",
     "prettier": "^3.8.1",
     "sass": "^1.97.3",
     "typescript": "^5.9.3"
