@@ -175,6 +175,9 @@ export interface IStoreFields {
 
   /** Permanently closed */
   permanentlyClosed?: boolean | undefined;
+
+  /** Product Range */
+  productRange?: ("comics" | "strips")[] | undefined;
 }
 
 export interface IStore extends Entry<IStoreFields> {

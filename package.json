@@ -9,28 +9,28 @@
     "contentful-types": "contentful-typescript-codegen --output types/generated/contentful.d.ts"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^16.1.6",
+    "@contentful/rich-text-react-renderer": "^16.2.1",
     "@react-google-maps/api": "^2.20.8",
     "babel-plugin-styled-components": "^2.1.4",
     "contentful": "^10.15.1",
     "dotenv": "^16.6.1",
-    "fuse.js": "^7.1.0",
+    "fuse.js": "^7.3.0",
     "next": "16.2.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "styled-components": "^6.3.11"
+    "styled-components": "^6.4.1"
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.20",
-    "@types/node": "^22.19.13",
+    "@types/node": "^22.19.17",
     "@types/react": "19.2.13",
     "@types/styled-components": "^5.1.36",
-    "contentful-management": "^11.73.0",
+    "contentful-management": "^11.76.0",
     "contentful-typescript-codegen": "^3.4.0",
-    "eslint": "^9.39.3",
-    "eslint-config-next": "^16.1.6",
-    "prettier": "^3.8.1",
-    "sass": "^1.97.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.4",
+    "prettier": "^3.8.3",
+    "sass": "^1.99.0",
     "typescript": "^5.9.3"
   },
   "engines": {
