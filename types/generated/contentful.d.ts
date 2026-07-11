@@ -198,11 +198,7 @@ export interface IStore extends Entry<IStoreFields> {
 }
 
 export type CONTENT_TYPE =
-  | "article"
-  | "city"
-  | "country"
-  | "imageLicence"
-  | "store";
+  "article" | "city" | "country" | "imageLicence" | "store";
 
 export type IEntry = IArticle | ICity | ICountry | IImageLicence | IStore;
 
